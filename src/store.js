@@ -9,7 +9,7 @@ const SCHEMA_VERSION = 1;
 
 /** @typedef {{ level:number, window:boolean[], locked:boolean }} Adapt */
 /** @typedef {{ v:number, stars?:Record<string,number>, voiceOn?:boolean,
- *   lockLevel?:boolean, adapt?:Record<string,Adapt> }} SaveData */
+ *   calm?:boolean, lockLevel?:boolean, adapt?:Record<string,Adapt> }} SaveData */
 
 /** @returns {SaveData} */
 function migrate(raw) {
@@ -56,6 +56,16 @@ export const store = {
   },
   set voiceOn(v) {
     this.data.voiceOn = v;
+    this.save();
+  },
+
+  /** Rolig tilstand (lavarousal): dæmpet fejring så barnet fokuserer på opgaven.
+   * Standard TIL. Sæt startværdien her hvis livlig fejring ønskes som standard. */
+  get calm() {
+    return this.data.calm !== false;
+  },
+  set calm(v) {
+    this.data.calm = v;
     this.save();
   },
 

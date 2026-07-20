@@ -117,6 +117,23 @@ Tilgængelighed:
 
 14 logik-tests grønne (inkl. O1/O2/O5), typecheck + røgtest grønt.
 
+## Rolig tilstand (lavarousal, tilføjet efter I6)
+
+For at barnet kan **fokusere på opgaven frem for at blive overstimuleret af
+farve- og lyseffekter** – uden at UI'et bliver kedeligt – er der tilføjet en
+**"Rolig tilstand"** i forældremenuen (**slået til som standard**):
+
+- **Ingen konfetti**; stjernen **toner blidt ind** i stedet for at poppe.
+- **Blød to-tone "pling"** i stedet for den 5-tonede fanfare.
+- Forkert svar giver en **rolig rød kant-markering** i stedet for at ryste.
+- Langsommere, blødere puls-hint.
+
+Farver, stjerner og verbal ros bevares, så feedbacken stadig er positiv og
+levende. Opgaveskærmen var i forvejen lavarousal (rolig pastelbaggrund, ét
+element i fokus, store trykflader). Kan slås fra af en forælder for en mere
+livlig fejring, og `prefers-reduced-motion` respekteres fortsat uafhængigt.
+Standardværdien sættes ét sted (`store.calm` i `src/store.js`).
+
 ## I6 – Play-klargøring (færdig)
 
 - **PWA-manifest** (`src/manifest.webmanifest`): navn, landscape, standalone,

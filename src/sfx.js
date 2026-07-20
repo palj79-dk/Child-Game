@@ -39,3 +39,5 @@ export function sfxRight() { [523, 659, 784].forEach((f, i) => tone(f, i * 0.09,
 export function sfxWrong() { tone(180, 0, 0.3, "triangle", 0.12); }
 export function sfxStar() { [523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, i * 0.1, 0.35)); }
 export function sfxFlip() { tone(700, 0, 0.08, "square", 0.05); }
+/** Rolig tilstand: én blød to-tone "pling" i stedet for fanfaren. */
+export function sfxChime() { tone(660, 0, 0.45, "sine", 0.1); tone(880, 0.12, 0.55, "sine", 0.07); }

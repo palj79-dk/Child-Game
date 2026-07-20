@@ -50,6 +50,8 @@ function holdStep() {
     if (vt) vt.textContent = store.voiceOn ? "Til" : "Fra";
     const lt = $("lockToggle");
     if (lt) lt.textContent = store.lockLevel ? "Låst" : "Automatisk";
+    const ct = $("calmToggle");
+    if (ct) ct.textContent = store.calm ? "Til" : "Fra";
     $("settings")?.classList.add("active");
   } else {
     holdRAF = requestAnimationFrame(holdStep);
@@ -57,6 +59,8 @@ function holdStep() {
 }
 
 export function initUI() {
+  document.body.classList.toggle("calm", store.calm); // rolig tilstand fra start
+
   $("homeBtn")?.addEventListener("pointerdown", goHome);
   $("partyHomeBtn")?.addEventListener("pointerdown", goHome);
   $("againBtn")?.addEventListener("pointerdown", () => {
@@ -95,6 +99,14 @@ export function initUI() {
     store.voiceOn = !store.voiceOn;
     const vt = $("voiceToggle");
     if (vt) vt.textContent = store.voiceOn ? "Til" : "Fra";
+  });
+
+  // Rolig tilstand: dæmpet fejring (styres via body.calm i CSS + logik i motor)
+  $("calmToggle")?.addEventListener("pointerdown", () => {
+    store.calm = !store.calm;
+    document.body.classList.toggle("calm", store.calm);
+    const ct = $("calmToggle");
+    if (ct) ct.textContent = store.calm ? "Til" : "Fra";
   });
   $("resetBtn")?.addEventListener("pointerdown", () => {
     store.reset();

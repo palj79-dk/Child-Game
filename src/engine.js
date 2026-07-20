@@ -5,7 +5,7 @@ import { $, pick, ros } from "./util.js";
 import { store } from "./store.js";
 import { audio } from "./audio.js";
 import { ROS_IDS, PROEV_IDS, SYS } from "./audio-ids.js";
-import { sfxRight, sfxWrong, sfxStar } from "./sfx.js";
+import { sfxRight, sfxWrong, sfxStar, sfxChime } from "./sfx.js";
 
 export const ROUND_LEN = 5;
 
@@ -133,7 +133,7 @@ export function finishRound() {
   const g = state.current;
   if (!g) return;
   store.addStar(g.id);
-  sfxStar();
+  store.calm ? sfxChime() : sfxStar(); // rolig tilstand: blød pling frem for fanfare
   audio.say(SYS.stjerne);
   const msg = $("partyMsg");
   if (msg) msg.textContent = pick(ros) + " Du fik en stjerne! ⭐";
@@ -143,7 +143,8 @@ export function finishRound() {
 }
 
 export function confetti() {
-  // T1: spring konfetti over hvis brugeren har valgt "reducér bevægelse"
+  // Rolig tilstand ELLER "reducér bevægelse": ingen konfetti
+  if (store.calm) return;
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const bits = ["🎉", "⭐", "🎈", "✨", "🟡", "🔵"];
   for (let i = 0; i < 24; i++) {

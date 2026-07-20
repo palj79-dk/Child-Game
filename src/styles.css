@@ -175,6 +175,17 @@ button { font-family:inherit; border:none; cursor:pointer; background:none; }
 .game-card .stars { color:#c77f00; } /* mørkere guld på hvid → WCAG AA */
 #progress .dot.done { box-shadow:inset 0 0 0 .5vmin #c77f00; } /* kraftigere kant om gul */
 
+/* ====== Rolig tilstand (lavarousal): dæmpet fejring, samme farver ====== */
+body.calm #party { background:rgba(255,255,255,.85); }
+body.calm #party .big-star { animation:calmFade .5s ease-out; }
+@keyframes calmFade { from { opacity:0; transform:scale(.92); } to { opacity:1; transform:scale(1); } }
+body.calm .choice.wrong { animation:calmWrong .55s ease; }
+@keyframes calmWrong {
+  0%,100% { box-shadow:0 6px 0 rgba(0,0,0,.12); }
+  45% { box-shadow:0 6px 0 rgba(0,0,0,.12), 0 0 0 1.3vmin rgba(224,90,90,.5); }
+}
+body.calm .idle-hint { animation-duration:1.9s; } /* langsommere, blødere puls */
+
 /* ====== T1: respektér "reducér bevægelse" ====== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
