@@ -155,3 +155,30 @@ Standardværdien sættes ét sted (`store.calm` i `src/store.js`).
   (fase 2-3 i `PLAN.md`).
 
 Appen er hermed teknisk klar til Capacitor-pakning og Google Play-forløbet.
+
+## Feedback-runde (efter test på mobil)
+
+**Mobil/portræt-layout (fixet):** svar-kort fik faste responsive størrelser og
+nye portræt-media-queries, så alle spil nu fylder inden for en høj, smal skærm
+(var: kort på ~300px der flød ud over skærmen og blev klippet). Landscape uændret.
+
+**Byg-fejl (fundet + fixet):** `build.mjs` brugte `String.replace` med bundlen som
+*erstatnings-streng*, hvormed `$`-mønstre ($&, $\`) blev fortolket og kunne lukke
+`<script>` for tidligt (hele JS-kilden blev vist som tekst på siden). Skiftet til
+funktions-replacers – permanent løst.
+
+**TTS-kvalitet (forbedret, men ærligt: gratis TTS-loft):** kun `da_DK-talesyntese-medium`
+findes for dansk (ingen high-model). Forbedringer: rigtige **danske bogstavnavne**
+("bæ", "sæ", "æm" i stedet for det bare bogstav), fjernet "..." fra dyrelyd/rim-tekster,
+og re-renderet med **roligere tempo** (length-scale 1.12) og renere udtale
+(noise-scale 0.5). En professionel indtaler kan lægges ind senere som ren
+filudskiftning via manifestet – uden kodeændring.
+
+**Rolle-vælger + QC play-log (bygget):**
+- Ved første start vælges rolle: **Barn / Voksen / QC-tester** (huskes; kan ændres
+  under Forældre → "Skift rolle"). Barnet mødes kun af den ene skærm én gang.
+- **QC-tester** aktiverer en **play-log** (knap nederst til venstre): en tidsstemplet,
+  læsbar liste over hvordan spillet forløber (spil-start, opgave + prompt, rigtigt/
+  forkert, niveau-ændring, stjerne, hjem). **100 % lokal** (kun på enheden, intet
+  sendes) – i tråd med nul-dataindsamling. Kan kopieres og ryddes.
+- 16 logik-tests grønne (inkl. rolle/QC + play-log), typecheck + røgtest grønt.

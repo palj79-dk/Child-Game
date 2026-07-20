@@ -8,6 +8,7 @@ import { state, startGame, showScreen, clearHint } from "./engine.js";
 import { ensureAudio } from "./sfx.js";
 import { audio } from "./audio.js";
 import { icon } from "./icon.js";
+import { playlog } from "./playlog.js";
 
 export function renderMenu() {
   const menu = $("menu");
@@ -28,6 +29,7 @@ export function renderMenu() {
 }
 
 export function goHome() {
+  playlog.log("hjem");
   audio.stop();
   clearHint();
   $("party")?.classList.remove("active");
@@ -58,8 +60,53 @@ function holdStep() {
   }
 }
 
+/** Anvend en valgt rolle (barn/voksen/qc). */
+function applyRole(r) {
+  store.role = r;
+  playlog.enabled = store.qc;
+  document.body.classList.toggle("qc", store.qc);
+  if (store.qc) playlog.log("qc-start", { rolle: r });
+}
+
+function renderQcLog() {
+  const el = $("qclogText");
+  if (el) el.textContent = playlog.dump() || "(ingen hændelser endnu – spil en runde)";
+}
+
 export function initUI() {
   document.body.classList.toggle("calm", store.calm); // rolig tilstand fra start
+
+  // Rolle + QC play-log (kun lokalt)
+  playlog.load();
+  playlog.enabled = store.qc;
+  document.body.classList.toggle("qc", store.qc);
+  if (!store.role) $("role")?.classList.add("active"); // rolle-vælger ved første start
+
+  document.querySelectorAll("#role .role-btn").forEach((b) =>
+    b.addEventListener("pointerdown", () => {
+      applyRole(/** @type {HTMLElement} */ (b).dataset.role || "barn");
+      $("role")?.classList.remove("active");
+      $("settings")?.classList.remove("active");
+    })
+  );
+  $("roleBtn")?.addEventListener("pointerdown", () => $("role")?.classList.add("active"));
+
+  $("qcBtn")?.addEventListener("pointerdown", () => {
+    renderQcLog();
+    $("qclog")?.classList.add("active");
+  });
+  $("qclogClose")?.addEventListener("pointerdown", () => $("qclog")?.classList.remove("active"));
+  $("qclogClear")?.addEventListener("pointerdown", () => {
+    playlog.clear();
+    renderQcLog();
+  });
+  $("qclogCopy")?.addEventListener("pointerdown", () => {
+    const txt = playlog.dump();
+    navigator.clipboard?.writeText(txt).catch(() => {});
+  });
+  window.addEventListener("qclog", () => {
+    if ($("qclog")?.classList.contains("active")) renderQcLog();
+  });
 
   $("homeBtn")?.addEventListener("pointerdown", goHome);
   $("partyHomeBtn")?.addEventListener("pointerdown", goHome);

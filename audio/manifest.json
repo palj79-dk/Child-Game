@@ -75,252 +75,252 @@
     },
     "bogstav_a_navn": {
       "fil": "bogstav_a_navn.mp3",
-      "tekst": "A",
+      "tekst": "a",
       "kategori": "bogstav"
     },
     "bogstav_a_lyd": {
       "fil": "bogstav_a_lyd.mp3",
-      "tekst": "A siger aaa",
+      "tekst": "a siger a",
       "kategori": "bogstav"
     },
     "bogstav_b_navn": {
       "fil": "bogstav_b_navn.mp3",
-      "tekst": "B",
+      "tekst": "bæ",
       "kategori": "bogstav"
     },
     "bogstav_b_lyd": {
       "fil": "bogstav_b_lyd.mp3",
-      "tekst": "B siger b",
+      "tekst": "bæ siger bø",
       "kategori": "bogstav"
     },
     "bogstav_c_navn": {
       "fil": "bogstav_c_navn.mp3",
-      "tekst": "C",
+      "tekst": "sæ",
       "kategori": "bogstav"
     },
     "bogstav_c_lyd": {
       "fil": "bogstav_c_lyd.mp3",
-      "tekst": "C siger s",
+      "tekst": "sæ siger s",
       "kategori": "bogstav"
     },
     "bogstav_d_navn": {
       "fil": "bogstav_d_navn.mp3",
-      "tekst": "D",
+      "tekst": "dæ",
       "kategori": "bogstav"
     },
     "bogstav_d_lyd": {
       "fil": "bogstav_d_lyd.mp3",
-      "tekst": "D siger d",
+      "tekst": "dæ siger dø",
       "kategori": "bogstav"
     },
     "bogstav_e_navn": {
       "fil": "bogstav_e_navn.mp3",
-      "tekst": "E",
+      "tekst": "e",
       "kategori": "bogstav"
     },
     "bogstav_e_lyd": {
       "fil": "bogstav_e_lyd.mp3",
-      "tekst": "E siger eee",
+      "tekst": "e siger e",
       "kategori": "bogstav"
     },
     "bogstav_f_navn": {
       "fil": "bogstav_f_navn.mp3",
-      "tekst": "F",
+      "tekst": "æf",
       "kategori": "bogstav"
     },
     "bogstav_f_lyd": {
       "fil": "bogstav_f_lyd.mp3",
-      "tekst": "F siger fff",
+      "tekst": "æf siger føh",
       "kategori": "bogstav"
     },
     "bogstav_g_navn": {
       "fil": "bogstav_g_navn.mp3",
-      "tekst": "G",
+      "tekst": "gæ",
       "kategori": "bogstav"
     },
     "bogstav_g_lyd": {
       "fil": "bogstav_g_lyd.mp3",
-      "tekst": "G siger g",
+      "tekst": "gæ siger gø",
       "kategori": "bogstav"
     },
     "bogstav_h_navn": {
       "fil": "bogstav_h_navn.mp3",
-      "tekst": "H",
+      "tekst": "hå",
       "kategori": "bogstav"
     },
     "bogstav_h_lyd": {
       "fil": "bogstav_h_lyd.mp3",
-      "tekst": "H siger h",
+      "tekst": "hå siger hø",
       "kategori": "bogstav"
     },
     "bogstav_i_navn": {
       "fil": "bogstav_i_navn.mp3",
-      "tekst": "I",
+      "tekst": "i",
       "kategori": "bogstav"
     },
     "bogstav_i_lyd": {
       "fil": "bogstav_i_lyd.mp3",
-      "tekst": "I siger iii",
+      "tekst": "i siger i",
       "kategori": "bogstav"
     },
     "bogstav_j_navn": {
       "fil": "bogstav_j_navn.mp3",
-      "tekst": "J",
+      "tekst": "jåd",
       "kategori": "bogstav"
     },
     "bogstav_j_lyd": {
       "fil": "bogstav_j_lyd.mp3",
-      "tekst": "J siger j",
+      "tekst": "jåd siger jø",
       "kategori": "bogstav"
     },
     "bogstav_k_navn": {
       "fil": "bogstav_k_navn.mp3",
-      "tekst": "K",
+      "tekst": "kå",
       "kategori": "bogstav"
     },
     "bogstav_k_lyd": {
       "fil": "bogstav_k_lyd.mp3",
-      "tekst": "K siger k",
+      "tekst": "kå siger kø",
       "kategori": "bogstav"
     },
     "bogstav_l_navn": {
       "fil": "bogstav_l_navn.mp3",
-      "tekst": "L",
+      "tekst": "æl",
       "kategori": "bogstav"
     },
     "bogstav_l_lyd": {
       "fil": "bogstav_l_lyd.mp3",
-      "tekst": "L siger lll",
+      "tekst": "æl siger lø",
       "kategori": "bogstav"
     },
     "bogstav_m_navn": {
       "fil": "bogstav_m_navn.mp3",
-      "tekst": "M",
+      "tekst": "æm",
       "kategori": "bogstav"
     },
     "bogstav_m_lyd": {
       "fil": "bogstav_m_lyd.mp3",
-      "tekst": "M siger mmm",
+      "tekst": "æm siger mø",
       "kategori": "bogstav"
     },
     "bogstav_n_navn": {
       "fil": "bogstav_n_navn.mp3",
-      "tekst": "N",
+      "tekst": "æn",
       "kategori": "bogstav"
     },
     "bogstav_n_lyd": {
       "fil": "bogstav_n_lyd.mp3",
-      "tekst": "N siger nnn",
+      "tekst": "æn siger nø",
       "kategori": "bogstav"
     },
     "bogstav_o_navn": {
       "fil": "bogstav_o_navn.mp3",
-      "tekst": "O",
+      "tekst": "o",
       "kategori": "bogstav"
     },
     "bogstav_o_lyd": {
       "fil": "bogstav_o_lyd.mp3",
-      "tekst": "O siger ooo",
+      "tekst": "o siger o",
       "kategori": "bogstav"
     },
     "bogstav_p_navn": {
       "fil": "bogstav_p_navn.mp3",
-      "tekst": "P",
+      "tekst": "pæ",
       "kategori": "bogstav"
     },
     "bogstav_p_lyd": {
       "fil": "bogstav_p_lyd.mp3",
-      "tekst": "P siger p",
+      "tekst": "pæ siger pø",
       "kategori": "bogstav"
     },
     "bogstav_r_navn": {
       "fil": "bogstav_r_navn.mp3",
-      "tekst": "R",
+      "tekst": "ær",
       "kategori": "bogstav"
     },
     "bogstav_r_lyd": {
       "fil": "bogstav_r_lyd.mp3",
-      "tekst": "R siger rrr",
+      "tekst": "ær siger rø",
       "kategori": "bogstav"
     },
     "bogstav_s_navn": {
       "fil": "bogstav_s_navn.mp3",
-      "tekst": "S",
+      "tekst": "æs",
       "kategori": "bogstav"
     },
     "bogstav_s_lyd": {
       "fil": "bogstav_s_lyd.mp3",
-      "tekst": "S siger sss",
+      "tekst": "æs siger søh",
       "kategori": "bogstav"
     },
     "bogstav_t_navn": {
       "fil": "bogstav_t_navn.mp3",
-      "tekst": "T",
+      "tekst": "tæ",
       "kategori": "bogstav"
     },
     "bogstav_t_lyd": {
       "fil": "bogstav_t_lyd.mp3",
-      "tekst": "T siger t",
+      "tekst": "tæ siger tø",
       "kategori": "bogstav"
     },
     "bogstav_u_navn": {
       "fil": "bogstav_u_navn.mp3",
-      "tekst": "U",
+      "tekst": "u",
       "kategori": "bogstav"
     },
     "bogstav_u_lyd": {
       "fil": "bogstav_u_lyd.mp3",
-      "tekst": "U siger uuu",
+      "tekst": "u siger u",
       "kategori": "bogstav"
     },
     "bogstav_v_navn": {
       "fil": "bogstav_v_navn.mp3",
-      "tekst": "V",
+      "tekst": "væ",
       "kategori": "bogstav"
     },
     "bogstav_v_lyd": {
       "fil": "bogstav_v_lyd.mp3",
-      "tekst": "V siger v",
+      "tekst": "væ siger vø",
       "kategori": "bogstav"
     },
     "bogstav_y_navn": {
       "fil": "bogstav_y_navn.mp3",
-      "tekst": "Y",
+      "tekst": "y",
       "kategori": "bogstav"
     },
     "bogstav_y_lyd": {
       "fil": "bogstav_y_lyd.mp3",
-      "tekst": "Y siger yyy",
+      "tekst": "y siger y",
       "kategori": "bogstav"
     },
     "bogstav_ae_navn": {
       "fil": "bogstav_ae_navn.mp3",
-      "tekst": "Æ",
+      "tekst": "æ",
       "kategori": "bogstav"
     },
     "bogstav_ae_lyd": {
       "fil": "bogstav_ae_lyd.mp3",
-      "tekst": "Æ siger æææ",
+      "tekst": "æ siger æ",
       "kategori": "bogstav"
     },
     "bogstav_oe_navn": {
       "fil": "bogstav_oe_navn.mp3",
-      "tekst": "Ø",
+      "tekst": "ø",
       "kategori": "bogstav"
     },
     "bogstav_oe_lyd": {
       "fil": "bogstav_oe_lyd.mp3",
-      "tekst": "Ø siger øøø",
+      "tekst": "ø siger ø",
       "kategori": "bogstav"
     },
     "bogstav_aa_navn": {
       "fil": "bogstav_aa_navn.mp3",
-      "tekst": "Å",
+      "tekst": "å",
       "kategori": "bogstav"
     },
     "bogstav_aa_lyd": {
       "fil": "bogstav_aa_lyd.mp3",
-      "tekst": "Å siger ååå",
+      "tekst": "å siger å",
       "kategori": "bogstav"
     },
     "tal_1": {
@@ -610,7 +610,7 @@
     },
     "dyrelyd_spm_dyr_ko": {
       "fil": "dyrelyd_spm_dyr_ko.mp3",
-      "tekst": "Hvilket dyr siger muh? ... muh!",
+      "tekst": "Hvilket dyr siger muh?",
       "kategori": "dyrelyd"
     },
     "dyr_dyr_faar_ubest": {
@@ -630,7 +630,7 @@
     },
     "dyrelyd_spm_dyr_faar": {
       "fil": "dyrelyd_spm_dyr_faar.mp3",
-      "tekst": "Hvilket dyr siger mæh? ... mæh!",
+      "tekst": "Hvilket dyr siger mæh?",
       "kategori": "dyrelyd"
     },
     "dyr_dyr_gris_ubest": {
@@ -650,7 +650,7 @@
     },
     "dyrelyd_spm_dyr_gris": {
       "fil": "dyrelyd_spm_dyr_gris.mp3",
-      "tekst": "Hvilket dyr siger øf øf? ... øf øf!",
+      "tekst": "Hvilket dyr siger øf øf?",
       "kategori": "dyrelyd"
     },
     "dyr_dyr_hest_ubest": {
@@ -670,7 +670,7 @@
     },
     "dyrelyd_spm_dyr_hest": {
       "fil": "dyrelyd_spm_dyr_hest.mp3",
-      "tekst": "Hvilket dyr siger vrinsk? ... vrinsk!",
+      "tekst": "Hvilket dyr siger vrinsk?",
       "kategori": "dyrelyd"
     },
     "dyr_dyr_hoene_ubest": {
@@ -690,7 +690,7 @@
     },
     "dyrelyd_spm_dyr_hoene": {
       "fil": "dyrelyd_spm_dyr_hoene.mp3",
-      "tekst": "Hvilket dyr siger gok gok? ... gok gok!",
+      "tekst": "Hvilket dyr siger gok gok?",
       "kategori": "dyrelyd"
     },
     "dyr_dyr_and_ubest": {
@@ -710,7 +710,7 @@
     },
     "dyrelyd_spm_dyr_and": {
       "fil": "dyrelyd_spm_dyr_and.mp3",
-      "tekst": "Hvilket dyr siger rap rap? ... rap rap!",
+      "tekst": "Hvilket dyr siger rap rap?",
       "kategori": "dyrelyd"
     },
     "dyr_dyr_hund_ubest": {
@@ -730,7 +730,7 @@
     },
     "dyrelyd_spm_dyr_hund": {
       "fil": "dyrelyd_spm_dyr_hund.mp3",
-      "tekst": "Hvilket dyr siger vov vov? ... vov vov!",
+      "tekst": "Hvilket dyr siger vov vov?",
       "kategori": "dyrelyd"
     },
     "dyr_dyr_kat_ubest": {
@@ -750,7 +750,7 @@
     },
     "dyrelyd_spm_dyr_kat": {
       "fil": "dyrelyd_spm_dyr_kat.mp3",
-      "tekst": "Hvilket dyr siger miav? ... miav!",
+      "tekst": "Hvilket dyr siger miav?",
       "kategori": "dyrelyd"
     },
     "dyr_dyr_froe_ubest": {
@@ -770,7 +770,7 @@
     },
     "dyrelyd_spm_dyr_froe": {
       "fil": "dyrelyd_spm_dyr_froe.mp3",
-      "tekst": "Hvilket dyr siger kvæk? ... kvæk!",
+      "tekst": "Hvilket dyr siger kvæk?",
       "kategori": "dyrelyd"
     },
     "dyr_dyr_bi_ubest": {
@@ -790,12 +790,12 @@
     },
     "dyrelyd_spm_dyr_bi": {
       "fil": "dyrelyd_spm_dyr_bi.mp3",
-      "tekst": "Hvilket dyr siger summ? ... summ!",
+      "tekst": "Hvilket dyr siger summ?",
       "kategori": "dyrelyd"
     },
     "rim_spm_kat": {
       "fil": "rim_spm_kat.mp3",
-      "tekst": "Hvad rimer på kat? ... kat. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på kat? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_kat": {
@@ -810,7 +810,7 @@
     },
     "rim_spm_mus": {
       "fil": "rim_spm_mus.mp3",
-      "tekst": "Hvad rimer på mus? ... mus. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på mus? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_mus": {
@@ -825,7 +825,7 @@
     },
     "rim_spm_ko": {
       "fil": "rim_spm_ko.mp3",
-      "tekst": "Hvad rimer på ko? ... ko. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på ko? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_ko": {
@@ -840,7 +840,7 @@
     },
     "rim_spm_gris": {
       "fil": "rim_spm_gris.mp3",
-      "tekst": "Hvad rimer på gris? ... gris. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på gris? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_gris": {
@@ -855,7 +855,7 @@
     },
     "rim_spm_sol": {
       "fil": "rim_spm_sol.mp3",
-      "tekst": "Hvad rimer på sol? ... sol. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på sol? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_sol": {
@@ -870,7 +870,7 @@
     },
     "rim_spm_hund": {
       "fil": "rim_spm_hund.mp3",
-      "tekst": "Hvad rimer på hund? ... hund. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på hund? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_hund": {
@@ -885,7 +885,7 @@
     },
     "rim_spm_and": {
       "fil": "rim_spm_and.mp3",
-      "tekst": "Hvad rimer på and? ... and. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på and? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_and": {
@@ -900,7 +900,7 @@
     },
     "rim_spm_bi": {
       "fil": "rim_spm_bi.mp3",
-      "tekst": "Hvad rimer på bi? ... bi. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på bi? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_bi": {
@@ -915,7 +915,7 @@
     },
     "rim_spm_froe": {
       "fil": "rim_spm_froe.mp3",
-      "tekst": "Hvad rimer på frø? ... frø. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på frø? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_froe": {
@@ -930,7 +930,7 @@
     },
     "rim_spm_bold": {
       "fil": "rim_spm_bold.mp3",
-      "tekst": "Hvad rimer på bold? ... bold. Tryk på det, der rimer.",
+      "tekst": "Hvad rimer på bold? Tryk på det, der rimer.",
       "kategori": "rim"
     },
     "rim_ord_bold": {

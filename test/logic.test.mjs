@@ -16,6 +16,7 @@ import { gen as sporGen } from "../src/games/spor.js";
 import { GAMES } from "../src/games/index.js";
 import { store } from "../src/store.js";
 import { fresh, _resetRecent } from "../src/anti_repeat.js";
+import { playlog } from "../src/playlog.js";
 import { MANIFEST } from "../src/audio-manifest.generated.js";
 import { LETTERS, ANIMALS, COLORS, SHAPES, RIM, GLYPHS } from "../src/data.js";
 import * as ids from "../src/audio-ids.js";
@@ -196,6 +197,33 @@ test("lyd: hvert id spillene beder om findes i manifestet", () => {
   for (const g of Object.keys(GLYPHS)) need.push(ids.sporGlyf(g));
   const missing = need.filter((id) => !MANIFEST[id]);
   assert.deepEqual(missing, [], "id'er uden manifest-tekst: " + missing.join(", "));
+});
+
+test("rolle/QC: role sætter qc korrekt", () => {
+  store.reset();
+  assert.equal(store.role, "");
+  assert.equal(store.qc, false);
+  store.role = "barn";
+  assert.equal(store.qc, false);
+  store.role = "qc";
+  assert.equal(store.qc, true);
+  store.reset();
+});
+
+test("play-log: kun aktiv når enabled; dump/clear virker; ingen netværk", () => {
+  playlog.clear();
+  playlog.enabled = false;
+  playlog.log("opgave", { spil: "tal" });
+  assert.equal(playlog.entries().length, 0, "logger ikke når deaktiveret");
+  playlog.enabled = true;
+  playlog.log("spil-start", { spil: "bogstav", niveau: 0 });
+  playlog.log("rigtigt", { spil: "bogstav" });
+  assert.equal(playlog.entries().length, 2);
+  assert.match(playlog.dump(), /spil-start/);
+  assert.match(playlog.dump(), /rigtigt/);
+  playlog.clear();
+  assert.equal(playlog.entries().length, 0);
+  playlog.enabled = false;
 });
 
 test("store: addStar øger, reset nulstiller (in-memory i Node)", () => {

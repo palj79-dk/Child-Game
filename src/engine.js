@@ -6,6 +6,7 @@ import { store } from "./store.js";
 import { audio } from "./audio.js";
 import { ROS_IDS, PROEV_IDS, SYS } from "./audio-ids.js";
 import { sfxRight, sfxWrong, sfxStar, sfxChime } from "./sfx.js";
+import { playlog } from "./playlog.js";
 
 export const ROUND_LEN = 5;
 
@@ -81,6 +82,7 @@ export function startGame(game) {
   state.current = game;
   state.solved = 0;
   state.locked = false;
+  playlog.log("spil-start", { spil: game.id, niveau: store.level(game.id) });
   showScreen("game");
   nextTask();
 }
@@ -96,6 +98,7 @@ export function nextTask() {
   g.task(); // spillet bygger scenen og sætter g.promptText + g.say
   const prompt = $("prompt");
   if (prompt) prompt.textContent = g.promptText ?? "";
+  playlog.log("opgave", { spil: g.id, prompt: g.promptText });
   audio.say(g.say ?? []);
   armHint();
 }
@@ -112,12 +115,19 @@ export function answer(el, isRight) {
     sfxRight();
     audio.say(pick(ROS_IDS));
     if (el) el.style.background = "#e2f7d9";
-    if (state.current) store.recordTask(state.current.id, !state.taskHadWrong); // O2
+    if (state.current) {
+      const id = state.current.id;
+      const før = store.level(id);
+      store.recordTask(id, !state.taskHadWrong); // O2
+      playlog.log("rigtigt", { spil: id });
+      if (store.level(id) !== før) playlog.log("niveau", { spil: id, niveau: store.level(id) });
+    }
     state.solved++;
     renderProgress();
     setTimeout(() => (state.solved >= ROUND_LEN ? finishRound() : nextTask()), 1100);
   } else {
     state.taskHadWrong = true;
+    playlog.log("forkert", { spil: state.current?.id });
     sfxWrong();
     audio.say(pick(PROEV_IDS));
     if (el) {
@@ -133,6 +143,7 @@ export function finishRound() {
   const g = state.current;
   if (!g) return;
   store.addStar(g.id);
+  playlog.log("stjerne", { spil: g.id, ialt: store.stars(g.id) });
   store.calm ? sfxChime() : sfxStar(); // rolig tilstand: blød pling frem for fanfare
   audio.say(SYS.stjerne);
   const msg = $("partyMsg");

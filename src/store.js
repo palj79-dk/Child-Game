@@ -8,8 +8,9 @@ const KEY = "legr";
 const SCHEMA_VERSION = 1;
 
 /** @typedef {{ level:number, window:boolean[], locked:boolean }} Adapt */
+/** @typedef {"barn"|"voksen"|"qc"} Role */
 /** @typedef {{ v:number, stars?:Record<string,number>, voiceOn?:boolean,
- *   calm?:boolean, lockLevel?:boolean, adapt?:Record<string,Adapt> }} SaveData */
+ *   calm?:boolean, lockLevel?:boolean, role?:Role, adapt?:Record<string,Adapt> }} SaveData */
 
 /** @returns {SaveData} */
 function migrate(raw) {
@@ -67,6 +68,19 @@ export const store = {
   set calm(v) {
     this.data.calm = v;
     this.save();
+  },
+
+  /** Brugerrolle: "barn" | "voksen" | "qc" (tom = ikke valgt endnu). */
+  get role() {
+    return this.data.role || "";
+  },
+  set role(v) {
+    this.data.role = /** @type {Role} */ (v) || undefined;
+    this.save();
+  },
+  /** Er QC-tester-rollen valgt? (aktiverer play-loggen) */
+  get qc() {
+    return this.data.role === "qc";
   },
 
   /* ---- O2: adaptiv sværhedsgrad ---- */

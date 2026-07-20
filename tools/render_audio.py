@@ -58,9 +58,15 @@ def ensure_model(model):
 
 
 def piper_wav(text, model):
-    """Kør Piper og returnér (pcm_int16, sample_rate)."""
+    """Kør Piper og returnér (pcm_int16, sample_rate).
+    length-scale 1.12 = lidt langsommere/tydeligere (også roligere for børn);
+    noise lavt = mindre "grødet" udtale; sentence-silence kort for responsivitet."""
     p = subprocess.run(
-        ["piper", "-m", model, "-f", "-"],
+        ["piper", "-m", model, "-f", "-",
+         "--length-scale", "1.12",
+         "--noise-scale", "0.5",
+         "--noise-w-scale", "0.7",
+         "--sentence-silence", "0.15"],
         input=text.encode("utf-8"),
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,

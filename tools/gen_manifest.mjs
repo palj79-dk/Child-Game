@@ -41,15 +41,22 @@ ROS_IDS.forEach((id, i) => add(id, ROS_TEKST[i], "ros"));
 const PROEV_TEKST = ["Prøv igen!", "Næsten! Prøv en gang til.", "Prøv en gang til.", "Kom så — prøv igen!"];
 PROEV_IDS.forEach((id, i) => add(id, PROEV_TEKST[i], "proev"));
 
-/* --- Bogstaver: navn + lyd --- */
+/* --- Bogstaver: navn + lyd ---
+   NAVN = det danske BOGSTAVNAVN stavet fonetisk, så TTS'en siger "bæ" for B
+   (ikke bare lyden "b"). Det gør bogstav-jagt langt tydeligere. */
+const NAVN = {
+  A: "a", B: "bæ", C: "sæ", D: "dæ", E: "e", F: "æf", G: "gæ", H: "hå",
+  I: "i", J: "jåd", K: "kå", L: "æl", M: "æm", N: "æn", O: "o", P: "pæ",
+  R: "ær", S: "æs", T: "tæ", U: "u", V: "væ", Y: "y", Æ: "æ", Ø: "ø", Å: "å",
+};
 const LYD = {
-  A: "aaa", B: "b", C: "s", D: "d", E: "eee", F: "fff", G: "g", H: "h",
-  I: "iii", J: "j", K: "k", L: "lll", M: "mmm", N: "nnn", O: "ooo", P: "p",
-  R: "rrr", S: "sss", T: "t", U: "uuu", V: "v", Y: "yyy", Æ: "æææ", Ø: "øøø", Å: "ååå",
+  A: "a", B: "bø", C: "s", D: "dø", E: "e", F: "føh", G: "gø", H: "hø",
+  I: "i", J: "jø", K: "kø", L: "lø", M: "mø", N: "nø", O: "o", P: "pø",
+  R: "rø", S: "søh", T: "tø", U: "u", V: "vø", Y: "y", Æ: "æ", Ø: "ø", Å: "å",
 };
 for (const L of LETTERS) {
-  add(bogstavNavn(L), L, "bogstav");
-  add(bogstavLyd(L), `${L} siger ${LYD[L] || L.toLowerCase()}`, "bogstav");
+  add(bogstavNavn(L), NAVN[L] || L.toLowerCase(), "bogstav");
+  add(bogstavLyd(L), `${NAVN[L] || L} siger ${LYD[L] || L.toLowerCase()}`, "bogstav");
 }
 
 /* --- Tal 1-10 --- */
@@ -79,12 +86,12 @@ for (const a of ANIMALS) {
   add(dyrUbest(a.sym), a.ubest, "dyr");
   add(dyrFlertal(a.sym), a.flertal, "dyr");
   add(dyrLyd(a.sym), `${a.lyd}!`, "dyr");
-  add(dyrelydSpm(a.sym), `Hvilket dyr siger ${a.lyd}? ... ${a.lyd}!`, "dyrelyd");
+  add(dyrelydSpm(a.sym), `Hvilket dyr siger ${a.lyd}?`, "dyrelyd");
 }
 
 /* --- Rim: spørgsmål pr. målord + alle 20 ordnavne --- */
 for (const r of RIM) {
-  add(rimSpm(r.ord), `Hvad rimer på ${r.ord}? ... ${r.ord}. Tryk på det, der rimer.`, "rim");
+  add(rimSpm(r.ord), `Hvad rimer på ${r.ord}? Tryk på det, der rimer.`, "rim");
   add(rimOrd(r.ord), r.ord, "rim");
   add(rimOrd(r.rimOrd), r.rimOrd, "rim");
 }

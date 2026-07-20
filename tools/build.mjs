@@ -43,19 +43,15 @@ async function main() {
 
   // 4) Sæt HTML sammen
   let html = read(join(srcDir, "index.html"));
-  html = html.replace(
-    /<!--STYLE-->[\s\S]*?<!--\/STYLE-->/,
-    `<style>\n${css}\n</style>`
-  );
-  html = html.replace(
-    /<!--SCRIPT-->[\s\S]*?<!--\/SCRIPT-->/,
-    `<script>\n${js}\n</script>`
-  );
+  // VIGTIGT: brug funktions-replacers, ellers fortolker String.replace $-mønstre
+  // ($&, $`, …) i CSS/JS og korrumperer bundlen (kan lukke <script> for tidligt).
+  html = html.replace(/<!--STYLE-->[\s\S]*?<!--\/STYLE-->/, () => `<style>\n${css}\n</style>`);
+  html = html.replace(/<!--SCRIPT-->[\s\S]*?<!--\/SCRIPT-->/, () => `<script>\n${js}\n</script>`);
   if (sprites) {
     // skjult inline spritesheet lige efter <body>
     html = html.replace(
       /<body>/,
-      `<body>\n<div id="svg-sprites" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">\n${sprites}\n</div>`
+      () => `<body>\n<div id="svg-sprites" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">\n${sprites}\n</div>`
     );
   }
 

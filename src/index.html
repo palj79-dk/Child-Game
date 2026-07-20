@@ -76,6 +76,7 @@
     <button class="big-btn" id="resetBtn" style="background:#c0392b;box-shadow:0 5px 0 #8e2a1f;">Nulstil</button>
   </div>
   <div class="settings-actions">
+    <button class="big-btn" id="roleBtn" style="background:#5b6b8c;box-shadow:0 5px 0 #3f4a63;">Skift rolle</button>
     <button class="big-btn" id="aboutBtn" style="background:#5b6b8c;box-shadow:0 5px 0 #3f4a63;">Om &amp; privatliv</button>
     <button class="big-btn blue" id="settingsClose">Tilbage til spillet</button>
   </div>
@@ -99,6 +100,29 @@
        Fuld privatlivspolitik og kreditering følger med udgivelsen.</p>
   </div>
   <button class="big-btn blue" id="aboutClose">Tilbage</button>
+</div>
+
+<!-- ============ ROLLE-VÆLGER (vises ved første start) ============ -->
+<div id="role">
+  <h2>Hvem skal bruge appen?</h2>
+  <p>Vælg én gang – det kan ændres senere under Forældre.</p>
+  <div class="role-grid">
+    <button class="role-btn" data-role="barn"><span class="rIco">🧒</span><span class="rName">Barn</span><small>Gå direkte i gang</small></button>
+    <button class="role-btn" data-role="voksen"><span class="rIco">🧑</span><span class="rName">Voksen</span><small>Se og prøv spillene</small></button>
+    <button class="role-btn" data-role="qc"><span class="rIco">🔍</span><span class="rName">QC-tester</span><small>Slår play-log til</small></button>
+  </div>
+</div>
+
+<!-- ============ QC PLAY-LOG (kun i QC-rollen, kun lokalt) ============ -->
+<button id="qcBtn" aria-label="QC play-log">🔍 Log</button>
+<div id="qclog">
+  <h2>QC play-log <small>(kun på denne enhed – intet sendes)</small></h2>
+  <pre id="qclogText"></pre>
+  <div class="settings-actions">
+    <button class="big-btn" id="qclogCopy">Kopiér</button>
+    <button class="big-btn" id="qclogClear" style="background:#c0392b;box-shadow:0 5px 0 #8e2a1f;">Ryd</button>
+    <button class="big-btn blue" id="qclogClose">Luk</button>
+  </div>
 </div>
 
 <!--SCRIPT--><script type="module" src="main.js"></script><!--/SCRIPT-->

@@ -41,6 +41,13 @@ async function main() {
 
   await page.goto("file://" + appFile);
 
+  // Rolle-vælger vises ved første start – vælg "barn" så spillet er tilgængeligt
+  const roleBtn = page.locator('#role .role-btn[data-role="barn"]');
+  if (await roleBtn.isVisible().catch(() => false)) {
+    await roleBtn.click();
+    await page.waitForTimeout(120);
+  }
+
   const cards = await page.locator(".game-card").count();
   if (cards !== 8) throw new Error(`Forventede 8 spil-kort, fandt ${cards}`);
   console.log(`✔ ${cards} spil-kort på forsiden`);
