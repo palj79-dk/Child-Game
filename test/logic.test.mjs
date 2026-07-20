@@ -15,6 +15,9 @@ import { gen as rimGen } from "../src/games/rim.js";
 import { gen as sporGen } from "../src/games/spor.js";
 import { GAMES } from "../src/games/index.js";
 import { store } from "../src/store.js";
+import { MANIFEST } from "../src/audio-manifest.generated.js";
+import { LETTERS, ANIMALS, COLORS, SHAPES, RIM, GLYPHS } from "../src/data.js";
+import * as ids from "../src/audio-ids.js";
 
 const REPS = 400;
 const LEVELS = [0, 1, 2];
@@ -135,6 +138,20 @@ test("spor: glyf i niveau-pool, pool vokser med niveau", () => {
     assert.ok(poolLen > prevLen, "poolen vokser med niveauet");
     prevLen = poolLen;
   }
+});
+
+test("lyd: hvert id spillene beder om findes i manifestet", () => {
+  const need = [];
+  need.push(...ids.ROS_IDS, ...ids.PROEV_IDS, ...Object.values(ids.SYS), ...Object.values(ids.SPIL));
+  for (const L of LETTERS) need.push(ids.bogstavNavn(L), ids.bogstavLyd(L));
+  for (let n = 1; n <= 10; n++) need.push(ids.talOrd(n));
+  for (const a of ANIMALS)
+    need.push(ids.talHvormange(a.sym), ids.dyrUbest(a.sym), ids.dyrFlertal(a.sym), ids.dyrLyd(a.sym), ids.dyrelydSpm(a.sym));
+  for (const c of COLORS) for (const s of SHAPES) need.push(ids.formSaetning(c.navn, s.navn));
+  for (const r of RIM) need.push(ids.rimSpm(r.ord), ids.rimOrd(r.ord), ids.rimOrd(r.rimOrd));
+  for (const g of Object.keys(GLYPHS)) need.push(ids.sporGlyf(g));
+  const missing = need.filter((id) => !MANIFEST[id]);
+  assert.deepEqual(missing, [], "id'er uden manifest-tekst: " + missing.join(", "));
 });
 
 test("store: addStar øger, reset nulstiller (in-memory i Node)", () => {

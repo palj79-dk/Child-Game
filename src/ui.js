@@ -6,7 +6,7 @@ import { store } from "./store.js";
 import { GAMES } from "./games/index.js";
 import { state, startGame, showScreen, clearHint } from "./engine.js";
 import { ensureAudio } from "./sfx.js";
-import { speak, cancelSpeech } from "./speech.js";
+import { audio } from "./audio.js";
 
 export function renderMenu() {
   const menu = $("menu");
@@ -27,7 +27,7 @@ export function renderMenu() {
 }
 
 export function goHome() {
-  cancelSpeech();
+  audio.stop();
   clearHint();
   $("party")?.classList.remove("active");
   renderMenu();
@@ -62,7 +62,7 @@ export function initUI() {
   });
   $("repeatBtn")?.addEventListener("pointerdown", () => {
     ensureAudio();
-    speak(state.current?.say ?? "");
+    audio.say(state.current?.say ?? []);
   });
 
   $("gearBtn")?.addEventListener("pointerdown", () => $("gate")?.classList.add("active"));

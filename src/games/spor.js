@@ -3,6 +3,7 @@ import { GLYPHS, GLYPH_LEVELS } from "../data.js";
 import { $, pick } from "../util.js";
 import { state, level, answer } from "../engine.js";
 import { sfxFlip } from "../sfx.js";
+import { sporGlyf } from "../audio-ids.js";
 
 /** Vælg en glyf fra niveau-poolen. Testbar.
  * @param {number} lvl */
@@ -20,7 +21,7 @@ export const spor = {
   task() {
     const { g, erTal } = gen(level(this.id));
     this.promptText = erTal ? `Skriv tallet ${g}` : `Skriv bogstavet ${g}`;
-    this.say = this.promptText + ". Følg prikkerne med fingeren.";
+    this.say = sporGlyf(g);
 
     const wrap = document.createElement("div");
     wrap.id = "traceWrap";

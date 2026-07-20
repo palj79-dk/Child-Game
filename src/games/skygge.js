@@ -3,6 +3,7 @@ import { THINGS } from "../data.js";
 import { $, pick, pickN, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
 import { icon } from "../icon.js";
+import { SPIL } from "../audio-ids.js";
 
 const LEVEL_N = [3, 4, 5];
 
@@ -27,6 +28,6 @@ export const skygge = {
     $("stage")?.appendChild(wrap);
     shuffle(opts.slice()).forEach((t) => addChoice(icon(t.sym), t === target));
     this.promptText = "Hvem gemmer sig i skyggen?";
-    this.say = "Se på skyggen. Hvilken ting gemmer sig? Tryk på den rigtige.";
+    this.say = SPIL.skygge;
   },
 };

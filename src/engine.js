@@ -3,12 +3,13 @@
 
 import { $, pick, ros } from "./util.js";
 import { store } from "./store.js";
-import { speak, cancelSpeech } from "./speech.js";
+import { audio } from "./audio.js";
+import { ROS_IDS, PROEV_IDS, SYS } from "./audio-ids.js";
 import { sfxRight, sfxWrong, sfxStar } from "./sfx.js";
 
 export const ROUND_LEN = 5;
 
-/** @typedef {{ id:string, navn:string, ikon:string, promptText?:string, say?:string, task:()=>void }} Game */
+/** @typedef {{ id:string, navn:string, ikon:string, promptText?:string, say?:string|string[], task:()=>void }} Game */
 
 /** Delt, muterbar tilstand (moduler mutere state.solved i vendespil/spor). */
 export const state = {
@@ -86,7 +87,7 @@ export function nextTask() {
   g.task(); // spillet bygger scenen og sætter g.promptText + g.say
   const prompt = $("prompt");
   if (prompt) prompt.textContent = g.promptText ?? "";
-  speak(g.say ?? "");
+  audio.say(g.say ?? []);
   armHint();
 }
 
@@ -100,14 +101,14 @@ export function answer(el, isRight) {
   if (isRight) {
     state.locked = true;
     sfxRight();
-    speak(pick(ros));
+    audio.say(pick(ROS_IDS));
     if (el) el.style.background = "#e2f7d9";
     state.solved++;
     renderProgress();
     setTimeout(() => (state.solved >= ROUND_LEN ? finishRound() : nextTask()), 1100);
   } else {
     sfxWrong();
-    speak("Prøv igen!");
+    audio.say(pick(PROEV_IDS));
     if (el) {
       el.classList.remove("wrong");
       void el.offsetWidth; // genstart animationen
@@ -122,7 +123,7 @@ export function finishRound() {
   if (!g) return;
   store.addStar(g.id);
   sfxStar();
-  speak("Hurra! Du har vundet en stjerne!");
+  audio.say(SYS.stjerne);
   const msg = $("partyMsg");
   if (msg) msg.textContent = pick(ros) + " Du fik en stjerne! ⭐";
   showScreen("game");
@@ -143,5 +144,3 @@ export function confetti() {
     setTimeout(() => s.remove(), 4000);
   }
 }
-
-export { cancelSpeech };

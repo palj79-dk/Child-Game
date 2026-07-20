@@ -1,0 +1,1017 @@
+{
+  "version": 1,
+  "voice": "da_DK-talesyntese (Piper) — I4",
+  "format": "m4a (AAC 64 kbps mono, -16 LUFS)",
+  "clips": {
+    "sys_velkomst": {
+      "fil": "sys_velkomst.m4a",
+      "tekst": "Velkommen til Leg og Lær!",
+      "kategori": "system"
+    },
+    "sys_vaelg_spil": {
+      "fil": "sys_vaelg_spil.m4a",
+      "tekst": "Vælg et spil, og leg med.",
+      "kategori": "system"
+    },
+    "sys_stjerne": {
+      "fil": "sys_stjerne.m4a",
+      "tekst": "Hurra! Du har vundet en stjerne!",
+      "kategori": "system"
+    },
+    "sys_hold_knap": {
+      "fil": "sys_hold_knap.m4a",
+      "tekst": "Bed en voksen om at holde knappen inde.",
+      "kategori": "system"
+    },
+    "ros_01": {
+      "fil": "ros_01.m4a",
+      "tekst": "Flot!",
+      "kategori": "ros"
+    },
+    "ros_02": {
+      "fil": "ros_02.m4a",
+      "tekst": "Sikke godt!",
+      "kategori": "ros"
+    },
+    "ros_03": {
+      "fil": "ros_03.m4a",
+      "tekst": "Super!",
+      "kategori": "ros"
+    },
+    "ros_04": {
+      "fil": "ros_04.m4a",
+      "tekst": "Hurra for dig!",
+      "kategori": "ros"
+    },
+    "ros_05": {
+      "fil": "ros_05.m4a",
+      "tekst": "Nemlig!",
+      "kategori": "ros"
+    },
+    "ros_06": {
+      "fil": "ros_06.m4a",
+      "tekst": "Godt klaret!",
+      "kategori": "ros"
+    },
+    "proev_01": {
+      "fil": "proev_01.m4a",
+      "tekst": "Prøv igen!",
+      "kategori": "proev"
+    },
+    "proev_02": {
+      "fil": "proev_02.m4a",
+      "tekst": "Næsten! Prøv en gang til.",
+      "kategori": "proev"
+    },
+    "proev_03": {
+      "fil": "proev_03.m4a",
+      "tekst": "Prøv en gang til.",
+      "kategori": "proev"
+    },
+    "proev_04": {
+      "fil": "proev_04.m4a",
+      "tekst": "Kom så — prøv igen!",
+      "kategori": "proev"
+    },
+    "bogstav_a_navn": {
+      "fil": "bogstav_a_navn.m4a",
+      "tekst": "A",
+      "kategori": "bogstav"
+    },
+    "bogstav_a_lyd": {
+      "fil": "bogstav_a_lyd.m4a",
+      "tekst": "A siger aaa",
+      "kategori": "bogstav"
+    },
+    "bogstav_b_navn": {
+      "fil": "bogstav_b_navn.m4a",
+      "tekst": "B",
+      "kategori": "bogstav"
+    },
+    "bogstav_b_lyd": {
+      "fil": "bogstav_b_lyd.m4a",
+      "tekst": "B siger b",
+      "kategori": "bogstav"
+    },
+    "bogstav_c_navn": {
+      "fil": "bogstav_c_navn.m4a",
+      "tekst": "C",
+      "kategori": "bogstav"
+    },
+    "bogstav_c_lyd": {
+      "fil": "bogstav_c_lyd.m4a",
+      "tekst": "C siger s",
+      "kategori": "bogstav"
+    },
+    "bogstav_d_navn": {
+      "fil": "bogstav_d_navn.m4a",
+      "tekst": "D",
+      "kategori": "bogstav"
+    },
+    "bogstav_d_lyd": {
+      "fil": "bogstav_d_lyd.m4a",
+      "tekst": "D siger d",
+      "kategori": "bogstav"
+    },
+    "bogstav_e_navn": {
+      "fil": "bogstav_e_navn.m4a",
+      "tekst": "E",
+      "kategori": "bogstav"
+    },
+    "bogstav_e_lyd": {
+      "fil": "bogstav_e_lyd.m4a",
+      "tekst": "E siger eee",
+      "kategori": "bogstav"
+    },
+    "bogstav_f_navn": {
+      "fil": "bogstav_f_navn.m4a",
+      "tekst": "F",
+      "kategori": "bogstav"
+    },
+    "bogstav_f_lyd": {
+      "fil": "bogstav_f_lyd.m4a",
+      "tekst": "F siger fff",
+      "kategori": "bogstav"
+    },
+    "bogstav_g_navn": {
+      "fil": "bogstav_g_navn.m4a",
+      "tekst": "G",
+      "kategori": "bogstav"
+    },
+    "bogstav_g_lyd": {
+      "fil": "bogstav_g_lyd.m4a",
+      "tekst": "G siger g",
+      "kategori": "bogstav"
+    },
+    "bogstav_h_navn": {
+      "fil": "bogstav_h_navn.m4a",
+      "tekst": "H",
+      "kategori": "bogstav"
+    },
+    "bogstav_h_lyd": {
+      "fil": "bogstav_h_lyd.m4a",
+      "tekst": "H siger h",
+      "kategori": "bogstav"
+    },
+    "bogstav_i_navn": {
+      "fil": "bogstav_i_navn.m4a",
+      "tekst": "I",
+      "kategori": "bogstav"
+    },
+    "bogstav_i_lyd": {
+      "fil": "bogstav_i_lyd.m4a",
+      "tekst": "I siger iii",
+      "kategori": "bogstav"
+    },
+    "bogstav_j_navn": {
+      "fil": "bogstav_j_navn.m4a",
+      "tekst": "J",
+      "kategori": "bogstav"
+    },
+    "bogstav_j_lyd": {
+      "fil": "bogstav_j_lyd.m4a",
+      "tekst": "J siger j",
+      "kategori": "bogstav"
+    },
+    "bogstav_k_navn": {
+      "fil": "bogstav_k_navn.m4a",
+      "tekst": "K",
+      "kategori": "bogstav"
+    },
+    "bogstav_k_lyd": {
+      "fil": "bogstav_k_lyd.m4a",
+      "tekst": "K siger k",
+      "kategori": "bogstav"
+    },
+    "bogstav_l_navn": {
+      "fil": "bogstav_l_navn.m4a",
+      "tekst": "L",
+      "kategori": "bogstav"
+    },
+    "bogstav_l_lyd": {
+      "fil": "bogstav_l_lyd.m4a",
+      "tekst": "L siger lll",
+      "kategori": "bogstav"
+    },
+    "bogstav_m_navn": {
+      "fil": "bogstav_m_navn.m4a",
+      "tekst": "M",
+      "kategori": "bogstav"
+    },
+    "bogstav_m_lyd": {
+      "fil": "bogstav_m_lyd.m4a",
+      "tekst": "M siger mmm",
+      "kategori": "bogstav"
+    },
+    "bogstav_n_navn": {
+      "fil": "bogstav_n_navn.m4a",
+      "tekst": "N",
+      "kategori": "bogstav"
+    },
+    "bogstav_n_lyd": {
+      "fil": "bogstav_n_lyd.m4a",
+      "tekst": "N siger nnn",
+      "kategori": "bogstav"
+    },
+    "bogstav_o_navn": {
+      "fil": "bogstav_o_navn.m4a",
+      "tekst": "O",
+      "kategori": "bogstav"
+    },
+    "bogstav_o_lyd": {
+      "fil": "bogstav_o_lyd.m4a",
+      "tekst": "O siger ooo",
+      "kategori": "bogstav"
+    },
+    "bogstav_p_navn": {
+      "fil": "bogstav_p_navn.m4a",
+      "tekst": "P",
+      "kategori": "bogstav"
+    },
+    "bogstav_p_lyd": {
+      "fil": "bogstav_p_lyd.m4a",
+      "tekst": "P siger p",
+      "kategori": "bogstav"
+    },
+    "bogstav_r_navn": {
+      "fil": "bogstav_r_navn.m4a",
+      "tekst": "R",
+      "kategori": "bogstav"
+    },
+    "bogstav_r_lyd": {
+      "fil": "bogstav_r_lyd.m4a",
+      "tekst": "R siger rrr",
+      "kategori": "bogstav"
+    },
+    "bogstav_s_navn": {
+      "fil": "bogstav_s_navn.m4a",
+      "tekst": "S",
+      "kategori": "bogstav"
+    },
+    "bogstav_s_lyd": {
+      "fil": "bogstav_s_lyd.m4a",
+      "tekst": "S siger sss",
+      "kategori": "bogstav"
+    },
+    "bogstav_t_navn": {
+      "fil": "bogstav_t_navn.m4a",
+      "tekst": "T",
+      "kategori": "bogstav"
+    },
+    "bogstav_t_lyd": {
+      "fil": "bogstav_t_lyd.m4a",
+      "tekst": "T siger t",
+      "kategori": "bogstav"
+    },
+    "bogstav_u_navn": {
+      "fil": "bogstav_u_navn.m4a",
+      "tekst": "U",
+      "kategori": "bogstav"
+    },
+    "bogstav_u_lyd": {
+      "fil": "bogstav_u_lyd.m4a",
+      "tekst": "U siger uuu",
+      "kategori": "bogstav"
+    },
+    "bogstav_v_navn": {
+      "fil": "bogstav_v_navn.m4a",
+      "tekst": "V",
+      "kategori": "bogstav"
+    },
+    "bogstav_v_lyd": {
+      "fil": "bogstav_v_lyd.m4a",
+      "tekst": "V siger v",
+      "kategori": "bogstav"
+    },
+    "bogstav_y_navn": {
+      "fil": "bogstav_y_navn.m4a",
+      "tekst": "Y",
+      "kategori": "bogstav"
+    },
+    "bogstav_y_lyd": {
+      "fil": "bogstav_y_lyd.m4a",
+      "tekst": "Y siger yyy",
+      "kategori": "bogstav"
+    },
+    "bogstav_ae_navn": {
+      "fil": "bogstav_ae_navn.m4a",
+      "tekst": "Æ",
+      "kategori": "bogstav"
+    },
+    "bogstav_ae_lyd": {
+      "fil": "bogstav_ae_lyd.m4a",
+      "tekst": "Æ siger æææ",
+      "kategori": "bogstav"
+    },
+    "bogstav_oe_navn": {
+      "fil": "bogstav_oe_navn.m4a",
+      "tekst": "Ø",
+      "kategori": "bogstav"
+    },
+    "bogstav_oe_lyd": {
+      "fil": "bogstav_oe_lyd.m4a",
+      "tekst": "Ø siger øøø",
+      "kategori": "bogstav"
+    },
+    "bogstav_aa_navn": {
+      "fil": "bogstav_aa_navn.m4a",
+      "tekst": "Å",
+      "kategori": "bogstav"
+    },
+    "bogstav_aa_lyd": {
+      "fil": "bogstav_aa_lyd.m4a",
+      "tekst": "Å siger ååå",
+      "kategori": "bogstav"
+    },
+    "tal_1": {
+      "fil": "tal_1.m4a",
+      "tekst": "en",
+      "kategori": "tal"
+    },
+    "tal_2": {
+      "fil": "tal_2.m4a",
+      "tekst": "to",
+      "kategori": "tal"
+    },
+    "tal_3": {
+      "fil": "tal_3.m4a",
+      "tekst": "tre",
+      "kategori": "tal"
+    },
+    "tal_4": {
+      "fil": "tal_4.m4a",
+      "tekst": "fire",
+      "kategori": "tal"
+    },
+    "tal_5": {
+      "fil": "tal_5.m4a",
+      "tekst": "fem",
+      "kategori": "tal"
+    },
+    "tal_6": {
+      "fil": "tal_6.m4a",
+      "tekst": "seks",
+      "kategori": "tal"
+    },
+    "tal_7": {
+      "fil": "tal_7.m4a",
+      "tekst": "syv",
+      "kategori": "tal"
+    },
+    "tal_8": {
+      "fil": "tal_8.m4a",
+      "tekst": "otte",
+      "kategori": "tal"
+    },
+    "tal_9": {
+      "fil": "tal_9.m4a",
+      "tekst": "ni",
+      "kategori": "tal"
+    },
+    "tal_10": {
+      "fil": "tal_10.m4a",
+      "tekst": "ti",
+      "kategori": "tal"
+    },
+    "spil_bogstav_find": {
+      "fil": "spil_bogstav_find.m4a",
+      "tekst": "Find bogstavet.",
+      "kategori": "instruks"
+    },
+    "spil_memory_instruks": {
+      "fil": "spil_memory_instruks.m4a",
+      "tekst": "Vendespil! Vend kortene, og find to ens.",
+      "kategori": "instruks"
+    },
+    "spil_skygge_instruks": {
+      "fil": "spil_skygge_instruks.m4a",
+      "tekst": "Se på skyggen. Hvilken ting gemmer sig? Tryk på den rigtige.",
+      "kategori": "instruks"
+    },
+    "spor_foelg": {
+      "fil": "spor_foelg.m4a",
+      "tekst": "Følg prikkerne med fingeren.",
+      "kategori": "instruks"
+    },
+    "tal_hvormange_dyr_ko": {
+      "fil": "tal_hvormange_dyr_ko.m4a",
+      "tekst": "Hvor mange køer er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "tal_hvormange_dyr_faar": {
+      "fil": "tal_hvormange_dyr_faar.m4a",
+      "tekst": "Hvor mange får er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "tal_hvormange_dyr_gris": {
+      "fil": "tal_hvormange_dyr_gris.m4a",
+      "tekst": "Hvor mange grise er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "tal_hvormange_dyr_hest": {
+      "fil": "tal_hvormange_dyr_hest.m4a",
+      "tekst": "Hvor mange heste er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "tal_hvormange_dyr_hoene": {
+      "fil": "tal_hvormange_dyr_hoene.m4a",
+      "tekst": "Hvor mange høns er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "tal_hvormange_dyr_and": {
+      "fil": "tal_hvormange_dyr_and.m4a",
+      "tekst": "Hvor mange ænder er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "tal_hvormange_dyr_hund": {
+      "fil": "tal_hvormange_dyr_hund.m4a",
+      "tekst": "Hvor mange hunde er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "tal_hvormange_dyr_kat": {
+      "fil": "tal_hvormange_dyr_kat.m4a",
+      "tekst": "Hvor mange katte er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "tal_hvormange_dyr_froe": {
+      "fil": "tal_hvormange_dyr_froe.m4a",
+      "tekst": "Hvor mange frøer er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "tal_hvormange_dyr_bi": {
+      "fil": "tal_hvormange_dyr_bi.m4a",
+      "tekst": "Hvor mange bier er der? Tæl dem, og tryk på tallet.",
+      "kategori": "tal"
+    },
+    "form_roede_cirkel": {
+      "fil": "form_roede_cirkel.m4a",
+      "tekst": "Tryk på den røde cirkel.",
+      "kategori": "form"
+    },
+    "form_roede_firkant": {
+      "fil": "form_roede_firkant.m4a",
+      "tekst": "Tryk på den røde firkant.",
+      "kategori": "form"
+    },
+    "form_roede_trekant": {
+      "fil": "form_roede_trekant.m4a",
+      "tekst": "Tryk på den røde trekant.",
+      "kategori": "form"
+    },
+    "form_roede_stjerne": {
+      "fil": "form_roede_stjerne.m4a",
+      "tekst": "Tryk på den røde stjerne.",
+      "kategori": "form"
+    },
+    "form_roede_hjerte": {
+      "fil": "form_roede_hjerte.m4a",
+      "tekst": "Tryk på den røde hjerte.",
+      "kategori": "form"
+    },
+    "form_blaa_cirkel": {
+      "fil": "form_blaa_cirkel.m4a",
+      "tekst": "Tryk på den blå cirkel.",
+      "kategori": "form"
+    },
+    "form_blaa_firkant": {
+      "fil": "form_blaa_firkant.m4a",
+      "tekst": "Tryk på den blå firkant.",
+      "kategori": "form"
+    },
+    "form_blaa_trekant": {
+      "fil": "form_blaa_trekant.m4a",
+      "tekst": "Tryk på den blå trekant.",
+      "kategori": "form"
+    },
+    "form_blaa_stjerne": {
+      "fil": "form_blaa_stjerne.m4a",
+      "tekst": "Tryk på den blå stjerne.",
+      "kategori": "form"
+    },
+    "form_blaa_hjerte": {
+      "fil": "form_blaa_hjerte.m4a",
+      "tekst": "Tryk på den blå hjerte.",
+      "kategori": "form"
+    },
+    "form_gule_cirkel": {
+      "fil": "form_gule_cirkel.m4a",
+      "tekst": "Tryk på den gule cirkel.",
+      "kategori": "form"
+    },
+    "form_gule_firkant": {
+      "fil": "form_gule_firkant.m4a",
+      "tekst": "Tryk på den gule firkant.",
+      "kategori": "form"
+    },
+    "form_gule_trekant": {
+      "fil": "form_gule_trekant.m4a",
+      "tekst": "Tryk på den gule trekant.",
+      "kategori": "form"
+    },
+    "form_gule_stjerne": {
+      "fil": "form_gule_stjerne.m4a",
+      "tekst": "Tryk på den gule stjerne.",
+      "kategori": "form"
+    },
+    "form_gule_hjerte": {
+      "fil": "form_gule_hjerte.m4a",
+      "tekst": "Tryk på den gule hjerte.",
+      "kategori": "form"
+    },
+    "form_groenne_cirkel": {
+      "fil": "form_groenne_cirkel.m4a",
+      "tekst": "Tryk på den grønne cirkel.",
+      "kategori": "form"
+    },
+    "form_groenne_firkant": {
+      "fil": "form_groenne_firkant.m4a",
+      "tekst": "Tryk på den grønne firkant.",
+      "kategori": "form"
+    },
+    "form_groenne_trekant": {
+      "fil": "form_groenne_trekant.m4a",
+      "tekst": "Tryk på den grønne trekant.",
+      "kategori": "form"
+    },
+    "form_groenne_stjerne": {
+      "fil": "form_groenne_stjerne.m4a",
+      "tekst": "Tryk på den grønne stjerne.",
+      "kategori": "form"
+    },
+    "form_groenne_hjerte": {
+      "fil": "form_groenne_hjerte.m4a",
+      "tekst": "Tryk på den grønne hjerte.",
+      "kategori": "form"
+    },
+    "form_lilla_cirkel": {
+      "fil": "form_lilla_cirkel.m4a",
+      "tekst": "Tryk på den lilla cirkel.",
+      "kategori": "form"
+    },
+    "form_lilla_firkant": {
+      "fil": "form_lilla_firkant.m4a",
+      "tekst": "Tryk på den lilla firkant.",
+      "kategori": "form"
+    },
+    "form_lilla_trekant": {
+      "fil": "form_lilla_trekant.m4a",
+      "tekst": "Tryk på den lilla trekant.",
+      "kategori": "form"
+    },
+    "form_lilla_stjerne": {
+      "fil": "form_lilla_stjerne.m4a",
+      "tekst": "Tryk på den lilla stjerne.",
+      "kategori": "form"
+    },
+    "form_lilla_hjerte": {
+      "fil": "form_lilla_hjerte.m4a",
+      "tekst": "Tryk på den lilla hjerte.",
+      "kategori": "form"
+    },
+    "form_orange_cirkel": {
+      "fil": "form_orange_cirkel.m4a",
+      "tekst": "Tryk på den orange cirkel.",
+      "kategori": "form"
+    },
+    "form_orange_firkant": {
+      "fil": "form_orange_firkant.m4a",
+      "tekst": "Tryk på den orange firkant.",
+      "kategori": "form"
+    },
+    "form_orange_trekant": {
+      "fil": "form_orange_trekant.m4a",
+      "tekst": "Tryk på den orange trekant.",
+      "kategori": "form"
+    },
+    "form_orange_stjerne": {
+      "fil": "form_orange_stjerne.m4a",
+      "tekst": "Tryk på den orange stjerne.",
+      "kategori": "form"
+    },
+    "form_orange_hjerte": {
+      "fil": "form_orange_hjerte.m4a",
+      "tekst": "Tryk på den orange hjerte.",
+      "kategori": "form"
+    },
+    "dyr_dyr_ko_ubest": {
+      "fil": "dyr_dyr_ko_ubest.m4a",
+      "tekst": "en ko",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_ko_flertal": {
+      "fil": "dyr_dyr_ko_flertal.m4a",
+      "tekst": "køer",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_ko_lyd": {
+      "fil": "dyr_dyr_ko_lyd.m4a",
+      "tekst": "muh!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_ko": {
+      "fil": "dyrelyd_spm_dyr_ko.m4a",
+      "tekst": "Hvilket dyr siger muh? ... muh!",
+      "kategori": "dyrelyd"
+    },
+    "dyr_dyr_faar_ubest": {
+      "fil": "dyr_dyr_faar_ubest.m4a",
+      "tekst": "et får",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_faar_flertal": {
+      "fil": "dyr_dyr_faar_flertal.m4a",
+      "tekst": "får",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_faar_lyd": {
+      "fil": "dyr_dyr_faar_lyd.m4a",
+      "tekst": "mæh!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_faar": {
+      "fil": "dyrelyd_spm_dyr_faar.m4a",
+      "tekst": "Hvilket dyr siger mæh? ... mæh!",
+      "kategori": "dyrelyd"
+    },
+    "dyr_dyr_gris_ubest": {
+      "fil": "dyr_dyr_gris_ubest.m4a",
+      "tekst": "en gris",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_gris_flertal": {
+      "fil": "dyr_dyr_gris_flertal.m4a",
+      "tekst": "grise",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_gris_lyd": {
+      "fil": "dyr_dyr_gris_lyd.m4a",
+      "tekst": "øf øf!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_gris": {
+      "fil": "dyrelyd_spm_dyr_gris.m4a",
+      "tekst": "Hvilket dyr siger øf øf? ... øf øf!",
+      "kategori": "dyrelyd"
+    },
+    "dyr_dyr_hest_ubest": {
+      "fil": "dyr_dyr_hest_ubest.m4a",
+      "tekst": "en hest",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_hest_flertal": {
+      "fil": "dyr_dyr_hest_flertal.m4a",
+      "tekst": "heste",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_hest_lyd": {
+      "fil": "dyr_dyr_hest_lyd.m4a",
+      "tekst": "vrinsk!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_hest": {
+      "fil": "dyrelyd_spm_dyr_hest.m4a",
+      "tekst": "Hvilket dyr siger vrinsk? ... vrinsk!",
+      "kategori": "dyrelyd"
+    },
+    "dyr_dyr_hoene_ubest": {
+      "fil": "dyr_dyr_hoene_ubest.m4a",
+      "tekst": "en høne",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_hoene_flertal": {
+      "fil": "dyr_dyr_hoene_flertal.m4a",
+      "tekst": "høns",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_hoene_lyd": {
+      "fil": "dyr_dyr_hoene_lyd.m4a",
+      "tekst": "gok gok!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_hoene": {
+      "fil": "dyrelyd_spm_dyr_hoene.m4a",
+      "tekst": "Hvilket dyr siger gok gok? ... gok gok!",
+      "kategori": "dyrelyd"
+    },
+    "dyr_dyr_and_ubest": {
+      "fil": "dyr_dyr_and_ubest.m4a",
+      "tekst": "en and",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_and_flertal": {
+      "fil": "dyr_dyr_and_flertal.m4a",
+      "tekst": "ænder",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_and_lyd": {
+      "fil": "dyr_dyr_and_lyd.m4a",
+      "tekst": "rap rap!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_and": {
+      "fil": "dyrelyd_spm_dyr_and.m4a",
+      "tekst": "Hvilket dyr siger rap rap? ... rap rap!",
+      "kategori": "dyrelyd"
+    },
+    "dyr_dyr_hund_ubest": {
+      "fil": "dyr_dyr_hund_ubest.m4a",
+      "tekst": "en hund",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_hund_flertal": {
+      "fil": "dyr_dyr_hund_flertal.m4a",
+      "tekst": "hunde",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_hund_lyd": {
+      "fil": "dyr_dyr_hund_lyd.m4a",
+      "tekst": "vov vov!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_hund": {
+      "fil": "dyrelyd_spm_dyr_hund.m4a",
+      "tekst": "Hvilket dyr siger vov vov? ... vov vov!",
+      "kategori": "dyrelyd"
+    },
+    "dyr_dyr_kat_ubest": {
+      "fil": "dyr_dyr_kat_ubest.m4a",
+      "tekst": "en kat",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_kat_flertal": {
+      "fil": "dyr_dyr_kat_flertal.m4a",
+      "tekst": "katte",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_kat_lyd": {
+      "fil": "dyr_dyr_kat_lyd.m4a",
+      "tekst": "miav!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_kat": {
+      "fil": "dyrelyd_spm_dyr_kat.m4a",
+      "tekst": "Hvilket dyr siger miav? ... miav!",
+      "kategori": "dyrelyd"
+    },
+    "dyr_dyr_froe_ubest": {
+      "fil": "dyr_dyr_froe_ubest.m4a",
+      "tekst": "en frø",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_froe_flertal": {
+      "fil": "dyr_dyr_froe_flertal.m4a",
+      "tekst": "frøer",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_froe_lyd": {
+      "fil": "dyr_dyr_froe_lyd.m4a",
+      "tekst": "kvæk!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_froe": {
+      "fil": "dyrelyd_spm_dyr_froe.m4a",
+      "tekst": "Hvilket dyr siger kvæk? ... kvæk!",
+      "kategori": "dyrelyd"
+    },
+    "dyr_dyr_bi_ubest": {
+      "fil": "dyr_dyr_bi_ubest.m4a",
+      "tekst": "en bi",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_bi_flertal": {
+      "fil": "dyr_dyr_bi_flertal.m4a",
+      "tekst": "bier",
+      "kategori": "dyr"
+    },
+    "dyr_dyr_bi_lyd": {
+      "fil": "dyr_dyr_bi_lyd.m4a",
+      "tekst": "summ!",
+      "kategori": "dyr"
+    },
+    "dyrelyd_spm_dyr_bi": {
+      "fil": "dyrelyd_spm_dyr_bi.m4a",
+      "tekst": "Hvilket dyr siger summ? ... summ!",
+      "kategori": "dyrelyd"
+    },
+    "rim_spm_kat": {
+      "fil": "rim_spm_kat.m4a",
+      "tekst": "Hvad rimer på kat? ... kat. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_kat": {
+      "fil": "rim_ord_kat.m4a",
+      "tekst": "kat",
+      "kategori": "rim"
+    },
+    "rim_ord_hat": {
+      "fil": "rim_ord_hat.m4a",
+      "tekst": "hat",
+      "kategori": "rim"
+    },
+    "rim_spm_mus": {
+      "fil": "rim_spm_mus.m4a",
+      "tekst": "Hvad rimer på mus? ... mus. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_mus": {
+      "fil": "rim_ord_mus.m4a",
+      "tekst": "mus",
+      "kategori": "rim"
+    },
+    "rim_ord_hus": {
+      "fil": "rim_ord_hus.m4a",
+      "tekst": "hus",
+      "kategori": "rim"
+    },
+    "rim_spm_ko": {
+      "fil": "rim_spm_ko.m4a",
+      "tekst": "Hvad rimer på ko? ... ko. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_ko": {
+      "fil": "rim_ord_ko.m4a",
+      "tekst": "ko",
+      "kategori": "rim"
+    },
+    "rim_ord_sko": {
+      "fil": "rim_ord_sko.m4a",
+      "tekst": "sko",
+      "kategori": "rim"
+    },
+    "rim_spm_gris": {
+      "fil": "rim_spm_gris.m4a",
+      "tekst": "Hvad rimer på gris? ... gris. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_gris": {
+      "fil": "rim_ord_gris.m4a",
+      "tekst": "gris",
+      "kategori": "rim"
+    },
+    "rim_ord_is": {
+      "fil": "rim_ord_is.m4a",
+      "tekst": "is",
+      "kategori": "rim"
+    },
+    "rim_spm_sol": {
+      "fil": "rim_spm_sol.m4a",
+      "tekst": "Hvad rimer på sol? ... sol. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_sol": {
+      "fil": "rim_ord_sol.m4a",
+      "tekst": "sol",
+      "kategori": "rim"
+    },
+    "rim_ord_stol": {
+      "fil": "rim_ord_stol.m4a",
+      "tekst": "stol",
+      "kategori": "rim"
+    },
+    "rim_spm_hund": {
+      "fil": "rim_spm_hund.m4a",
+      "tekst": "Hvad rimer på hund? ... hund. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_hund": {
+      "fil": "rim_ord_hund.m4a",
+      "tekst": "hund",
+      "kategori": "rim"
+    },
+    "rim_ord_mund": {
+      "fil": "rim_ord_mund.m4a",
+      "tekst": "mund",
+      "kategori": "rim"
+    },
+    "rim_spm_and": {
+      "fil": "rim_spm_and.m4a",
+      "tekst": "Hvad rimer på and? ... and. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_and": {
+      "fil": "rim_ord_and.m4a",
+      "tekst": "and",
+      "kategori": "rim"
+    },
+    "rim_ord_spand": {
+      "fil": "rim_ord_spand.m4a",
+      "tekst": "spand",
+      "kategori": "rim"
+    },
+    "rim_spm_bi": {
+      "fil": "rim_spm_bi.m4a",
+      "tekst": "Hvad rimer på bi? ... bi. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_bi": {
+      "fil": "rim_ord_bi.m4a",
+      "tekst": "bi",
+      "kategori": "rim"
+    },
+    "rim_ord_ski": {
+      "fil": "rim_ord_ski.m4a",
+      "tekst": "ski",
+      "kategori": "rim"
+    },
+    "rim_spm_froe": {
+      "fil": "rim_spm_froe.m4a",
+      "tekst": "Hvad rimer på frø? ... frø. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_froe": {
+      "fil": "rim_ord_froe.m4a",
+      "tekst": "frø",
+      "kategori": "rim"
+    },
+    "rim_ord_oe": {
+      "fil": "rim_ord_oe.m4a",
+      "tekst": "ø",
+      "kategori": "rim"
+    },
+    "rim_spm_bold": {
+      "fil": "rim_spm_bold.m4a",
+      "tekst": "Hvad rimer på bold? ... bold. Tryk på det, der rimer.",
+      "kategori": "rim"
+    },
+    "rim_ord_bold": {
+      "fil": "rim_ord_bold.m4a",
+      "tekst": "bold",
+      "kategori": "rim"
+    },
+    "rim_ord_trold": {
+      "fil": "rim_ord_trold.m4a",
+      "tekst": "trold",
+      "kategori": "rim"
+    },
+    "spor_1": {
+      "fil": "spor_1.m4a",
+      "tekst": "Skriv tallet 1. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_2": {
+      "fil": "spor_2.m4a",
+      "tekst": "Skriv tallet 2. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_3": {
+      "fil": "spor_3.m4a",
+      "tekst": "Skriv tallet 3. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_4": {
+      "fil": "spor_4.m4a",
+      "tekst": "Skriv tallet 4. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_5": {
+      "fil": "spor_5.m4a",
+      "tekst": "Skriv tallet 5. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_7": {
+      "fil": "spor_7.m4a",
+      "tekst": "Skriv tallet 7. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_i": {
+      "fil": "spor_i.m4a",
+      "tekst": "Skriv bogstavet I. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_l": {
+      "fil": "spor_l.m4a",
+      "tekst": "Skriv bogstavet L. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_t": {
+      "fil": "spor_t.m4a",
+      "tekst": "Skriv bogstavet T. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_v": {
+      "fil": "spor_v.m4a",
+      "tekst": "Skriv bogstavet V. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_o": {
+      "fil": "spor_o.m4a",
+      "tekst": "Skriv bogstavet O. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_a": {
+      "fil": "spor_a.m4a",
+      "tekst": "Skriv bogstavet A. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_s": {
+      "fil": "spor_s.m4a",
+      "tekst": "Skriv bogstavet S. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    },
+    "spor_m": {
+      "fil": "spor_m.m4a",
+      "tekst": "Skriv bogstavet M. Følg prikkerne med fingeren.",
+      "kategori": "spor"
+    }
+  }
+}

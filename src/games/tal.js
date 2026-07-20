@@ -3,6 +3,7 @@ import { ANIMALS } from "../data.js";
 import { $, pick, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
 import { icon } from "../icon.js";
+import { talHvormange } from "../audio-ids.js";
 
 const LEVEL_MAX = [3, 5, 10];
 
@@ -43,6 +44,6 @@ export const tal = {
     $("stage")?.appendChild(herd);
     opts.forEach((v) => addChoice(String(v), v === n, "number"));
     this.promptText = `Hvor mange ${dyr.flertal} er der?`;
-    this.say = `Hvor mange ${dyr.flertal} er der? Tæl dem, og tryk på tallet.`;
+    this.say = talHvormange(dyr.sym);
   },
 };

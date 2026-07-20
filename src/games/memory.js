@@ -3,8 +3,9 @@ import { ANIMALS } from "../data.js";
 import { $, pickN, shuffle } from "../util.js";
 import { ROUND_LEN, state, level, renderProgress, finishRound } from "../engine.js";
 import { icon } from "../icon.js";
-import { speak } from "../speech.js";
+import { audio } from "../audio.js";
 import { sfxFlip, sfxRight } from "../sfx.js";
+import { SPIL, dyrUbest } from "../audio-ids.js";
 
 const LEVEL_PAIRS = [3, 4, 6];
 
@@ -32,7 +33,7 @@ export const memory = {
     let busy = false;
     let found = 0;
     this.promptText = "Find to ens!";
-    this.say = "Vendespil! Vend kortene, og find to ens.";
+    this.say = SPIL.memory;
     deck.forEach((card) => {
       const b = document.createElement("button");
       b.className = "choice mem-card";
@@ -41,7 +42,7 @@ export const memory = {
         if (busy || b.classList.contains("open")) return;
         sfxFlip();
         b.classList.add("open");
-        speak(card.a.ubest);
+        audio.say(dyrUbest(card.a.sym));
         if (!openCard) {
           openCard = b;
           /** @type {any} */ (openCard)._animal = card.a;

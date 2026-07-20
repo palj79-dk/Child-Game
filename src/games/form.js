@@ -2,6 +2,7 @@
 import { COLORS, SHAPES } from "../data.js";
 import { pick, pickN, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
+import { formSaetning } from "../audio-ids.js";
 
 const LEVEL_N = [4, 5, 6];
 
@@ -24,7 +25,7 @@ export const form = {
     const { target, opts } = gen(level(this.id));
     // Signal er aldrig kun farve: der spørges altid efter farve OG form (farveblind-sikkert)
     this.promptText = `Tryk på den ${target.c.navn} ${target.s.navn}`;
-    this.say = this.promptText;
+    this.say = formSaetning(target.c.navn, target.s.navn);
     shuffle(opts.slice()).forEach((o) =>
       addChoice(`<svg viewBox="0 0 100 100" width="80%" height="80%">${o.s.tegn(o.c.css)}</svg>`, o === target)
     );

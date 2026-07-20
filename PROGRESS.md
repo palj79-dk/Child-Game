@@ -7,7 +7,7 @@ verifikation (logik-tests + Playwright-røgtest) og et eksporteret snapshot.
 |---|---|---|
 | **I1 Fundament** | ES-moduler, esbuild-bundle, R1 (localStorage), R3 (logik-tests + Playwright + CI), R5 (JSDoc/ts-check) | ✅ færdig |
 | **I2 Grafik** | ~48 egne SVG i spritesheet, `icon()`-lag, skolefont, emoji erstattet | ✅ færdig |
-| **I3 Lyd-kode** | `audio/manifest.json`, AudioManager (kø/preload/fallback), integration, QA | ⏳ |
+| **I3 Lyd-kode** | `audio/manifest.json`, AudioManager (kø/preload/fallback), integration, QA | ✅ færdig |
 | **I4 Lyd-render** | Piper TTS → `.m4a` (HuggingFace) | ⏳ |
 | **I5 Optimeringer** | O1–O7, T1–T4 | ⏳ |
 | **I6 Play-klargøring** | PWA-manifest, ikoner, kreditering, privatlivspolitik | ⏳ |
@@ -48,3 +48,22 @@ test er lagt til. Grafik (emoji) og lyd (enheds-TTS) opgraderes i I2–I4.
   konsolfejl, alle 10 logik-tests + typecheck + røgtest grønt.
 - *Note:* de 8 kategori-ikoner på forsidens spil-kort er stadig emoji (indgik
   ikke i asset-listen på ~45) – kan tegnes som grafik-trin-2-polish senere.
+
+## I3 – Lyd-kode (færdig)
+
+- **`audio/manifest.json`** (kontrakten) genereres af `tools/gen_manifest.mjs`
+  ud fra spildata → **202 replikker** i 11 kategorier (system, ros, prøv, bogstav
+  navn+lyd, tal, instruks, tæl-helsætninger, 30 farve/form-sætninger, dyr
+  ubest/flertal/lyd, dyrelyd-spørgsmål, rim, spor). Hvert id har `{ fil, tekst,
+  kategori }`. Teksten indlejres også i bundlen (`src/audio-manifest.generated.js`)
+  til fallback.
+- **Stabile id'er** (`src/audio-ids.js`) deles mellem spillene og generatoren –
+  koden beder om et *id*, aldrig en fil, så stemmen kan udskiftes uden kodeændring.
+- **AudioManager** (`src/audio.js`): `say(id | [ids])` er promise-baseret med kø,
+  afbryder igangværende tale, forudindlæser, og har fallback-kæden **fil → Web
+  Speech på manifest-teksten → stilhed** (appen fungerer helt uden lyd).
+- **Integration:** alle 8 spil + motor + UI kalder nu `audio.say(id)` i stedet for
+  `speak(tekst)`. Effektlyde forbliver Web Audio.
+- **QA:** `tools/check_audio.mjs` validerer manifest ↔ filer; ny logik-test sikrer
+  at *hvert* id spillene beder om findes i manifestet (11 tests grønne).
+- Lyden kører på Web Speech-fallback indtil filerne renderes i **I4**.

@@ -3,6 +3,7 @@ import { RIM } from "../data.js";
 import { pick, pickN, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
 import { icon } from "../icon.js";
+import { rimSpm } from "../audio-ids.js";
 
 const LEVEL_DISTRACT = [2, 3, 4];
 
@@ -38,6 +39,6 @@ export const rim = {
     document.getElementById("stage")?.appendChild(el);
     options.forEach((o) => addChoice(`${icon(o.sym)}<div class="rim-word">${o.ord}</div>`, !!o.rigtig, "rim"));
     this.promptText = `Hvad rimer på ${target.ord}?`;
-    this.say = `Hvad rimer på ${target.ord}? ... ${target.ord}. Tryk på det, der rimer.`;
+    this.say = rimSpm(target.ord);
   },
 };
