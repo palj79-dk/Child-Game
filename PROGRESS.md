@@ -9,7 +9,7 @@ verifikation (logik-tests + Playwright-røgtest) og et eksporteret snapshot.
 | **I2 Grafik** | ~48 egne SVG i spritesheet, `icon()`-lag, skolefont, emoji erstattet | ✅ færdig |
 | **I3 Lyd-kode** | `audio/manifest.json`, AudioManager (kø/preload/fallback), integration, QA | ✅ færdig |
 | **I4 Lyd-render** | Piper TTS → `.mp3` (HuggingFace) | ✅ færdig |
-| **I5 Optimeringer** | O1–O7, T1–T4 | ⏳ |
+| **I5 Optimeringer** | O1–O7, T1–T4 | ✅ færdig |
 | **I6 Play-klargøring** | PWA-manifest, ikoner, kreditering, privatlivspolitik | ⏳ |
 
 ## I1 – Fundament (færdig)
@@ -87,3 +87,30 @@ test er lagt til. Grafik (emoji) og lyd (enheds-TTS) opgraderes i I2–I4.
 - *Kvalitet:* Piper-dansk er markant bedre og ens på alle enheder end enheds-TTS.
   En professionel indtaler kan senere lægges ind som ren filudskiftning (kør
   `render_audio.py` erstattes af nye filer + `embed_audio.mjs`) uden kodeændring.
+
+## I5 – Optimeringer (færdig)
+
+Spiloplevelse:
+- **O1** anti-gentagelses-buffer (`src/anti_repeat.js`, `fresh()`): samme opgave
+  kommer ikke to gange i træk – aktiv i alle 7 valg-baserede spil.
+- **O2** adaptiv sværhedsgrad: glidende vindue over de sidste 10 opgaver pr. spil
+  i `store` (>40 % fejl → trin ned; høj succes → trin op), med **forældre-lås**
+  i indstillinger. `engine.level()` bruger nu det adaptive niveau.
+- **O3** segment-baseret hit-test i Spor & skriv: afstand fra prik til
+  linjestykket (forrige→aktuelle finger), så hurtige fingre ikke sidder fast.
+- **O4** automatisk venlig gentagelse af instruktionen efter ~11 s inaktivitet
+  (sammen med puls-hintet efter 6 s).
+- **O5** rim-familie-regel: distraktorer deler aldrig rim-familie med målordet
+  (nyt `fam`-felt i data + test).
+- **O6** taleoverlap i vendespil: løst af AudioManager-køen (I3).
+- **O7** fast gitter i Tæl med (5 kolonner) – mængden er let at afkode.
+
+Tilgængelighed:
+- **T1** `prefers-reduced-motion`: dæmpede animationer, konfetti slås fra.
+- **T2** WCAG-kontrast: mørkere guld på stjerner/fremdrift, mørkere gul opgavefarve,
+  form altid som medsignal (aldrig kun farve).
+- **T3** fuldskærm + landscape-lås bag forældre-gaten (Capacitor låser natively i
+  fase 2).
+- **T4** langt-tryk: `contextmenu` forhindret + `-webkit-touch-callout:none`.
+
+14 logik-tests grønne (inkl. O1/O2/O5), typecheck + røgtest grønt.

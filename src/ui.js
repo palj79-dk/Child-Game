@@ -47,6 +47,8 @@ function holdStep() {
     if (fill) fill.style.width = "0";
     const vt = $("voiceToggle");
     if (vt) vt.textContent = store.voiceOn ? "Til" : "Fra";
+    const lt = $("lockToggle");
+    if (lt) lt.textContent = store.lockLevel ? "Låst" : "Automatisk";
     $("settings")?.classList.add("active");
   } else {
     holdRAF = requestAnimationFrame(holdStep);
@@ -94,6 +96,34 @@ export function initUI() {
   $("resetBtn")?.addEventListener("pointerdown", () => {
     store.reset();
     renderMenu();
+  });
+
+  // O2: forældre-lås af sværhedsgrad
+  $("lockToggle")?.addEventListener("pointerdown", () => {
+    store.lockLevel = !store.lockLevel;
+    const lt = $("lockToggle");
+    if (lt) lt.textContent = store.lockLevel ? "Låst" : "Automatisk";
+  });
+
+  // T3: fuldskærm + landscape-lås (browser; Capacitor låser natively i fase 2)
+  $("fullscreenBtn")?.addEventListener("pointerdown", async () => {
+    const btn = $("fullscreenBtn");
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen?.();
+        try {
+          await /** @type {any} */ (screen.orientation)?.lock?.("landscape");
+        } catch (_e) {
+          /* orientation-lås ikke understøttet – ignorér */
+        }
+        if (btn) btn.textContent = "Slå fra";
+      } else {
+        await document.exitFullscreen?.();
+        if (btn) btn.textContent = "Slå til";
+      }
+    } catch (_e) {
+      /* fullscreen ikke tilladt (fx desktop-gestus) – ignorér stille */
+    }
   });
 
   renderMenu();

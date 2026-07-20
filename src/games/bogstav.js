@@ -3,6 +3,7 @@ import { LETTERS } from "../data.js";
 import { pick, pickN, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
 import { SPIL, bogstavNavn } from "../audio-ids.js";
+import { fresh } from "../anti_repeat.js";
 
 const LEVEL_N = [3, 4, 6];
 
@@ -21,7 +22,7 @@ export const bogstav = {
   ikon: "🔤",
   gen,
   task() {
-    const { target, opts } = gen(level(this.id));
+    const { target, opts } = fresh(this.id, () => gen(level(this.id)), (r) => r.target);
     this.promptText = `Find bogstavet ${target}`;
     this.say = [SPIL.bogstavFind, bogstavNavn(target)];
     shuffle(opts.slice()).forEach((L) => addChoice(L, L === target, "letter"));

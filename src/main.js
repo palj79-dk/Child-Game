@@ -6,6 +6,9 @@
    ===================================================================== */
 import { initUI } from "./ui.js";
 
+// T4: forhindr at langt tryk markerer tekst / åbner kontekstmenu på børns skærm
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initUI);
 } else {

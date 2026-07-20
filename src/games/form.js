@@ -3,6 +3,7 @@ import { COLORS, SHAPES } from "../data.js";
 import { pick, pickN, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
 import { formSaetning } from "../audio-ids.js";
+import { fresh } from "../anti_repeat.js";
 
 const LEVEL_N = [4, 5, 6];
 
@@ -22,7 +23,11 @@ export const form = {
   ikon: "🔺",
   gen,
   task() {
-    const { target, opts } = gen(level(this.id));
+    const { target, opts } = fresh(
+      this.id,
+      () => gen(level(this.id)),
+      (r) => r.target.c.navn + "|" + r.target.s.navn
+    );
     // Signal er aldrig kun farve: der spørges altid efter farve OG form (farveblind-sikkert)
     this.promptText = `Tryk på den ${target.c.navn} ${target.s.navn}`;
     this.say = formSaetning(target.c.navn, target.s.navn);

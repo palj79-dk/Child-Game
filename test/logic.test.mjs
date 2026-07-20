@@ -15,6 +15,7 @@ import { gen as rimGen } from "../src/games/rim.js";
 import { gen as sporGen } from "../src/games/spor.js";
 import { GAMES } from "../src/games/index.js";
 import { store } from "../src/store.js";
+import { fresh, _resetRecent } from "../src/anti_repeat.js";
 import { MANIFEST } from "../src/audio-manifest.generated.js";
 import { LETTERS, ANIMALS, COLORS, SHAPES, RIM, GLYPHS } from "../src/data.js";
 import * as ids from "../src/audio-ids.js";
@@ -123,6 +124,49 @@ test("rim: præcis ét rigtigt svar, og det rimer på målet", () => {
       assert.equal(rigtige[0].ord, target.rimOrd);
     }
   }
+});
+
+test("O5: ingen distraktor deler rim-familie med målet", () => {
+  for (const lvl of LEVELS) {
+    for (let r = 0; r < REPS; r++) {
+      const { target, options } = rimGen(lvl);
+      const distraktorer = options.filter((o) => !o.rigtig);
+      for (const d of distraktorer) {
+        assert.notEqual(d.fam, target.fam, `distraktor ${d.ord} rimer utilsigtet på ${target.ord}`);
+      }
+    }
+  }
+});
+
+test("O1: fresh() undgår gentagelse inden for vinduet", () => {
+  _resetRecent();
+  const pool = ["a", "b", "c", "d"];
+  const keys = [];
+  for (let i = 0; i < 60; i++) {
+    const v = fresh("t", () => pool[(Math.random() * pool.length) | 0], (x) => x, 2);
+    keys.push(v);
+  }
+  for (let i = 2; i < keys.length; i++) {
+    assert.notEqual(keys[i], keys[i - 1]);
+    assert.notEqual(keys[i], keys[i - 2]);
+  }
+});
+
+test("O2: recordTask justerer niveau; lås fastholder", () => {
+  store.reset();
+  const id = "bogstav";
+  assert.equal(store.level(id), 0);
+  // hæv kunstigt til 2 og fejl gentagne gange → trin ned
+  store.adapt(id).level = 2;
+  for (let i = 0; i < 5; i++) store.recordTask(id, false);
+  assert.ok(store.level(id) < 2, "niveau falder ved mange fejl");
+  // lås: niveau ændres ikke uanset udfald
+  const locked = store.level(id);
+  store.lockLevel = true;
+  for (let i = 0; i < 10; i++) store.recordTask(id, false);
+  assert.equal(store.level(id), locked, "låst niveau ændres ikke");
+  store.lockLevel = false;
+  store.reset();
 });
 
 test("spor: glyf i niveau-pool, pool vokser med niveau", () => {

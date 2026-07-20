@@ -4,6 +4,7 @@ import { $, pick, pickN, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
 import { icon } from "../icon.js";
 import { SPIL } from "../audio-ids.js";
+import { fresh } from "../anti_repeat.js";
 
 const LEVEL_N = [3, 4, 5];
 
@@ -21,7 +22,7 @@ export const skygge = {
   ikon: "👤",
   gen,
   task() {
-    const { target, opts } = gen(level(this.id));
+    const { target, opts } = fresh(this.id, () => gen(level(this.id)), (r) => r.target.sym);
     const wrap = document.createElement("div");
     wrap.style.cssText = "width:100%;text-align:center";
     wrap.innerHTML = `<span class="shadow-target">${icon(target.sym)}</span>`;

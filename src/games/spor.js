@@ -4,6 +4,7 @@ import { $, pick } from "../util.js";
 import { state, level, answer } from "../engine.js";
 import { sfxFlip } from "../sfx.js";
 import { sporGlyf } from "../audio-ids.js";
+import { fresh } from "../anti_repeat.js";
 
 /** Vælg en glyf fra niveau-poolen. Testbar.
  * @param {number} lvl */
@@ -19,7 +20,7 @@ export const spor = {
   navn: "Spor & skriv",
   ikon: "✏️",
   task() {
-    const { g, erTal } = gen(level(this.id));
+    const { g, erTal } = fresh(this.id, () => gen(level(this.id)), (r) => r.g);
     this.promptText = erTal ? `Skriv tallet ${g}` : `Skriv bogstavet ${g}`;
     this.say = sporGlyf(g);
 
@@ -57,18 +58,35 @@ export const spor = {
       return p.matrixTransform(svg.getScreenCTM()?.inverse());
     };
     let down = false;
+    /** @type {{x:number,y:number}|null} */
+    let lastPt = null;
     const HIT = 11; // generøs radius til små fingre
+
+    // O3: afstand fra næste prik til LINJESTYKKET (forrige→aktuelle finger),
+    // så en hurtig finger der springer hen over en prik stadig registreres.
+    /** @param {number} px @param {number} py @param {{x:number,y:number}} a @param {{x:number,y:number}} b */
+    const distToSeg = (px, py, a, b) => {
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const l2 = dx * dx + dy * dy;
+      let t = l2 ? ((px - a.x) * dx + (py - a.y) * dy) / l2 : 0;
+      t = Math.max(0, Math.min(1, t));
+      return Math.hypot(px - (a.x + t * dx), py - (a.y + t * dy));
+    };
+
     /** @param {PointerEvent} e */
     const tryHit = (e) => {
       if (!down || state.locked || next >= pts.length) return;
       const p = toSvg(e);
-      while (next < pts.length && Math.hypot(p.x - pts[next].x, p.y - pts[next].y) < HIT) {
+      const a = lastPt || p;
+      while (next < pts.length && distToSeg(pts[next].x, pts[next].y, a, p) < HIT) {
         dots[next].classList.remove("next");
         dots[next].classList.add("hit");
         sfxFlip();
         next++;
         if (next < pts.length) dots[next].classList.add("next");
       }
+      lastPt = p;
       if (next >= pts.length) {
         down = false;
         answer(null, true);
@@ -76,12 +94,14 @@ export const spor = {
     };
     svg.addEventListener("pointerdown", (e) => {
       down = true;
+      lastPt = toSvg(e);
       tryHit(e);
     });
     svg.addEventListener("pointermove", tryHit);
     ["pointerup", "pointercancel"].forEach((ev) =>
       svg.addEventListener(ev, () => {
         down = false;
+        lastPt = null;
       })
     );
   },

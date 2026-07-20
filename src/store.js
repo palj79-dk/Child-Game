@@ -7,7 +7,9 @@
 const KEY = "legr";
 const SCHEMA_VERSION = 1;
 
-/** @typedef {{ v:number, stars?:Record<string,number>, voiceOn?:boolean }} SaveData */
+/** @typedef {{ level:number, window:boolean[], locked:boolean }} Adapt */
+/** @typedef {{ v:number, stars?:Record<string,number>, voiceOn?:boolean,
+ *   lockLevel?:boolean, adapt?:Record<string,Adapt> }} SaveData */
 
 /** @returns {SaveData} */
 function migrate(raw) {
@@ -56,6 +58,57 @@ export const store = {
     this.data.voiceOn = v;
     this.save();
   },
+
+  /* ---- O2: adaptiv sværhedsgrad ---- */
+  /** Startniveau ud fra optjente stjerner (0-2). @param {string} id */
+  starLevel(id) {
+    const s = this.stars(id);
+    return s < 3 ? 0 : s < 6 ? 1 : 2;
+  },
+  /** Hent (og initialisér) det adaptive niveau-objekt for et spil. @param {string} id */
+  adapt(id) {
+    this.data.adapt = this.data.adapt || {};
+    if (!this.data.adapt[id]) {
+      this.data.adapt[id] = { level: this.starLevel(id), window: [], locked: false };
+    }
+    return this.data.adapt[id];
+  },
+  /** Aktuelt sværhedsniveau 0-2. @param {string} id */
+  level(id) {
+    return Math.max(0, Math.min(2, this.adapt(id).level));
+  },
+  /** Forældre-lås: når true justeres niveauet ikke automatisk. */
+  get lockLevel() {
+    return this.data.lockLevel === true;
+  },
+  set lockLevel(v) {
+    this.data.lockLevel = v;
+    this.save();
+  },
+  /**
+   * Registrér udfaldet af én opgave og justér niveauet (glidende vindue).
+   * >40 % fejl → et trin ned; høj succesrate → et trin op. @param {string} id
+   * @param {boolean} success (løst uden fejlforsøg)
+   */
+  recordTask(id, success) {
+    const a = this.adapt(id);
+    if (this.lockLevel) return;
+    a.window.push(!!success);
+    if (a.window.length > 10) a.window.shift();
+    const w = a.window;
+    if (w.length >= 4) {
+      const rate = w.filter((x) => !x).length / w.length;
+      if (rate > 0.4 && a.level > 0) {
+        a.level--;
+        a.window = [];
+      } else if (w.length >= 6 && rate < 0.15 && a.level < 2) {
+        a.level++;
+        a.window = [];
+      }
+    }
+    this.save();
+  },
+
   reset() {
     this.data = { v: SCHEMA_VERSION };
     this.save();

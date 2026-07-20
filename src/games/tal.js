@@ -4,6 +4,7 @@ import { $, pick, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
 import { icon } from "../icon.js";
 import { talHvormange } from "../audio-ids.js";
+import { fresh } from "../anti_repeat.js";
 
 const LEVEL_MAX = [3, 5, 10];
 
@@ -37,7 +38,7 @@ export const tal = {
   ikon: "🔢",
   gen,
   task() {
-    const { n, dyr, opts } = gen(level(this.id));
+    const { n, dyr, opts } = fresh(this.id, () => gen(level(this.id)), (r) => r.n + "|" + r.dyr.sym);
     const herd = document.createElement("div");
     herd.id = "herd";
     herd.innerHTML = Array(n).fill(icon(dyr.sym)).join("");

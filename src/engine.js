@@ -17,13 +17,12 @@ export const state = {
   current: null,
   solved: 0,
   locked: false,
+  taskHadWrong: false, // O2: opgaven løst uden fejlforsøg?
 };
 
-/** Sværhedsgrad 0-2 ud fra optjente stjerner (adaptiv styring tilføjes i I5/O2).
- * @param {string} id */
+/** Aktuelt (adaptivt) sværhedsniveau 0-2. @param {string} id */
 export function level(id) {
-  const s = store.stars(id);
-  return s < 3 ? 0 : s < 6 ? 1 : 2;
+  return store.level(id);
 }
 
 export function renderProgress() {
@@ -41,17 +40,26 @@ export function showScreen(id) {
   $(id)?.classList.add("active");
 }
 
-/* Puls-hint på svarmuligheder efter inaktivitet (O4 udvides i I5). */
+/* Inaktivitet: puls-hint efter 6 s (O-oprindelig) og venlig gentagelse af
+   instruktionen efter 11 s (O4). */
 /** @type {ReturnType<typeof setTimeout>|undefined} */
 let hintTimer;
+/** @type {ReturnType<typeof setTimeout>|undefined} */
+let repeatTimer;
 export function armHint() {
   clearTimeout(hintTimer);
+  clearTimeout(repeatTimer);
   hintTimer = setTimeout(() => {
     document.querySelectorAll("#stage .choice").forEach((c) => c.classList.add("idle-hint"));
   }, 6000);
+  repeatTimer = setTimeout(() => {
+    if (state.current && !state.locked) audio.say(state.current.say ?? []);
+    armHint(); // gentag hint/oplæsning så længe barnet er inaktivt
+  }, 11000);
 }
 export function clearHint() {
   clearTimeout(hintTimer);
+  clearTimeout(repeatTimer);
   document.querySelectorAll("#stage .choice").forEach((c) => c.classList.remove("idle-hint"));
 }
 
@@ -79,6 +87,7 @@ export function startGame(game) {
 
 export function nextTask() {
   state.locked = false;
+  state.taskHadWrong = false;
   renderProgress();
   const stage = $("stage");
   if (stage) stage.innerHTML = "";
@@ -103,10 +112,12 @@ export function answer(el, isRight) {
     sfxRight();
     audio.say(pick(ROS_IDS));
     if (el) el.style.background = "#e2f7d9";
+    if (state.current) store.recordTask(state.current.id, !state.taskHadWrong); // O2
     state.solved++;
     renderProgress();
     setTimeout(() => (state.solved >= ROUND_LEN ? finishRound() : nextTask()), 1100);
   } else {
+    state.taskHadWrong = true;
     sfxWrong();
     audio.say(pick(PROEV_IDS));
     if (el) {
@@ -132,6 +143,8 @@ export function finishRound() {
 }
 
 export function confetti() {
+  // T1: spring konfetti over hvis brugeren har valgt "reducér bevægelse"
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const bits = ["🎉", "⭐", "🎈", "✨", "🟡", "🔵"];
   for (let i = 0; i < 24; i++) {
     const s = document.createElement("div");
