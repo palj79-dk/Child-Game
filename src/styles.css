@@ -59,6 +59,20 @@ button { font-family:inherit; border:none; cursor:pointer; background:none; }
   gap:3vmin; padding:1vmin;
 }
 
+/* ====== Egne SVG-ikoner (icon()-laget) ====== */
+.ico { width:100%; height:100%; display:block; }
+.choice .ico { width:78%; height:78%; margin:auto; }
+#home h1 .ico { width:8vmin; height:8vmin; display:inline-block; vertical-align:middle; }
+#herd .ico { width:12vmin; height:12vmin; display:inline-block; vertical-align:middle; margin:.5vmin; }
+.mem-card .front-face .ico { width:74%; height:74%; }
+.rim-target .emo .ico { width:20vmin; height:20vmin; margin:0 auto; }
+.choice.rim .ico { width:13vmin; height:13vmin; }
+.shadow-target .ico { width:100%; height:100%; }
+#party .big-star .ico { width:22vmin; height:22vmin; }
+.round-btn .ico { width:60%; height:60%; }
+#gearBtn .ico { width:5vmin; height:5vmin; }
+.big-btn .ico.ib { width:4vmin; height:4vmin; display:inline-block; vertical-align:middle; }
+
 /* Svar-kort: store trykflader til små fingre */
 .choice {
   background:#fff; border-radius:3.5vmin; box-shadow:0 6px 0 rgba(0,0,0,.12);
@@ -81,10 +95,10 @@ button { font-family:inherit; border:none; cursor:pointer; background:none; }
 }
 
 /* Tæl med: dyreflok */
-#herd { width:100%; text-align:center; font-size:9vmin; line-height:1.25; padding:0 4vmin; }
+#herd { width:100%; text-align:center; line-height:1.1; padding:0 4vmin; }
 
 /* Skygge-leg */
-.shadow-target { font-size:16vmin; filter:brightness(0); opacity:.85; }
+.shadow-target { display:inline-block; width:32vmin; height:32vmin; filter:brightness(0); opacity:.85; }
 
 /* Rim-tid */
 .rim-target { width:100%; text-align:center; }

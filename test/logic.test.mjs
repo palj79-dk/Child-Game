@@ -9,7 +9,7 @@ import { gen as bogstavGen } from "../src/games/bogstav.js";
 import { gen as talGen, numberOptions } from "../src/games/tal.js";
 import { gen as formGen } from "../src/games/form.js";
 import { gen as memoryGen } from "../src/games/memory.js";
-import { gen as skyggeGen } from "../src/games/dyr.js";
+import { gen as skyggeGen } from "../src/games/skygge.js";
 import { gen as dyrGen } from "../src/games/dyr.js";
 import { gen as rimGen } from "../src/games/rim.js";
 import { gen as sporGen } from "../src/games/spor.js";

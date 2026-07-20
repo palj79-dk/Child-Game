@@ -1,0 +1,394 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<!-- =====================================================================
+     Leg & Lær – egen SVG-grafik (Claude-tegnet). Flad "papirklip"-stil:
+     tyk blød kontur, afrundede hjørner, simple glade ansigter, ingen
+     gradienter. Alle symboler viewBox 0 0 100 100. Bruges via icon()-laget
+     (<use href="#id">). Silhuetter i skygge-spillet laves med CSS-filter.
+     Konturfarve: #2b3a55.
+     ===================================================================== -->
+<defs>
+  <style>
+    .o  { stroke:#2b3a55; stroke-width:3.2; stroke-linejoin:round; stroke-linecap:round; }
+    .ol { stroke:#2b3a55; stroke-width:3.2; stroke-linejoin:round; stroke-linecap:round; fill:none; }
+    .eye{ fill:#2b3a55; }
+  </style>
+</defs>
+
+<!-- ============================ DYR (11) ============================ -->
+<symbol id="dyr-ko" viewBox="0 0 100 100">
+  <path class="o" d="M22 34 L34 46 M78 34 L66 46" fill="#e9dcb0"/>
+  <ellipse class="o" cx="28" cy="42" rx="11" ry="9" fill="#fff"/>
+  <ellipse class="o" cx="72" cy="42" rx="11" ry="9" fill="#fff"/>
+  <rect class="o" x="26" y="34" width="48" height="44" rx="20" fill="#fff"/>
+  <circle cx="40" cy="30" r="7" fill="#2b3a55"/>
+  <circle cx="66" cy="40" r="6" fill="#2b3a55"/>
+  <circle class="eye" cx="42" cy="52" r="4.5"/>
+  <circle class="eye" cx="58" cy="52" r="4.5"/>
+  <ellipse class="o" cx="50" cy="68" rx="18" ry="12" fill="#f6b8c6"/>
+  <circle cx="44" cy="68" r="2.6" fill="#2b3a55"/>
+  <circle cx="56" cy="68" r="2.6" fill="#2b3a55"/>
+</symbol>
+
+<symbol id="dyr-faar" viewBox="0 0 100 100">
+  <circle class="o" cx="30" cy="52" r="12" fill="#f3f3f5"/>
+  <circle class="o" cx="70" cy="52" r="12" fill="#f3f3f5"/>
+  <circle class="o" cx="50" cy="34" r="13" fill="#f3f3f5"/>
+  <circle class="o" cx="50" cy="66" r="14" fill="#f3f3f5"/>
+  <circle class="o" cx="34" cy="40" r="12" fill="#f3f3f5"/>
+  <circle class="o" cx="66" cy="40" r="12" fill="#f3f3f5"/>
+  <ellipse class="o" cx="50" cy="58" rx="16" ry="17" fill="#4a4653"/>
+  <ellipse class="o" cx="34" cy="60" rx="6" ry="9" fill="#4a4653"/>
+  <ellipse class="o" cx="66" cy="60" rx="6" ry="9" fill="#4a4653"/>
+  <circle cx="44" cy="56" r="3.6" fill="#fff"/>
+  <circle cx="56" cy="56" r="3.6" fill="#fff"/>
+</symbol>
+
+<symbol id="dyr-gris" viewBox="0 0 100 100">
+  <path class="o" d="M30 30 L38 44 L26 46 Z" fill="#ef9db4"/>
+  <path class="o" d="M70 30 L62 44 L74 46 Z" fill="#ef9db4"/>
+  <rect class="o" x="24" y="38" width="52" height="44" rx="22" fill="#f4a9bf"/>
+  <circle class="eye" cx="42" cy="54" r="4.5"/>
+  <circle class="eye" cx="58" cy="54" r="4.5"/>
+  <ellipse class="o" cx="50" cy="66" rx="15" ry="11" fill="#e5799a"/>
+  <circle cx="45" cy="66" r="2.8" fill="#2b3a55"/>
+  <circle cx="55" cy="66" r="2.8" fill="#2b3a55"/>
+</symbol>
+
+<symbol id="dyr-hest" viewBox="0 0 100 100">
+  <path class="o" d="M34 22 Q26 30 30 46 L26 40" fill="#6d4a2b"/>
+  <path class="o" d="M40 20 L34 34 M52 18 L48 32 M64 20 L58 34" fill="none"/>
+  <rect class="o" x="34" y="30" width="36" height="52" rx="17" fill="#b9793e"/>
+  <path class="o" d="M34 40 Q46 24 62 26 L58 40 Z" fill="#6d4a2b"/>
+  <circle class="eye" cx="45" cy="52" r="4.2"/>
+  <circle class="eye" cx="60" cy="52" r="4.2"/>
+  <ellipse class="o" cx="52" cy="72" rx="14" ry="10" fill="#9c6534"/>
+  <circle cx="47" cy="72" r="2.4" fill="#2b3a55"/>
+  <circle cx="57" cy="72" r="2.4" fill="#2b3a55"/>
+</symbol>
+
+<symbol id="dyr-hoene" viewBox="0 0 100 100">
+  <path class="o" d="M44 20 q6 -6 12 0 q6 -6 12 2 q-2 8 -12 8 q-8 0 -12 -10z" fill="#e74c3c"/>
+  <ellipse class="o" cx="52" cy="60" rx="26" ry="27" fill="#fff"/>
+  <circle class="eye" cx="46" cy="52" r="4.5"/>
+  <path class="o" d="M26 56 L40 50 L40 62 Z" fill="#f1a30f"/>
+  <path class="o" d="M36 74 q-8 6 -14 2 M40 80 q-4 8 -12 8" fill="none"/>
+  <path class="o" d="M62 42 q10 -2 12 8 q-8 4 -12 -2z" fill="#e74c3c"/>
+</symbol>
+
+<symbol id="dyr-and" viewBox="0 0 100 100">
+  <ellipse class="o" cx="46" cy="62" rx="28" ry="22" fill="#f3d24e"/>
+  <circle class="o" cx="66" cy="40" r="16" fill="#f3d24e"/>
+  <circle class="eye" cx="70" cy="37" r="4"/>
+  <path class="o" d="M78 42 q16 0 16 6 q0 6 -16 6 q-6 0 -6 -6z" fill="#ef8a2b"/>
+  <path class="o" d="M22 60 q-8 4 -6 12 q8 2 12 -6z" fill="#fff"/>
+</symbol>
+
+<symbol id="dyr-hund" viewBox="0 0 100 100">
+  <path class="o" d="M24 30 Q18 30 18 46 Q18 60 32 60 L34 40 Z" fill="#8a5a34"/>
+  <path class="o" d="M76 30 Q82 30 82 46 Q82 60 68 60 L66 40 Z" fill="#8a5a34"/>
+  <rect class="o" x="28" y="34" width="44" height="46" rx="20" fill="#c8935f"/>
+  <circle class="eye" cx="42" cy="52" r="4.5"/>
+  <circle class="eye" cx="58" cy="52" r="4.5"/>
+  <ellipse class="o" cx="50" cy="66" rx="13" ry="10" fill="#f0e2d2"/>
+  <ellipse cx="50" cy="62" rx="5" ry="4" fill="#2b3a55"/>
+  <path class="ol" d="M50 66 L50 74 M50 74 q-6 4 -10 0 M50 74 q6 4 10 0"/>
+</symbol>
+
+<symbol id="dyr-kat" viewBox="0 0 100 100">
+  <path class="o" d="M28 24 L38 46 L22 46 Z" fill="#f0913e"/>
+  <path class="o" d="M72 24 L62 46 L78 46 Z" fill="#f0913e"/>
+  <rect class="o" x="26" y="38" width="48" height="44" rx="21" fill="#f4a24e"/>
+  <circle class="eye" cx="42" cy="54" r="4.5"/>
+  <circle class="eye" cx="58" cy="54" r="4.5"/>
+  <path class="o" d="M50 62 l-4 5 h8 z" fill="#e5799a"/>
+  <path class="ol" d="M50 67 v5 M30 60 h12 M30 66 h12 M70 60 H58 M70 66 H58"/>
+</symbol>
+
+<symbol id="dyr-froe" viewBox="0 0 100 100">
+  <circle class="o" cx="34" cy="34" r="12" fill="#6cc16c"/>
+  <circle class="o" cx="66" cy="34" r="12" fill="#6cc16c"/>
+  <circle class="eye" cx="34" cy="34" r="5"/>
+  <circle class="eye" cx="66" cy="34" r="5"/>
+  <path class="o" d="M22 52 q28 -14 56 0 q0 26 -28 26 q-28 0 -28 -26z" fill="#5bbf5b"/>
+  <path class="ol" d="M38 66 q12 8 24 0"/>
+</symbol>
+
+<symbol id="dyr-bi" viewBox="0 0 100 100">
+  <ellipse class="o" cx="30" cy="40" rx="12" ry="8" fill="#dff2fb" transform="rotate(-20 30 40)"/>
+  <ellipse class="o" cx="70" cy="40" rx="12" ry="8" fill="#dff2fb" transform="rotate(20 70 40)"/>
+  <ellipse class="o" cx="50" cy="58" rx="24" ry="20" fill="#f3c81e"/>
+  <path d="M40 44 q10 -4 20 0 M36 58 q14 -4 28 0 M40 72 q10 4 20 0" class="ol" stroke-width="6"/>
+  <circle class="eye" cx="44" cy="50" r="3.4"/>
+  <circle class="eye" cx="56" cy="50" r="3.4"/>
+</symbol>
+
+<symbol id="dyr-mus" viewBox="0 0 100 100">
+  <circle class="o" cx="30" cy="34" r="15" fill="#c3c3cf"/>
+  <circle class="o" cx="70" cy="34" r="15" fill="#c3c3cf"/>
+  <circle cx="30" cy="34" r="8" fill="#eec3d4"/>
+  <circle cx="70" cy="34" r="8" fill="#eec3d4"/>
+  <ellipse class="o" cx="50" cy="58" rx="22" ry="22" fill="#cccdd8"/>
+  <circle class="eye" cx="43" cy="56" r="4"/>
+  <circle class="eye" cx="57" cy="56" r="4"/>
+  <circle cx="50" cy="66" r="3.4" fill="#eb8aa8"/>
+  <path class="ol" d="M72 78 q16 2 18 -8"/>
+</symbol>
+
+<!-- ============================ TING (27) ============================ -->
+<symbol id="ting-aeble" viewBox="0 0 100 100">
+  <path class="o" d="M50 30 Q46 18 60 16 Q56 26 50 30z" fill="#5aa54a"/>
+  <path class="o" d="M50 30 C36 22 20 34 22 54 C24 76 40 86 50 80 C60 86 76 76 78 54 C80 34 64 22 50 30z" fill="#e64b3c"/>
+  <path d="M40 40 q-6 6 -3 14" class="ol" stroke="#fff" stroke-width="4"/>
+</symbol>
+
+<symbol id="ting-trae" viewBox="0 0 100 100">
+  <rect class="o" x="44" y="58" width="12" height="30" rx="3" fill="#9c6b3f"/>
+  <circle class="o" cx="50" cy="40" r="24" fill="#4faf57"/>
+  <circle class="o" cx="34" cy="48" r="15" fill="#5cbf63"/>
+  <circle class="o" cx="66" cy="48" r="15" fill="#5cbf63"/>
+</symbol>
+
+<symbol id="ting-bil" viewBox="0 0 100 100">
+  <path class="o" d="M18 62 L24 44 Q26 38 34 38 L66 38 Q74 38 78 46 L84 62 Z" fill="#e6553f"/>
+  <path class="o" d="M34 42 L44 42 L44 54 L28 54 Z" fill="#bfe4f5"/>
+  <path class="o" d="M50 42 L64 42 L72 54 L50 54 Z" fill="#bfe4f5"/>
+  <rect class="o" x="14" y="60" width="72" height="12" rx="6" fill="#c8452f"/>
+  <circle class="o" cx="32" cy="74" r="9" fill="#2b3a55"/>
+  <circle class="o" cx="68" cy="74" r="9" fill="#2b3a55"/>
+</symbol>
+
+<symbol id="ting-paraply" viewBox="0 0 100 100">
+  <path class="o" d="M18 52 Q22 22 50 22 Q78 22 82 52 Z" fill="#8e44c8"/>
+  <path class="ol" d="M34 52 Q38 30 50 30 M66 52 Q62 30 50 30"/>
+  <path class="ol" d="M50 22 L50 78 Q50 88 40 86" stroke-width="4"/>
+</symbol>
+
+<symbol id="ting-sommerfugl" viewBox="0 0 100 100">
+  <ellipse class="o" cx="32" cy="36" rx="16" ry="14" fill="#f39c1f"/>
+  <ellipse class="o" cx="68" cy="36" rx="16" ry="14" fill="#f39c1f"/>
+  <ellipse class="o" cx="34" cy="64" rx="13" ry="12" fill="#e6553f"/>
+  <ellipse class="o" cx="66" cy="64" rx="13" ry="12" fill="#e6553f"/>
+  <rect class="o" x="47" y="30" width="6" height="42" rx="3" fill="#2b3a55"/>
+  <path class="ol" d="M50 30 q-6 -10 -12 -10 M50 30 q6 -10 12 -10"/>
+</symbol>
+
+<symbol id="ting-elefant" viewBox="0 0 100 100">
+  <circle class="o" cx="34" cy="40" r="18" fill="#9aa7b4"/>
+  <circle class="o" cx="66" cy="40" r="18" fill="#9aa7b4"/>
+  <rect class="o" x="30" y="34" width="40" height="42" rx="18" fill="#aab6c2"/>
+  <path class="o" d="M50 60 Q50 84 66 84 Q74 84 74 76" fill="none" stroke-width="9"/>
+  <circle class="eye" cx="42" cy="50" r="4"/>
+  <circle class="eye" cx="58" cy="50" r="4"/>
+</symbol>
+
+<symbol id="ting-cykel" viewBox="0 0 100 100">
+  <circle class="ol" cx="26" cy="64" r="16"/>
+  <circle class="ol" cx="74" cy="64" r="16"/>
+  <path class="ol" d="M26 64 L44 64 L58 40 L34 40 M44 64 L60 40 M60 40 L74 64 M58 40 L66 40 M74 64 L70 40"/>
+</symbol>
+
+<symbol id="ting-blomst" viewBox="0 0 100 100">
+  <rect class="o" x="47" y="52" width="6" height="34" fill="#4faf57"/>
+  <path class="o" d="M50 62 q-16 -2 -18 8 q14 4 18 -8" fill="#4faf57"/>
+  <circle class="o" cx="50" cy="24" r="11" fill="#f0913e"/>
+  <circle class="o" cx="32" cy="36" r="11" fill="#f04e8a"/>
+  <circle class="o" cx="68" cy="36" r="11" fill="#f04e8a"/>
+  <circle class="o" cx="39" cy="54" r="11" fill="#f04e8a"/>
+  <circle class="o" cx="61" cy="54" r="11" fill="#f04e8a"/>
+  <circle class="o" cx="50" cy="40" r="10" fill="#f3c81e"/>
+</symbol>
+
+<symbol id="ting-fisk" viewBox="0 0 100 100">
+  <path class="o" d="M20 50 Q40 26 66 34 Q84 40 84 50 Q84 60 66 66 Q40 74 20 50z" fill="#f39c1f"/>
+  <path class="o" d="M20 50 L6 38 L10 50 L6 62 Z" fill="#e07a12"/>
+  <circle class="eye" cx="70" cy="46" r="4"/>
+  <path class="ol" d="M46 40 q6 10 0 20"/>
+</symbol>
+
+<symbol id="ting-fly" viewBox="0 0 100 100">
+  <path class="o" d="M14 54 L86 44 Q92 43 92 48 Q92 53 86 54 L60 58 L46 78 L38 78 L44 58 L28 60 L20 70 L14 70 L18 56 Z" fill="#dfe8f0"/>
+  <path class="ol" d="M60 50 l14 -16"/>
+</symbol>
+
+<symbol id="ting-bamse" viewBox="0 0 100 100">
+  <circle class="o" cx="30" cy="28" r="11" fill="#b98a5a"/>
+  <circle class="o" cx="70" cy="28" r="11" fill="#b98a5a"/>
+  <circle class="o" cx="50" cy="40" r="22" fill="#caa06d"/>
+  <circle class="eye" cx="42" cy="38" r="4"/>
+  <circle class="eye" cx="58" cy="38" r="4"/>
+  <circle class="o" cx="50" cy="48" r="7" fill="#efe0cc"/>
+  <circle cx="50" cy="46" r="3" fill="#2b3a55"/>
+  <rect class="o" x="30" y="60" width="40" height="28" rx="14" fill="#caa06d"/>
+</symbol>
+
+<symbol id="ting-gulerod" viewBox="0 0 100 100">
+  <path class="o" d="M40 32 L44 24 M50 30 L50 20 M60 32 L58 24" fill="none" stroke="#4faf57" stroke-width="6"/>
+  <path class="o" d="M36 34 L64 34 L54 84 Q50 90 46 84 Z" fill="#ef7f1a"/>
+  <path class="ol" d="M42 46 h14 M45 58 h10 M47 70 h6" stroke="#fff" stroke-width="3"/>
+</symbol>
+
+<symbol id="ting-svamp" viewBox="0 0 100 100">
+  <path class="o" d="M22 52 Q22 26 50 26 Q78 26 78 52 Z" fill="#e64b3c"/>
+  <circle cx="38" cy="42" r="5" fill="#fff"/>
+  <circle cx="58" cy="38" r="6" fill="#fff"/>
+  <circle cx="64" cy="48" r="4" fill="#fff"/>
+  <path class="o" d="M40 52 L60 52 L56 80 Q50 86 44 80 Z" fill="#f0e2cf"/>
+</symbol>
+
+<symbol id="ting-baad" viewBox="0 0 100 100">
+  <path class="ol" d="M50 16 L50 60" stroke-width="4"/>
+  <path class="o" d="M50 20 L74 54 L50 54 Z" fill="#e6553f"/>
+  <path class="o" d="M46 54 L46 22 L26 54 Z" fill="#f3c81e"/>
+  <path class="o" d="M18 60 L82 60 L72 78 Q70 82 64 82 L36 82 Q30 82 28 78 Z" fill="#9c6b3f"/>
+  <path class="ol" d="M14 66 q6 6 12 0 q6 -6 12 0 q6 6 12 0 q6 -6 12 0 q6 6 12 0" stroke="#4aa3d8"/>
+</symbol>
+
+<symbol id="ting-krabbe" viewBox="0 0 100 100">
+  <ellipse class="o" cx="50" cy="56" rx="26" ry="18" fill="#e64b3c"/>
+  <circle class="eye" cx="42" cy="46" r="4"/>
+  <circle class="eye" cx="58" cy="46" r="4"/>
+  <path class="o" d="M24 52 Q10 46 12 34 Q22 40 26 44z" fill="#e64b3c"/>
+  <path class="o" d="M76 52 Q90 46 88 34 Q78 40 74 44z" fill="#e64b3c"/>
+  <path class="ol" d="M30 68 l-10 8 M40 72 l-6 10 M60 72 l6 10 M70 68 l10 8"/>
+</symbol>
+
+<symbol id="ting-hat" viewBox="0 0 100 100">
+  <path class="o" d="M34 30 L66 30 L66 60 L34 60 Z" fill="#3a3f52"/>
+  <rect class="o" x="18" y="58" width="64" height="12" rx="6" fill="#3a3f52"/>
+  <rect x="34" y="52" width="32" height="8" fill="#e6553f"/>
+</symbol>
+
+<symbol id="ting-hus" viewBox="0 0 100 100">
+  <path class="o" d="M20 50 L50 24 L80 50 Z" fill="#e6553f"/>
+  <rect class="o" x="28" y="48" width="44" height="36" fill="#f3d9a3"/>
+  <rect class="o" x="44" y="62" width="14" height="22" fill="#9c6b3f"/>
+  <rect class="o" x="34" y="54" width="10" height="10" fill="#bfe4f5"/>
+</symbol>
+
+<symbol id="ting-sko" viewBox="0 0 100 100">
+  <path class="o" d="M22 44 L46 44 Q52 56 74 60 Q84 62 84 70 L22 70 Z" fill="#4a72c8"/>
+  <rect class="o" x="18" y="68" width="70" height="8" rx="4" fill="#2b3a55"/>
+  <path class="ol" d="M30 52 h8 M34 60 h8" stroke="#fff" stroke-width="3"/>
+</symbol>
+
+<symbol id="ting-is" viewBox="0 0 100 100">
+  <path class="o" d="M34 46 L66 46 L54 84 Q50 90 46 84 Z" fill="#e0b070"/>
+  <path class="ol" d="M40 52 l18 18 M46 48 l14 14 M38 62 l10 10" stroke="#b98a4a" stroke-width="2.4"/>
+  <circle class="o" cx="38" cy="34" r="14" fill="#f6a5c0"/>
+  <circle class="o" cx="62" cy="34" r="14" fill="#f3d24e"/>
+  <circle class="o" cx="50" cy="26" r="14" fill="#e6553f"/>
+</symbol>
+
+<symbol id="ting-sol" viewBox="0 0 100 100">
+  <g class="ol" stroke="#f0a51a" stroke-width="6">
+    <path d="M50 8 V22 M50 78 V92 M8 50 H22 M78 50 H92 M20 20 L30 30 M80 20 L70 30 M20 80 L30 70 M80 80 L70 70"/>
+  </g>
+  <circle class="o" cx="50" cy="50" r="22" fill="#f3c81e"/>
+</symbol>
+
+<symbol id="ting-stol" viewBox="0 0 100 100">
+  <path class="o" d="M36 18 L58 18 L58 52 L36 52 Z" fill="#e08a3c"/>
+  <path class="o" d="M32 50 L74 50 L74 62 L32 62 Z" fill="#f0a45a"/>
+  <rect class="o" x="34" y="60" width="8" height="24" fill="#c86f2a"/>
+  <rect class="o" x="64" y="60" width="8" height="24" fill="#c86f2a"/>
+  <rect class="o" x="52" y="60" width="8" height="24" fill="#c86f2a"/>
+</symbol>
+
+<symbol id="ting-mund" viewBox="0 0 100 100">
+  <path class="o" d="M20 44 Q50 30 80 44 Q66 50 80 56 Q50 78 20 56 Q34 50 20 44z" fill="#e05070"/>
+  <path class="o" d="M28 47 Q50 40 72 47 L72 51 L28 51 Z" fill="#fff"/>
+  <path class="ol" d="M50 40 V30"/>
+</symbol>
+
+<symbol id="ting-ski" viewBox="0 0 100 100">
+  <path class="o" d="M26 74 L30 26 Q30 18 36 18 Q42 18 42 26 L46 74 Z" fill="#4a72c8"/>
+  <path class="o" d="M54 74 L58 26 Q58 18 64 18 Q70 18 70 26 L74 74 Z" fill="#e6553f"/>
+  <path class="ol" d="M22 74 h56"/>
+</symbol>
+
+<symbol id="ting-oe" viewBox="0 0 100 100">
+  <path class="ol" d="M10 74 q8 6 16 0 q8 -6 16 0 q8 6 16 0 q8 -6 16 0 q8 6 16 0" stroke="#4aa3d8"/>
+  <path class="o" d="M24 66 Q30 58 50 58 Q70 58 76 66 Z" fill="#e8cf88"/>
+  <rect class="o" x="47" y="38" width="6" height="22" fill="#9c6b3f"/>
+  <path class="o" d="M50 22 Q34 30 50 40 Q66 30 50 22z" fill="#4faf57"/>
+</symbol>
+
+<symbol id="ting-bold" viewBox="0 0 100 100">
+  <circle class="o" cx="50" cy="52" r="30" fill="#fff"/>
+  <path class="o" d="M50 34 L62 43 L58 58 L42 58 L38 43 Z" fill="#2b3a55"/>
+  <path class="ol" d="M50 22 L50 34 M74 40 L62 43 M67 74 L58 58 M33 74 L42 58 M26 40 L38 43"/>
+</symbol>
+
+<symbol id="ting-trold" viewBox="0 0 100 100">
+  <path class="o" d="M30 40 Q28 24 40 26 M70 40 Q72 24 60 26" fill="none"/>
+  <rect class="o" x="28" y="36" width="44" height="46" rx="18" fill="#7fb26a"/>
+  <circle class="eye" cx="42" cy="52" r="5"/>
+  <circle class="eye" cx="58" cy="52" r="5"/>
+  <path class="ol" d="M40 68 q10 8 20 0"/>
+  <path class="o" d="M40 82 l4 -8 l4 8 l4 -8 l4 8" fill="none"/>
+</symbol>
+
+<!-- ============================ UI (5) ============================ -->
+<symbol id="ui-hjem" viewBox="0 0 100 100">
+  <path class="o" d="M18 52 L50 22 L82 52 Z" fill="#1d6fb8"/>
+  <rect class="o" x="28" y="50" width="44" height="34" rx="4" fill="#2f8ad8"/>
+  <rect class="o" x="44" y="62" width="14" height="22" fill="#fff"/>
+</symbol>
+<symbol id="ui-hoejttaler" viewBox="0 0 100 100">
+  <path class="o" d="M20 40 L36 40 L52 26 L52 74 L36 60 L20 60 Z" fill="#1d6fb8"/>
+  <path class="ol" d="M62 40 q10 10 0 20 M70 32 q18 18 0 36" stroke="#1d6fb8" stroke-width="5"/>
+</symbol>
+<symbol id="ui-tandhjul" viewBox="0 0 100 100">
+  <path class="o" d="M50 16 l7 8 10 -3 3 10 10 4 -3 10 6 9 -8 7 3 10 -10 4 -4 9 -10 -2 -6 8 -9 -5 -9 5 -6 -8 -10 2 -4 -9 -10 -4 3 -10 -8 -7 6 -9 -3 -10 10 -4 4 -10z" fill="#9fb0c0"/>
+  <circle class="o" cx="50" cy="50" r="13" fill="#fff"/>
+</symbol>
+<symbol id="ui-stjerne" viewBox="0 0 100 100">
+  <path class="o" d="M50 12 L61 40 L92 40 L67 59 L77 90 L50 71 L23 90 L33 59 L8 40 L39 40 Z" fill="#ffd23e"/>
+</symbol>
+<symbol id="ui-igen" viewBox="0 0 100 100">
+  <path class="ol" d="M76 40 A30 30 0 1 0 80 58" stroke="#1d6fb8" stroke-width="9"/>
+  <path class="o" d="M78 22 L80 44 L58 40 Z" fill="#1d6fb8"/>
+</symbol>
+
+<!-- ==================== MASKOT "Ravnen Rikke" (5) ==================== -->
+<symbol id="ravn-vink" viewBox="0 0 100 100">
+  <ellipse class="o" cx="52" cy="56" rx="26" ry="28" fill="#3a4a63"/>
+  <circle class="o" cx="52" cy="30" r="18" fill="#43536d"/>
+  <path class="o" d="M68 30 L86 26 L72 38 Z" fill="#f0a51a"/>
+  <circle cx="48" cy="28" r="5" fill="#fff"/><circle cx="49" cy="28" r="2.6" fill="#2b3a55"/>
+  <path class="o" d="M28 44 Q10 40 14 22 Q26 34 34 46z" fill="#2f3c50"/>
+  <path class="o" d="M40 84 L44 92 M60 84 L64 92" stroke="#f0a51a" stroke-width="5"/>
+</symbol>
+<symbol id="ravn-peg" viewBox="0 0 100 100">
+  <ellipse class="o" cx="48" cy="56" rx="26" ry="28" fill="#3a4a63"/>
+  <circle class="o" cx="48" cy="30" r="18" fill="#43536d"/>
+  <path class="o" d="M64 30 L82 26 L68 38 Z" fill="#f0a51a"/>
+  <circle cx="52" cy="28" r="5" fill="#fff"/><circle cx="53" cy="28" r="2.6" fill="#2b3a55"/>
+  <path class="o" d="M72 54 Q92 50 96 60 L74 64z" fill="#2f3c50"/>
+  <path class="o" d="M36 84 L40 92 M56 84 L60 92" stroke="#f0a51a" stroke-width="5"/>
+</symbol>
+<symbol id="ravn-jubel" viewBox="0 0 100 100">
+  <ellipse class="o" cx="50" cy="58" rx="26" ry="26" fill="#3a4a63"/>
+  <circle class="o" cx="50" cy="30" r="18" fill="#43536d"/>
+  <path class="o" d="M66 30 L84 26 L70 38 Z" fill="#f0a51a"/>
+  <circle cx="45" cy="28" r="5" fill="#fff"/><circle cx="46" cy="28" r="2.6" fill="#2b3a55"/>
+  <circle cx="56" cy="28" r="5" fill="#fff"/><circle cx="57" cy="28" r="2.6" fill="#2b3a55"/>
+  <path class="o" d="M26 40 Q12 24 26 16 Q30 34 36 44z" fill="#2f3c50"/>
+  <path class="o" d="M74 40 Q88 24 74 16 Q70 34 64 44z" fill="#2f3c50"/>
+</symbol>
+<symbol id="ravn-troest" viewBox="0 0 100 100">
+  <ellipse class="o" cx="50" cy="58" rx="26" ry="26" fill="#3a4a63"/>
+  <circle class="o" cx="50" cy="32" r="18" fill="#43536d"/>
+  <path class="o" d="M66 32 L84 28 L70 40 Z" fill="#f0a51a"/>
+  <path class="ol" d="M42 30 q4 -4 8 0 M54 30 q4 -4 8 0"/>
+  <path class="ol" d="M42 44 q8 6 16 0"/>
+</symbol>
+<symbol id="ravn-taenk" viewBox="0 0 100 100">
+  <ellipse class="o" cx="50" cy="58" rx="26" ry="26" fill="#3a4a63"/>
+  <circle class="o" cx="50" cy="32" r="18" fill="#43536d"/>
+  <path class="o" d="M66 32 L84 28 L70 40 Z" fill="#f0a51a"/>
+  <circle cx="46" cy="30" r="5" fill="#fff"/><circle cx="47" cy="29" r="2.6" fill="#2b3a55"/>
+  <circle class="o" cx="78" cy="20" r="6" fill="#fff"/>
+  <circle class="o" cx="88" cy="12" r="4" fill="#fff"/>
+</symbol>
+</svg>

@@ -2,6 +2,7 @@
 import { ANIMALS } from "../data.js";
 import { $, pick, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
+import { icon } from "../icon.js";
 
 const LEVEL_MAX = [3, 5, 10];
 
@@ -38,7 +39,7 @@ export const tal = {
     const { n, dyr, opts } = gen(level(this.id));
     const herd = document.createElement("div");
     herd.id = "herd";
-    herd.textContent = Array(n).fill(dyr.e).join(" ");
+    herd.innerHTML = Array(n).fill(icon(dyr.sym)).join("");
     $("stage")?.appendChild(herd);
     opts.forEach((v) => addChoice(String(v), v === n, "number"));
     this.promptText = `Hvor mange ${dyr.flertal} er der?`;

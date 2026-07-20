@@ -2,6 +2,7 @@
 import { ANIMALS } from "../data.js";
 import { $, pickN, shuffle } from "../util.js";
 import { ROUND_LEN, state, level, renderProgress, finishRound } from "../engine.js";
+import { icon } from "../icon.js";
 import { speak } from "../speech.js";
 import { sfxFlip, sfxRight } from "../sfx.js";
 
@@ -35,7 +36,7 @@ export const memory = {
     deck.forEach((card) => {
       const b = document.createElement("button");
       b.className = "choice mem-card";
-      b.innerHTML = `<div class="face back-face">?</div><div class="face front-face">${card.a.e}</div>`;
+      b.innerHTML = `<div class="face back-face">?</div><div class="face front-face">${icon(card.a.sym)}</div>`;
       b.addEventListener("pointerdown", () => {
         if (busy || b.classList.contains("open")) return;
         sfxFlip();

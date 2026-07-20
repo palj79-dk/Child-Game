@@ -2,6 +2,7 @@
 import { ANIMALS } from "../data.js";
 import { pick, pickN, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
+import { icon } from "../icon.js";
 
 const LEVEL_N = [3, 4, 6];
 
@@ -22,6 +23,6 @@ export const dyr = {
     const { target, opts } = gen(level(this.id));
     this.promptText = `Hvilket dyr siger ${target.lyd}?`;
     this.say = `Hvilket dyr siger ${target.lyd}? ... ${target.lyd}!`;
-    shuffle(opts.slice()).forEach((a) => addChoice(a.e, a === target));
+    shuffle(opts.slice()).forEach((a) => addChoice(icon(a.sym), a === target));
   },
 };
