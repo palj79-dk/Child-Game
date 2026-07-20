@@ -19,7 +19,10 @@ export const state = {
   solved: 0,
   locked: false,
   taskHadWrong: false, // O2: opgaven løst uden fejlforsøg?
+  taskAttempts: 0, // antal fejlforsøg på den aktuelle opgave (til play-log)
 };
+
+let taskStart = 0; // tidsstempel for hvornår opgaven blev vist (til løsetid)
 
 /** Aktuelt (adaptivt) sværhedsniveau 0-2. @param {string} id */
 export function level(id) {
@@ -90,6 +93,7 @@ export function startGame(game) {
 export function nextTask() {
   state.locked = false;
   state.taskHadWrong = false;
+  state.taskAttempts = 0;
   renderProgress();
   const stage = $("stage");
   if (stage) stage.innerHTML = "";
@@ -98,7 +102,8 @@ export function nextTask() {
   g.task(); // spillet bygger scenen og sætter g.promptText + g.say
   const prompt = $("prompt");
   if (prompt) prompt.textContent = g.promptText ?? "";
-  playlog.log("opgave", { spil: g.id, prompt: g.promptText });
+  playlog.log("opgave", { spil: g.id, niveau: level(g.id), prompt: g.promptText });
+  taskStart = performance.now();
   audio.say(g.say ?? []);
   armHint();
 }
@@ -118,8 +123,9 @@ export function answer(el, isRight) {
     if (state.current) {
       const id = state.current.id;
       const før = store.level(id);
+      const ms = Math.round(performance.now() - taskStart);
       store.recordTask(id, !state.taskHadWrong); // O2
-      playlog.log("rigtigt", { spil: id });
+      playlog.log("rigtigt", { spil: id, niveau: før, ms, forsøg: state.taskAttempts });
       if (store.level(id) !== før) playlog.log("niveau", { spil: id, niveau: store.level(id) });
     }
     state.solved++;
@@ -127,7 +133,8 @@ export function answer(el, isRight) {
     setTimeout(() => (state.solved >= ROUND_LEN ? finishRound() : nextTask()), 1100);
   } else {
     state.taskHadWrong = true;
-    playlog.log("forkert", { spil: state.current?.id });
+    state.taskAttempts++;
+    playlog.log("forkert", { spil: state.current?.id, forsøg: state.taskAttempts });
     sfxWrong();
     audio.say(pick(PROEV_IDS));
     if (el) {

@@ -189,6 +189,8 @@ button { font-family:inherit; border:none; cursor:pointer; background:none; }
   font-size:2.6vmin; font-weight:bold; box-shadow:0 4px 0 rgba(0,0,0,.3); opacity:.9;
 }
 body.qc #qcBtn { display:block; }
+/* Når DEV_INSTRUMENTATION=false: skjul al play-log-/QC-UI (klar til udgivelse) */
+body.nodev .dev-only, body.nodev #qcBtn { display:none !important; }
 #qclog h2 { font-size:3.6vmin; }
 #qclog h2 small { font-size:2.2vmin; opacity:.75; font-weight:normal; }
 #qclogText {

@@ -16,7 +16,7 @@ import { gen as sporGen } from "../src/games/spor.js";
 import { GAMES } from "../src/games/index.js";
 import { store } from "../src/store.js";
 import { fresh, _resetRecent } from "../src/anti_repeat.js";
-import { playlog } from "../src/playlog.js";
+import { playlog, DEV_INSTRUMENTATION } from "../src/playlog.js";
 import { MANIFEST } from "../src/audio-manifest.generated.js";
 import { LETTERS, ANIMALS, COLORS, SHAPES, RIM, GLYPHS } from "../src/data.js";
 import * as ids from "../src/audio-ids.js";
@@ -224,6 +224,29 @@ test("play-log: kun aktiv når enabled; dump/clear virker; ingen netværk", () =
   playlog.clear();
   assert.equal(playlog.entries().length, 0);
   playlog.enabled = false;
+});
+
+test("play-log: resumé samler tid/forsøg/niveau pr. spil", () => {
+  playlog.clear();
+  playlog.enabled = true;
+  playlog.log("spil-start", { spil: "tal", niveau: 1 });
+  playlog.log("opgave", { spil: "tal", niveau: 1 });
+  playlog.log("forkert", { spil: "tal", forsøg: 1 });
+  playlog.log("rigtigt", { spil: "tal", niveau: 1, ms: 4000, forsøg: 1 });
+  playlog.log("opgave", { spil: "tal", niveau: 1 });
+  playlog.log("rigtigt", { spil: "tal", niveau: 1, ms: 2000, forsøg: 0 });
+  const s = playlog.summary().tal;
+  assert.equal(s.rigtige, 2);
+  assert.equal(s.forkerte, 1);
+  assert.equal(s.niveau, 1);
+  assert.equal(Math.round(s.tidSum / s.tidN), 3000, "snit-løsetid 3000 ms");
+  assert.match(playlog.summaryText(), /RESUMÉ/);
+  playlog.clear();
+  playlog.enabled = false;
+});
+
+test("play-log: DEV_INSTRUMENTATION er en boolean kill-switch", () => {
+  assert.equal(typeof DEV_INSTRUMENTATION, "boolean");
 });
 
 test("store: addStar øger, reset nulstiller (in-memory i Node)", () => {

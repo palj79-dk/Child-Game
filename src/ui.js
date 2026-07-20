@@ -8,7 +8,7 @@ import { state, startGame, showScreen, clearHint } from "./engine.js";
 import { ensureAudio } from "./sfx.js";
 import { audio } from "./audio.js";
 import { icon } from "./icon.js";
-import { playlog } from "./playlog.js";
+import { playlog, DEV_INSTRUMENTATION } from "./playlog.js";
 
 export function renderMenu() {
   const menu = $("menu");
@@ -60,26 +60,28 @@ function holdStep() {
   }
 }
 
-/** Anvend en valgt rolle (barn/voksen/qc). */
+/** Anvend en valgt rolle (barn/voksen/qc). Loggen kører lokalt for ALLE roller
+ * (så man kan observere et barn), men vises kun for voksen/QC. */
 function applyRole(r) {
   store.role = r;
-  playlog.enabled = store.qc;
+  playlog.enabled = DEV_INSTRUMENTATION;
   document.body.classList.toggle("qc", store.qc);
-  if (store.qc) playlog.log("qc-start", { rolle: r });
+  playlog.log("session-start", { rolle: r });
 }
 
 function renderQcLog() {
   const el = $("qclogText");
-  if (el) el.textContent = playlog.dump() || "(ingen hændelser endnu – spil en runde)";
+  if (el) el.textContent = playlog.summaryText() + (playlog.dump() || "(ingen hændelser endnu – spil en runde)");
 }
 
 export function initUI() {
   document.body.classList.toggle("calm", store.calm); // rolig tilstand fra start
 
-  // Rolle + QC play-log (kun lokalt)
+  // Rolle + play-log (kun lokalt). Loggen kører for alle roller når en er valgt.
   playlog.load();
-  playlog.enabled = store.qc;
+  playlog.enabled = DEV_INSTRUMENTATION && !!store.role;
   document.body.classList.toggle("qc", store.qc);
+  if (!DEV_INSTRUMENTATION) document.body.classList.add("nodev"); // skjuler QC/log-UI
   if (!store.role) $("role")?.classList.add("active"); // rolle-vælger ved første start
 
   document.querySelectorAll("#role .role-btn").forEach((b) =>
@@ -91,10 +93,12 @@ export function initUI() {
   );
   $("roleBtn")?.addEventListener("pointerdown", () => $("role")?.classList.add("active"));
 
-  $("qcBtn")?.addEventListener("pointerdown", () => {
+  const openLog = () => {
     renderQcLog();
     $("qclog")?.classList.add("active");
-  });
+  };
+  $("qcBtn")?.addEventListener("pointerdown", openLog);
+  $("logBtn")?.addEventListener("pointerdown", openLog); // fra forældremenuen (voksen)
   $("qclogClose")?.addEventListener("pointerdown", () => $("qclog")?.classList.remove("active"));
   $("qclogClear")?.addEventListener("pointerdown", () => {
     playlog.clear();
