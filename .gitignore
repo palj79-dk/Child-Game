@@ -1,6 +1,8 @@
 node_modules/
 *.log
 .DS_Store
+# bygget enkelt-fil (regenereres med npm run build; leveres som snapshot)
+build/
 # Piper models are downloaded on demand by tools/render_audio.py
 tools/.piper-voices/
 # scratch

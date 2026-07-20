@@ -8,7 +8,7 @@ verifikation (logik-tests + Playwright-røgtest) og et eksporteret snapshot.
 | **I1 Fundament** | ES-moduler, esbuild-bundle, R1 (localStorage), R3 (logik-tests + Playwright + CI), R5 (JSDoc/ts-check) | ✅ færdig |
 | **I2 Grafik** | ~48 egne SVG i spritesheet, `icon()`-lag, skolefont, emoji erstattet | ✅ færdig |
 | **I3 Lyd-kode** | `audio/manifest.json`, AudioManager (kø/preload/fallback), integration, QA | ✅ færdig |
-| **I4 Lyd-render** | Piper TTS → `.m4a` (HuggingFace) | ⏳ |
+| **I4 Lyd-render** | Piper TTS → `.mp3` (HuggingFace) | ✅ færdig |
 | **I5 Optimeringer** | O1–O7, T1–T4 | ⏳ |
 | **I6 Play-klargøring** | PWA-manifest, ikoner, kreditering, privatlivspolitik | ⏳ |
 
@@ -67,3 +67,23 @@ test er lagt til. Grafik (emoji) og lyd (enheds-TTS) opgraderes i I2–I4.
 - **QA:** `tools/check_audio.mjs` validerer manifest ↔ filer; ny logik-test sikrer
   at *hvert* id spillene beder om findes i manifestet (11 tests grønne).
 - Lyden kører på Web Speech-fallback indtil filerne renderes i **I4**.
+
+## I4 – Lyd-render (færdig)
+
+- **Piper TTS** (gratis, neural dansk stemme `da_DK-talesyntese-medium`) hentet
+  fra HuggingFace (61 MB model, engangs-download til byg – appen forbliver
+  offline). Netadgangen fra det nye miljø virker (HTTP 200).
+- **`tools/render_audio.py`** renderer alle 202 replikker: tekst → Piper → WAV →
+  trim stilhed → peak-normalisér → **MP3 64 kbps mono** (via `lameenc`, så
+  ingen fuld ffmpeg kræves). Idempotent (`--force`, `--only`). Resultat:
+  **202 filer, 1,9 MB** i `audio/da/`.
+- **`tools/embed_audio.mjs`** indlejrer filerne som base64 data-URI'er i
+  `src/audio-data.generated.js`, så den byggede HTML er **én selvstændig fil
+  med lyd** (virker fra `file://`, ingen fetch). AudioManager afspiller nu
+  filerne; Web Speech er kun fallback.
+- Verificeret: Chromium afkoder og afspiller en indlejret MP3 (1,99 s, `ended`
+  fyrer rent); `check-audio` = 202/202 konsistent; build **2,6 MB**; tests +
+  typecheck + røgtest grønt.
+- *Kvalitet:* Piper-dansk er markant bedre og ens på alle enheder end enheds-TTS.
+  En professionel indtaler kan senere lægges ind som ren filudskiftning (kør
+  `render_audio.py` erstattes af nye filer + `embed_audio.mjs`) uden kodeændring.

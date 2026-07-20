@@ -24,7 +24,7 @@ const clips = {};
 /** @param {string} id @param {string} tekst @param {string} kategori */
 function add(id, tekst, kategori) {
   if (clips[id]) return; // dedupliker (fx rim-ord der optræder flere steder)
-  clips[id] = { fil: `${id}.m4a`, tekst, kategori };
+  clips[id] = { fil: `${id}.mp3`, tekst, kategori };
 }
 
 /* --- System --- */
@@ -99,8 +99,8 @@ for (const g of Object.keys(GLYPHS)) {
 /* --- Skriv output --- */
 const manifest = {
   version: 1,
-  voice: "da_DK-talesyntese (Piper) — I4",
-  format: "m4a (AAC 64 kbps mono, -16 LUFS)",
+  voice: "da_DK-talesyntese-medium (Piper, MIT/OFL-fri, neural dansk)",
+  format: "mp3 (64 kbps mono, 22.05 kHz, trimmet + peak-normaliseret)",
   clips,
 };
 
