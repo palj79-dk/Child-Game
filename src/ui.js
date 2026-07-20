@@ -54,6 +54,8 @@ function holdStep() {
     if (lt) lt.textContent = store.lockLevel ? "Låst" : "Automatisk";
     const ct = $("calmToggle");
     if (ct) ct.textContent = store.calm ? "Til" : "Fra";
+    const lmt = $("letterModeToggle");
+    if (lmt) lmt.textContent = store.letterMode === "lyd" ? "Lyd" : "Navn";
     $("settings")?.classList.add("active");
   } else {
     holdRAF = requestAnimationFrame(holdStep);
@@ -162,6 +164,13 @@ export function initUI() {
   $("resetBtn")?.addEventListener("pointerdown", () => {
     store.reset();
     renderMenu();
+  });
+
+  // Bogstav-jagt: skift mellem bogstavnavn og bogstavlyd (fonem)
+  $("letterModeToggle")?.addEventListener("pointerdown", () => {
+    store.letterMode = store.letterMode === "lyd" ? "navn" : "lyd";
+    const lmt = $("letterModeToggle");
+    if (lmt) lmt.textContent = store.letterMode === "lyd" ? "Lyd" : "Navn";
   });
 
   // O2: forældre-lås af sværhedsgrad

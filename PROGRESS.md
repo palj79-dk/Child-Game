@@ -182,3 +182,15 @@ filudskiftning via manifestet – uden kodeændring.
   forkert, niveau-ændring, stjerne, hjem). **100 % lokal** (kun på enheden, intet
   sendes) – i tråd med nul-dataindsamling. Kan kopieres og ryddes.
 - 16 logik-tests grønne (inkl. rolle/QC + play-log), typecheck + røgtest grønt.
+
+## Bogstaver: eksempelbillede + lyd-tilstand (feedback)
+
+- **Billede af eksempelordet:** Bogstav-jagt viser nu et ikon + ord over kortene
+  (fx en gris ved "G som gris"). Eksempelordene er valgt så hvert bogstav har et
+  billede; jeg tegnede **11 nye SVG** (citron, dør, jordbær, løve, næse, ost, ræv,
+  ugle, vand, yoghurt, ål) og genbrugte eksisterende for resten. En logik-test
+  sikrer at hvert bogstavs symbol findes i spritesheetet.
+- **Lyd-tilstand (fonem):** ny forældre-knap "Bogstaver læses som: Navn / Lyd".
+  I lyd-tilstand siges fonemet ("Find bogstavet der siger sss, som i sol") via nye
+  `bogstav_lydeksempel_*`-klip – begyndende fonem-træning for de ældste børn.
+- 252 lyd-klip i alt. 19 logik-tests + typecheck + røgtest grønne.

@@ -10,7 +10,8 @@ const SCHEMA_VERSION = 1;
 /** @typedef {{ level:number, window:boolean[], locked:boolean }} Adapt */
 /** @typedef {"barn"|"voksen"|"qc"} Role */
 /** @typedef {{ v:number, stars?:Record<string,number>, voiceOn?:boolean,
- *   calm?:boolean, lockLevel?:boolean, role?:Role, adapt?:Record<string,Adapt> }} SaveData */
+ *   calm?:boolean, lockLevel?:boolean, role?:Role, letterMode?:"navn"|"lyd",
+ *   adapt?:Record<string,Adapt> }} SaveData */
 
 /** @returns {SaveData} */
 function migrate(raw) {
@@ -81,6 +82,15 @@ export const store = {
   /** Er QC-tester-rollen valgt? (aktiverer play-loggen) */
   get qc() {
     return this.data.role === "qc";
+  },
+
+  /** Bogstav-jagt-tilstand: "navn" (bogstavnavn) eller "lyd" (fonem). Standard "navn". */
+  get letterMode() {
+    return this.data.letterMode === "lyd" ? "lyd" : "navn";
+  },
+  set letterMode(v) {
+    this.data.letterMode = v === "lyd" ? "lyd" : "navn";
+    this.save();
   },
 
   /* ---- O2: adaptiv sværhedsgrad ---- */

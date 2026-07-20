@@ -5,13 +5,23 @@
 
 export const LETTERS = "ABCDEFGHIJKLMNOPRSTUVYÆØÅ".split("");
 
-/** Konkret dansk eksempelord pr. bogstav – "S som i slange" hjælper indlæringen.
- * Vælg børnevenlige, konkrete ord. Rettes ét sted her. */
+/** Konkret dansk eksempelord pr. bogstav – "S som i sol" hjælper indlæringen.
+ * Ordene er valgt så hvert bogstav har et billede (LETTER_EKSEMPEL_SYM). Rettes
+ * ét sted her (husk at pege 'sym' på et symbol i spritesheetet). */
 export const LETTER_EKSEMPEL = {
-  A: "abe", B: "bil", C: "citron", D: "due", E: "elefant", F: "fisk",
+  A: "and", B: "bil", C: "citron", D: "dør", E: "elefant", F: "fisk",
   G: "gris", H: "hund", I: "is", J: "jordbær", K: "kat", L: "løve",
-  M: "mus", N: "næse", O: "ost", P: "pige", R: "ræv", S: "slange",
-  T: "tog", U: "ugle", V: "vand", Y: "yoghurt", Æ: "æble", Ø: "ørn", Å: "ål",
+  M: "mus", N: "næse", O: "ost", P: "paraply", R: "ræv", S: "sol",
+  T: "træ", U: "ugle", V: "vand", Y: "yoghurt", Æ: "æble", Ø: "ø", Å: "ål",
+};
+
+/** Eksempelord → symbol-id i spritesheetet (så billedet kan vises). */
+export const LETTER_EKSEMPEL_SYM = {
+  A: "dyr-and", B: "ting-bil", C: "eks-citron", D: "eks-doer", E: "ting-elefant",
+  F: "ting-fisk", G: "dyr-gris", H: "dyr-hund", I: "ting-is", J: "eks-jordbaer",
+  K: "dyr-kat", L: "eks-loeve", M: "dyr-mus", N: "eks-naese", O: "eks-ost",
+  P: "ting-paraply", R: "eks-raev", S: "ting-sol", T: "ting-trae", U: "eks-ugle",
+  V: "eks-vand", Y: "eks-yoghurt", Æ: "ting-aeble", Ø: "ting-oe", Å: "eks-aal",
 };
 
 /** @typedef {{ e:string, sym:string, navn:string, ubest:string, flertal:string, lyd:string }} Animal */

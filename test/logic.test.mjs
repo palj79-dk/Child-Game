@@ -4,6 +4,9 @@
    svar, rim-regler). Kør: npm test */
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
 
 import { gen as bogstavGen } from "../src/games/bogstav.js";
 import { gen as talGen, numberOptions } from "../src/games/tal.js";
@@ -18,7 +21,7 @@ import { store } from "../src/store.js";
 import { fresh, _resetRecent } from "../src/anti_repeat.js";
 import { playlog, DEV_INSTRUMENTATION } from "../src/playlog.js";
 import { MANIFEST } from "../src/audio-manifest.generated.js";
-import { LETTERS, ANIMALS, COLORS, SHAPES, RIM, GLYPHS } from "../src/data.js";
+import { LETTERS, ANIMALS, COLORS, SHAPES, RIM, GLYPHS, LETTER_EKSEMPEL, LETTER_EKSEMPEL_SYM } from "../src/data.js";
 import * as ids from "../src/audio-ids.js";
 
 const REPS = 400;
@@ -188,7 +191,8 @@ test("spor: glyf i niveau-pool, pool vokser med niveau", () => {
 test("lyd: hvert id spillene beder om findes i manifestet", () => {
   const need = [];
   need.push(...ids.ROS_IDS, ...ids.PROEV_IDS, ...Object.values(ids.SYS), ...Object.values(ids.SPIL));
-  for (const L of LETTERS) need.push(ids.bogstavNavn(L), ids.bogstavLyd(L), ids.bogstavEksempel(L));
+  for (const L of LETTERS)
+    need.push(ids.bogstavNavn(L), ids.bogstavLyd(L), ids.bogstavEksempel(L), ids.bogstavLydEksempel(L));
   for (let n = 1; n <= 10; n++) need.push(ids.talOrd(n));
   for (const a of ANIMALS)
     need.push(ids.talHvormange(a.sym), ids.dyrUbest(a.sym), ids.dyrFlertal(a.sym), ids.dyrLyd(a.sym), ids.dyrelydSpm(a.sym));
@@ -197,6 +201,17 @@ test("lyd: hvert id spillene beder om findes i manifestet", () => {
   for (const g of Object.keys(GLYPHS)) need.push(ids.sporGlyf(g));
   const missing = need.filter((id) => !MANIFEST[id]);
   assert.deepEqual(missing, [], "id'er uden manifest-tekst: " + missing.join(", "));
+});
+
+test("bogstaver: hvert bogstav har eksempelord + symbol der findes i spritesheet", () => {
+  const sprites = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "assets", "sprites.svg"), "utf8");
+  const defined = new Set([...sprites.matchAll(/<symbol id="([^"]+)"/g)].map((m) => m[1]));
+  for (const L of LETTERS) {
+    assert.ok(LETTER_EKSEMPEL[L], `mangler eksempelord for ${L}`);
+    const sym = LETTER_EKSEMPEL_SYM[L];
+    assert.ok(sym, `mangler symbol for ${L}`);
+    assert.ok(defined.has(sym), `symbol '${sym}' (${L}) findes ikke i sprites.svg`);
+  }
 });
 
 test("rolle/QC: role sætter qc korrekt", () => {

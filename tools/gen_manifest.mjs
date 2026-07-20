@@ -12,7 +12,7 @@ import { dirname, join } from "node:path";
 import { LETTERS, LETTER_EKSEMPEL, ANIMALS, COLORS, SHAPES, RIM, GLYPHS } from "../src/data.js";
 import {
   SYS, ROS_IDS, PROEV_IDS, SPIL,
-  bogstavNavn, bogstavLyd, bogstavEksempel, talOrd, talHvormange, formSaetning,
+  bogstavNavn, bogstavLyd, bogstavEksempel, bogstavLydEksempel, talOrd, talHvormange, formSaetning,
   dyrUbest, dyrFlertal, dyrLyd, dyrelydSpm, rimSpm, rimOrd, sporGlyf,
 } from "../src/audio-ids.js";
 
@@ -54,11 +54,20 @@ const LYD = {
   I: "i", J: "jø", K: "kø", L: "lø", M: "mø", N: "nø", O: "o", P: "pø",
   R: "rø", S: "søh", T: "tø", U: "u", V: "vø", Y: "y", Æ: "æ", Ø: "ø", Å: "å",
 };
+// Elongeret lyd til fonem-tilstand ("find bogstavet der siger sss")
+const SOUND = {
+  A: "aaa", B: "b", C: "s", D: "d", E: "eee", F: "fff", G: "g", H: "h",
+  I: "iii", J: "j", K: "k", L: "lll", M: "mmm", N: "nnn", O: "ooo", P: "p",
+  R: "rrr", S: "sss", T: "t", U: "uuu", V: "vvv", Y: "yyy", Æ: "æææ", Ø: "øøø", Å: "ååå",
+};
 for (const L of LETTERS) {
+  const ord = LETTER_EKSEMPEL[L] || "";
   add(bogstavNavn(L), NAVN[L] || L.toLowerCase(), "bogstav");
   add(bogstavLyd(L), `${NAVN[L] || L} siger ${LYD[L] || L.toLowerCase()}`, "bogstav");
-  // "S som i slange" – konkret eksempelord der styrker indlæringen
-  add(bogstavEksempel(L), `${L} som i ${LETTER_EKSEMPEL[L] || ""}`.trim(), "bogstav");
+  // navn-tilstand: "S som i sol" – konkret eksempelord der styrker indlæringen
+  add(bogstavEksempel(L), `${L} som i ${ord}`.trim(), "bogstav");
+  // lyd-tilstand: fonem + eksempel: "Find bogstavet der siger sss, som i sol."
+  add(bogstavLydEksempel(L), `Find bogstavet der siger ${SOUND[L] || L.toLowerCase()}, som i ${ord}.`, "bogstav");
 }
 
 /* --- Tal 1-10 --- */

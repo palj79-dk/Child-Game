@@ -40,6 +40,7 @@ export const SPIL = {
 /** @param {string} L */ export const bogstavNavn = (L) => `bogstav_${asciiKey(L)}_navn`;
 /** @param {string} L */ export const bogstavLyd = (L) => `bogstav_${asciiKey(L)}_lyd`;
 /** @param {string} L */ export const bogstavEksempel = (L) => `bogstav_eksempel_${asciiKey(L)}`;
+/** @param {string} L */ export const bogstavLydEksempel = (L) => `bogstav_lydeksempel_${asciiKey(L)}`;
 /** @param {number} n */ export const talOrd = (n) => `tal_${n}`;
 /** @param {string} sym */ export const talHvormange = (sym) => `tal_hvormange_${asciiKey(sym)}`;
 /** @param {string} farve @param {string} form */
