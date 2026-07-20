@@ -391,4 +391,62 @@
   <circle class="o" cx="78" cy="20" r="6" fill="#fff"/>
   <circle class="o" cx="88" cy="12" r="4" fill="#fff"/>
 </symbol>
+
+<!-- ==================== SPIL-KATEGORI-IKONER (8) ==================== -->
+<symbol id="spil-bogstav" viewBox="0 0 100 100">
+  <path class="ol" d="M18 76 L36 24 L54 76 M25 60 L47 60" stroke="#1d6fb8" stroke-width="9"/>
+  <circle class="o" cx="72" cy="60" r="13" fill="#f0913e"/>
+  <path class="ol" d="M85 46 L85 73" stroke="#d9760f" stroke-width="8"/>
+</symbol>
+
+<symbol id="spil-tal" viewBox="0 0 100 100">
+  <g class="ol" stroke="#2ecc71" stroke-width="8">
+    <path d="M20 42 L28 36 L28 74"/>
+    <path d="M42 44 Q42 33 52 33 Q62 33 62 43 Q62 52 44 68 L44 74 L64 74"/>
+    <path d="M72 38 Q82 31 88 40 Q92 49 81 54 Q93 59 87 69 Q79 77 69 68"/>
+  </g>
+</symbol>
+
+<symbol id="spil-form" viewBox="0 0 100 100">
+  <rect class="o" x="12" y="42" width="34" height="34" rx="5" fill="#f3c81e"/>
+  <circle class="o" cx="68" cy="60" r="18" fill="#2980d9"/>
+  <polygon class="o" points="52,12 76,50 28,50" fill="#e6553f"/>
+</symbol>
+
+<symbol id="spil-memory" viewBox="0 0 100 100">
+  <rect class="o" x="14" y="26" width="40" height="54" rx="7" fill="#1d6fb8" transform="rotate(-8 34 53)"/>
+  <circle cx="34" cy="48" r="9" fill="#bcd8f0" transform="rotate(-8 34 53)"/>
+  <rect class="o" x="48" y="24" width="40" height="54" rx="7" fill="#fff" transform="rotate(8 68 51)"/>
+  <circle class="o" cx="68" cy="51" r="11" fill="#e6553f" transform="rotate(8 68 51)"/>
+</symbol>
+
+<symbol id="spil-skygge" viewBox="0 0 100 100">
+  <path d="M30 20 l7 17 19 1 -15 12 5 19 -16 -10 -16 10 5 -19 -15 -12 19 -1z" fill="#5b6b82"/>
+  <path class="o" d="M70 40 l8 20 22 1 -17 14 6 22 -19 -12 -19 12 6 -22 -17 -14 22 -1z" fill="#f3c81e"/>
+</symbol>
+
+<symbol id="spil-dyr" viewBox="0 0 100 100">
+  <ellipse class="o" cx="50" cy="66" rx="21" ry="16" fill="#c58a52"/>
+  <ellipse class="o" cx="27" cy="46" rx="8" ry="11" fill="#c58a52"/>
+  <ellipse class="o" cx="43" cy="34" rx="8" ry="12" fill="#c58a52"/>
+  <ellipse class="o" cx="60" cy="33" rx="8" ry="12" fill="#c58a52"/>
+  <ellipse class="o" cx="75" cy="44" rx="8" ry="11" fill="#c58a52"/>
+</symbol>
+
+<symbol id="spil-rim" viewBox="0 0 100 100">
+  <path class="ol" d="M38 24 L38 70 M74 18 L74 62" stroke="#8e44c8" stroke-width="7"/>
+  <path class="ol" d="M38 24 L74 18" stroke="#8e44c8" stroke-width="9"/>
+  <ellipse class="o" cx="31" cy="72" rx="13" ry="10" fill="#8e44c8"/>
+  <ellipse class="o" cx="67" cy="64" rx="13" ry="10" fill="#8e44c8"/>
+</symbol>
+
+<symbol id="spil-spor" viewBox="0 0 100 100">
+  <g class="ol" stroke="#9fc3dd" stroke-width="6" stroke-dasharray="1 12">
+    <path d="M16 84 Q40 66 60 78"/>
+  </g>
+  <path class="o" d="M74 16 L88 30 L46 72 L32 58 Z" fill="#f3c81e"/>
+  <path class="o" d="M74 16 L88 30 L80 38 L66 24 Z" fill="#f06a8a"/>
+  <path class="o" d="M32 58 L46 72 L28 78 Z" fill="#efdcc2"/>
+  <path d="M31 74 L37 66 L40 69 Z" fill="#2b3a55"/>
+</symbol>
 </svg>

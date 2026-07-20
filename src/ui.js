@@ -7,6 +7,7 @@ import { GAMES } from "./games/index.js";
 import { state, startGame, showScreen, clearHint } from "./engine.js";
 import { ensureAudio } from "./sfx.js";
 import { audio } from "./audio.js";
+import { icon } from "./icon.js";
 
 export function renderMenu() {
   const menu = $("menu");
@@ -17,7 +18,7 @@ export function renderMenu() {
     b.className = "game-card";
     const s = store.stars(g.id);
     const stars = s ? "⭐".repeat(Math.min(s, 8)) + (s > 8 ? " +" + (s - 8) : "") : "";
-    b.innerHTML = `<div class="icon">${g.ikon}</div><div class="name">${g.navn}</div><div class="stars">${stars}</div>`;
+    b.innerHTML = `<div class="icon">${icon("spil-" + g.id)}</div><div class="name">${g.navn}</div><div class="stars">${stars}</div>`;
     b.addEventListener("pointerdown", () => {
       ensureAudio();
       startGame(g);

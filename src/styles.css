@@ -27,7 +27,8 @@ button { font-family:inherit; border:none; cursor:pointer; background:none; }
   transition:transform .1s;
 }
 .game-card:active { transform:scale(.95); }
-.game-card .icon { font-size:9vmin; line-height:1; }
+.game-card .icon { font-size:9vmin; line-height:1; height:11vmin; display:flex; align-items:center; justify-content:center; }
+.game-card .icon .ico { width:11vmin; height:11vmin; }
 .game-card .name { font-size:3.2vmin; font-weight:bold; }
 .game-card .stars { font-size:2.6vmin; min-height:3vmin; color:#f5a300; }
 

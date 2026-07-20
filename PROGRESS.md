@@ -46,8 +46,10 @@ test er lagt til. Grafik (emoji) og lyd (enheds-TTS) opgraderes i I2–I4.
   `assets/font/OFL-ABeeZee.txt` (krediteres i I6).
 - Verificeret med skærmbilleder af alle 8 spil + forside; build 52 KB, ingen
   konsolfejl, alle 10 logik-tests + typecheck + røgtest grønt.
-- *Note:* de 8 kategori-ikoner på forsidens spil-kort er stadig emoji (indgik
-  ikke i asset-listen på ~45) – kan tegnes som grafik-trin-2-polish senere.
+- **Opdatering:** de 8 kategori-ikoner på forsidens spil-kort er nu også tegnet
+  som egen SVG (`spil-bogstav`, `spil-tal`, `spil-form`, `spil-memory`,
+  `spil-skygge`, `spil-dyr`, `spil-rim`, `spil-spor`) – forsiden er dermed 100 %
+  egen grafik uden emoji. I alt ~56 symboler i spritesheetet.
 
 ## I3 – Lyd-kode (færdig)
 
