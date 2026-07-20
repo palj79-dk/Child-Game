@@ -88,6 +88,8 @@ export function initUI() {
     $("settings")?.classList.remove("active");
     goHome();
   });
+  $("aboutBtn")?.addEventListener("pointerdown", () => $("about")?.classList.add("active"));
+  $("aboutClose")?.addEventListener("pointerdown", () => $("about")?.classList.remove("active"));
   $("voiceToggle")?.addEventListener("pointerdown", () => {
     store.voiceOn = !store.voiceOn;
     const vt = $("voiceToggle");

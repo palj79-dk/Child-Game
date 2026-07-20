@@ -10,7 +10,7 @@ verifikation (logik-tests + Playwright-røgtest) og et eksporteret snapshot.
 | **I3 Lyd-kode** | `audio/manifest.json`, AudioManager (kø/preload/fallback), integration, QA | ✅ færdig |
 | **I4 Lyd-render** | Piper TTS → `.mp3` (HuggingFace) | ✅ færdig |
 | **I5 Optimeringer** | O1–O7, T1–T4 | ✅ færdig |
-| **I6 Play-klargøring** | PWA-manifest, ikoner, kreditering, privatlivspolitik | ⏳ |
+| **I6 Play-klargøring** | PWA-manifest, ikoner, kreditering, privatlivspolitik | ✅ færdig |
 
 ## I1 – Fundament (færdig)
 
@@ -114,3 +114,25 @@ Tilgængelighed:
 - **T4** langt-tryk: `contextmenu` forhindret + `-webkit-touch-callout:none`.
 
 14 logik-tests grønne (inkl. O1/O2/O5), typecheck + røgtest grønt.
+
+## I6 – Play-klargøring (færdig)
+
+- **PWA-manifest** (`src/manifest.webmanifest`): navn, landscape, standalone,
+  tema-/baggrundsfarve, kategorier (education/kids/games).
+- **App-ikoner** genereret fra egen SVG (`tools/gen_icons.mjs` → Chromium-render):
+  192, 512 og maskable-512 + favicon. Maskotten "Ravnen Rikke" på blå baggrund.
+  Genbruges som Capacitor-ikoner.
+- **Service worker** (`src/sw.js`): cacher app-skallen så PWA-udgaven virker
+  offline; registreres kun over http(s) (ikke `file://`).
+- **Build** kopierer nu manifest + sw.js + `icons/` ved siden af bundlen og
+  skriver også `build/index.html` (så `start_url:"."` virker).
+- **Privatlivspolitik** på dansk og engelsk (`docs/privatlivspolitik.md`,
+  `docs/privacy-policy.md`): “indsamler ingen data”, klar til Play Console.
+- **Kreditering** (`CREDITS.md`): ABeeZee (OFL), Piper (MIT), egen SVG, esbuild,
+  Playwright, fontTools, lameenc.
+- **I appen:** ny “Om & privatliv”-skærm bag forældre-gaten med resumé af
+  privatliv + kreditering.
+- **Capacitor-guide** (`docs/CAPACITOR.md`): præcise trin til AAB + Play Console
+  (fase 2-3 i `PLAN.md`).
+
+Appen er hermed teknisk klar til Capacitor-pakning og Google Play-forløbet.

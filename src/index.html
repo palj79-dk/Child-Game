@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Leg &amp; Lær – dansk læringsspil for 3-6 årige</title>
+<meta name="description" content="Otte danske minispil for 3-6-årige. Offline, reklamefrit, uden dataindsamling.">
+<meta name="theme-color" content="#1d6fb8">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <!--STYLE--><link rel="stylesheet" href="styles.css"><!--/STYLE-->
 </head>
 <body>
@@ -66,7 +71,30 @@
     <span>Nulstil alle stjerner:</span>
     <button class="big-btn" id="resetBtn" style="background:#c0392b;box-shadow:0 5px 0 #8e2a1f;">Nulstil</button>
   </div>
-  <button class="big-btn blue" id="settingsClose">Tilbage til spillet</button>
+  <div class="settings-actions">
+    <button class="big-btn" id="aboutBtn" style="background:#5b6b8c;box-shadow:0 5px 0 #3f4a63;">Om &amp; privatliv</button>
+    <button class="big-btn blue" id="settingsClose">Tilbage til spillet</button>
+  </div>
+</div>
+
+<!-- ============ OM & PRIVATLIV ============ -->
+<div id="about">
+  <h2>Om &amp; privatliv</h2>
+  <div class="about-body">
+    <p><strong>Leg &amp; Lær</strong> er et dansk læringsspil for 3-6-årige med otte
+       minispil: bogstaver, tal, farver &amp; former, hukommelse, skygger, dyrelyde,
+       rim og at spore tal og bogstaver.</p>
+    <p><strong>Privatliv:</strong> Appen indsamler ingen data, viser ingen reklamer,
+       har ingen konti og virker helt offline. Stjerner og indstillinger gemmes kun
+       på denne enhed og kan slettes med “Nulstil alle stjerner”.</p>
+    <p><strong>Lyd:</strong> Dansk tale er indspillet på forhånd med Piper (fri neural
+       TTS) og bundtet i appen. <strong>Skrift:</strong> ABeeZee (SIL OFL 1.1).
+       <strong>Grafik:</strong> tegnet fra bunden til projektet. Effektlyde laves i
+       browseren.</p>
+    <p class="about-fine">Version 1.0 · Kontakt: peter@lund-jacobsen.dk ·
+       Fuld privatlivspolitik og kreditering følger med udgivelsen.</p>
+  </div>
+  <button class="big-btn blue" id="aboutClose">Tilbage</button>
 </div>
 
 <!--SCRIPT--><script type="module" src="main.js"></script><!--/SCRIPT-->

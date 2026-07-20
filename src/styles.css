@@ -150,14 +150,19 @@ button { font-family:inherit; border:none; cursor:pointer; background:none; }
 .confetti { position:absolute; top:-4vmin; font-size:4vmin; animation:fall linear forwards; z-index:21; pointer-events:none; }
 @keyframes fall { to { transform:translateY(115vh) rotate(720deg); } }
 
-/* ====== Forældre-gate + indstillinger ====== */
-#gate, #settings {
+/* ====== Forældre-gate + indstillinger + om ====== */
+#gate, #settings, #about {
   position:absolute; inset:0; display:none; flex-direction:column; align-items:center;
   justify-content:center; gap:3vmin; background:rgba(43,58,85,.92); color:#fff; z-index:30;
-  text-align:center; padding:4vmin;
+  text-align:center; padding:4vmin; overflow:auto;
 }
-#gate.active, #settings.active { display:flex; }
+#gate.active, #settings.active, #about.active { display:flex; }
 #gate p, #settings p { font-size:3vmin; max-width:80vmin; }
+.settings-actions { display:flex; gap:3vmin; flex-wrap:wrap; justify-content:center; }
+#about .about-body { max-width:90vmin; display:flex; flex-direction:column; gap:1.8vmin; }
+#about p { font-size:2.7vmin; line-height:1.4; }
+#about .about-fine { font-size:2.2vmin; opacity:.8; }
+#about h2 { font-size:4.5vmin; }
 #holdBtn { font-size:3.5vmin; font-weight:bold; background:#ffd23e; color:#2b3a55;
   border-radius:3vmin; padding:3vmin 6vmin; position:relative; overflow:hidden; }
 #holdFill { position:absolute; left:0; top:0; bottom:0; width:0; background:rgba(58,161,79,.55); }

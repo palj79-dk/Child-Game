@@ -6,7 +6,7 @@
    Kør: npm run build  →  build/laeringsspil.html
    ===================================================================== */
 import { build } from "esbuild";
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync, cpSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -62,8 +62,18 @@ async function main() {
   mkdirSync(outDir, { recursive: true });
   const outFile = join(outDir, "laeringsspil.html");
   writeFileSync(outFile, html);
+  // også en index.html så PWA'ens start_url "." virker
+  writeFileSync(join(outDir, "index.html"), html);
+
+  // 5) Kopiér PWA-aktiver ved siden af bundlen (manifest, service worker, ikoner)
+  for (const f of ["manifest.webmanifest", "sw.js"]) {
+    if (existsSync(join(srcDir, f))) copyFileSync(join(srcDir, f), join(outDir, f));
+  }
+  const iconsSrc = join(root, "assets", "icons");
+  if (existsSync(iconsSrc)) cpSync(iconsSrc, join(outDir, "icons"), { recursive: true });
+
   const kb = (Buffer.byteLength(html) / 1024).toFixed(1);
-  console.log(`✔ Bygget ${outFile} (${kb} KB)`);
+  console.log(`✔ Bygget ${outFile} (${kb} KB) + PWA-aktiver (manifest, sw.js, icons/)`);
 }
 
 main().catch((e) => {
