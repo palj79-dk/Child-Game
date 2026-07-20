@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm install
+      - name: Logik-tests (Node)
+        run: npm test
+      - name: Typecheck (JSDoc + ts-check)
+        run: npm run typecheck
+      - name: Byg enkelt-fil-bundle
+        run: npm run build
+      - name: Installer Chromium til Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Røgtest (Playwright)
+        run: npm run smoke
+      - name: Tjek lyd-manifest ↔ filer (hvis lyd findes)
+        run: npm run check-audio --if-present
+      - name: Upload bundle-artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: laeringsspil-bundle
+          path: build/laeringsspil.html

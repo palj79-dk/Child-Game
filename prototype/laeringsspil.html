@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Leg &amp; Lær – dansk læringsspil for 3-6 årige</title>
+<style>
+  /* ====== Grundlag ====== */
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { height:100%; overflow:hidden; }
+  body {
+    font-family:"Comic Sans MS","Chalkboard SE","Segoe UI",system-ui,sans-serif;
+    background:linear-gradient(180deg,#aee7ff 0%,#e8fbff 60%,#d8f7d0 100%);
+    color:#2b3a55; user-select:none; -webkit-user-select:none; touch-action:manipulation;
+  }
+  button { font-family:inherit; border:none; cursor:pointer; background:none; }
+
+  .screen { position:absolute; inset:0; display:none; flex-direction:column; padding:2vmin; }
+  .screen.active { display:flex; }
+
+  /* ====== Forside ====== */
+  #home h1 { text-align:center; font-size:6vmin; color:#1d6fb8; text-shadow:0 2px 0 #fff; margin:1vmin 0; }
+  #home .subtitle { text-align:center; font-size:3vmin; color:#4a6a8a; margin-bottom:2vmin; }
+  #menu {
+    flex:1; display:grid; gap:2.5vmin; align-content:center;
+    grid-template-columns:repeat(3,1fr); max-width:170vmin; margin:0 auto; width:100%;
+  }
+  @media (orientation:portrait) { #menu { grid-template-columns:repeat(2,1fr); } }
+  .game-card {
+    background:#fff; border-radius:4vmin; box-shadow:0 6px 0 rgba(0,0,0,.12);
+    padding:2.5vmin; text-align:center; min-height:24vmin;
+    display:flex; flex-direction:column; justify-content:center; gap:1vmin;
+    transition:transform .1s;
+  }
+  .game-card:active { transform:scale(.95); }
+  .game-card .icon { font-size:9vmin; line-height:1; }
+  .game-card .name { font-size:3.2vmin; font-weight:bold; }
+  .game-card .stars { font-size:2.6vmin; min-height:3vmin; color:#f5a300; }
+
+  #gearBtn {
+    position:absolute; top:2vmin; right:2vmin; font-size:5vmin; opacity:.55;
+    padding:1.5vmin; border-radius:50%;
+  }
+
+  /* ====== Spilskærm ====== */
+  #game { gap:1.5vmin; }
+  #gameTop { display:flex; align-items:center; gap:2vmin; }
+  .round-btn {
+    font-size:5vmin; background:#fff; border-radius:50%; width:10vmin; height:10vmin;
+    box-shadow:0 4px 0 rgba(0,0,0,.12); flex:none; display:flex; align-items:center; justify-content:center;
+  }
+  .round-btn:active { transform:scale(.92); }
+  #progress { flex:1; display:flex; gap:1.2vmin; justify-content:center; }
+  #progress .dot {
+    width:4vmin; height:4vmin; border-radius:50%; background:#fff;
+    box-shadow:inset 0 0 0 .5vmin #cfe3f0;
+  }
+  #progress .dot.done { background:#ffd23e; box-shadow:inset 0 0 0 .5vmin #f5a300; }
+
+  #prompt {
+    text-align:center; font-size:4vmin; font-weight:bold; color:#1d6fb8;
+    min-height:5vmin; padding:0 2vmin;
+  }
+  #stage {
+    flex:1; display:flex; flex-wrap:wrap; align-content:center; justify-content:center;
+    gap:3vmin; padding:1vmin;
+  }
+
+  /* Svar-kort: store trykflader til små fingre */
+  .choice {
+    background:#fff; border-radius:3.5vmin; box-shadow:0 6px 0 rgba(0,0,0,.12);
+    min-width:22vmin; min-height:22vmin; font-size:11vmin; line-height:1;
+    display:flex; align-items:center; justify-content:center; padding:2vmin;
+    transition:transform .1s;
+  }
+  .choice:active { transform:scale(.93); }
+  .choice.letter, .choice.number { font-weight:bold; color:#2b3a55; }
+  .choice.wrong { animation:wobble .5s; }
+  @keyframes wobble {
+    0%,100% { transform:translateX(0); }
+    25% { transform:translateX(-2vmin) rotate(-3deg); }
+    75% { transform:translateX(2vmin) rotate(3deg); }
+  }
+  .idle-hint { animation:pulseHint 1.2s ease-in-out infinite; }
+  @keyframes pulseHint {
+    0%,100% { box-shadow:0 6px 0 rgba(0,0,0,.12); }
+    50% { box-shadow:0 6px 0 rgba(0,0,0,.12), 0 0 0 1.5vmin rgba(255,210,62,.65); }
+  }
+
+  /* Tæl med: dyreflok */
+  #herd { width:100%; text-align:center; font-size:9vmin; line-height:1.25; padding:0 4vmin; }
+
+  /* Skygge-leg */
+  .shadow-target { font-size:16vmin; filter:brightness(0); opacity:.85; }
+
+  /* Rim-tid */
+  .rim-target { width:100%; text-align:center; }
+  .rim-target .emo { font-size:14vmin; line-height:1; }
+  .rim-target .word { font-size:4vmin; font-weight:bold; color:#1d6fb8; }
+  .choice .rim-word { font-size:2.8vmin; font-weight:bold; margin-top:.5vmin; }
+  .choice.rim { flex-direction:column; font-size:9vmin; }
+
+  /* Spor tallet/bogstavet */
+  #traceWrap { width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+  #traceWrap svg { height:100%; max-height:60vmin; max-width:90%; touch-action:none;
+    background:#fff; border-radius:4vmin; box-shadow:0 6px 0 rgba(0,0,0,.12); }
+  .trace-path { fill:none; stroke:#dcebf5; stroke-width:11; stroke-linecap:round; stroke-linejoin:round; }
+  .wp { fill:#fff; stroke:#9fc3dd; stroke-width:1.2; }
+  .wp.hit { fill:#3aa14f; stroke:#2b7a3b; }
+  .wp.next { fill:#ffd23e; stroke:#f5a300; animation:wpPulse 1s ease-in-out infinite; }
+  @keyframes wpPulse { 0%,100% { r:5; } 50% { r:7; } }
+
+  /* Vendespil */
+  .mem-card { position:relative; }
+  .mem-card .face { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    border-radius:3.5vmin; backface-visibility:hidden; transition:transform .35s; font-size:10vmin; }
+  .mem-card .back-face { background:#1d6fb8; color:#fff; font-size:7vmin; transform:rotateY(0); }
+  .mem-card .front-face { background:#fff; transform:rotateY(180deg); }
+  .mem-card.open .back-face { transform:rotateY(180deg); }
+  .mem-card.open .front-face { transform:rotateY(0); }
+  .mem-card.matched { pointer-events:none; }
+  .mem-card.matched .front-face { background:#e2f7d9; }
+
+  /* ====== Fest-overlay ====== */
+  #party {
+    position:absolute; inset:0; display:none; flex-direction:column; align-items:center;
+    justify-content:center; gap:3vmin; background:rgba(255,255,255,.75); z-index:20; text-align:center;
+  }
+  #party.active { display:flex; }
+  #party .big-star { font-size:22vmin; animation:pop .6s; }
+  @keyframes pop { 0% { transform:scale(0); } 70% { transform:scale(1.25); } 100% { transform:scale(1); } }
+  #party .msg { font-size:5vmin; font-weight:bold; color:#1d6fb8; }
+  #party .actions { display:flex; gap:4vmin; }
+  .big-btn {
+    font-size:4vmin; font-weight:bold; color:#fff; background:#3aa14f;
+    border-radius:3vmin; padding:2.5vmin 5vmin; box-shadow:0 5px 0 #2b7a3b;
+  }
+  .big-btn.blue { background:#1d6fb8; box-shadow:0 5px 0 #155288; }
+  .big-btn:active { transform:translateY(3px); box-shadow:none; }
+
+  .confetti { position:absolute; top:-4vmin; font-size:4vmin; animation:fall linear forwards; z-index:21; pointer-events:none; }
+  @keyframes fall { to { transform:translateY(115vh) rotate(720deg); } }
+
+  /* ====== Forældre-gate + indstillinger ====== */
+  #gate, #settings {
+    position:absolute; inset:0; display:none; flex-direction:column; align-items:center;
+    justify-content:center; gap:3vmin; background:rgba(43,58,85,.92); color:#fff; z-index:30;
+    text-align:center; padding:4vmin;
+  }
+  #gate.active, #settings.active { display:flex; }
+  #gate p, #settings p { font-size:3vmin; max-width:80vmin; }
+  #holdBtn { font-size:3.5vmin; font-weight:bold; background:#ffd23e; color:#2b3a55;
+    border-radius:3vmin; padding:3vmin 6vmin; position:relative; overflow:hidden; }
+  #holdFill { position:absolute; left:0; top:0; bottom:0; width:0; background:rgba(58,161,79,.55); }
+  #holdBtn span { position:relative; }
+  #settings h2 { font-size:4.5vmin; }
+  .settings-row { display:flex; gap:3vmin; align-items:center; font-size:3.2vmin; }
+</style>
+</head>
+<body>
+
+<!-- ============ FORSIDE ============ -->
+<div id="home" class="screen active">
+  <button id="gearBtn" aria-label="Forældre">⚙️</button>
+  <h1>🐦 Leg &amp; Lær</h1>
+  <div class="subtitle">Tryk på et spil og leg med!</div>
+  <div id="menu"></div>
+</div>
+
+<!-- ============ SPIL ============ -->
+<div id="game" class="screen">
+  <div id="gameTop">
+    <button class="round-btn" id="homeBtn" aria-label="Hjem">🏠</button>
+    <div id="progress"></div>
+    <button class="round-btn" id="repeatBtn" aria-label="Hør igen">🔊</button>
+  </div>
+  <div id="prompt"></div>
+  <div id="stage"></div>
+</div>
+
+<!-- ============ FEST ============ -->
+<div id="party">
+  <div class="big-star">⭐</div>
+  <div class="msg" id="partyMsg">Flot klaret!</div>
+  <div class="actions">
+    <button class="big-btn" id="againBtn">Igen 🔁</button>
+    <button class="big-btn blue" id="partyHomeBtn">Hjem 🏠</button>
+  </div>
+</div>
+
+<!-- ============ FORÆLDRE-GATE ============ -->
+<div id="gate">
+  <p>Til de voksne: hold knappen inde, til den er fyldt op.</p>
+  <button id="holdBtn"><div id="holdFill"></div><span>Hold inde…</span></button>
+  <button class="big-btn blue" id="gateClose">Tilbage til spillet</button>
+</div>
+
+<!-- ============ INDSTILLINGER ============ -->
+<div id="settings">
+  <h2>Forældre og indstillinger</h2>
+  <p>Leg &amp; Lær er en prototype på et dansk læringsspil for 3-6-årige.
+     Appen virker offline, viser ingen reklamer og indsamler ingen data.
+     Stjerner gemmes kun på denne enhed.</p>
+  <div class="settings-row">
+    <span>Oplæsning:</span>
+    <button class="big-btn" id="voiceToggle">Til</button>
+  </div>
+  <div class="settings-row">
+    <span>Nulstil alle stjerner:</span>
+    <button class="big-btn" id="resetBtn" style="background:#c0392b;box-shadow:0 5px 0 #8e2a1f;">Nulstil</button>
+  </div>
+  <button class="big-btn blue" id="settingsClose">Tilbage til spillet</button>
+</div>
+
+<script>
+"use strict";
+/* =====================================================================
+   Leg & Lær – prototype. Én fil, ingen netværkskald, ingen dataindsamling.
+   Tale: Web Speech API (da-DK) – i produktionen erstattes af indspillede
+   danske speaks (se SPECIFIKATION.md, afsnit 6.1).
+   ===================================================================== */
+
+/* ---------- Lagring (kun lokalt) ---------- */
+const store = {
+  data: JSON.parse(localStorage.getItem("legr") || "{}"),
+  save() { localStorage.setItem("legr", JSON.stringify(this.data)); },
+  stars(id) { return (this.data.stars || {})[id] || 0; },
+  addStar(id) {
+    this.data.stars = this.data.stars || {};
+    this.data.stars[id] = this.stars(id) + 1;
+    this.save();
+  },
+  get voiceOn() { return this.data.voiceOn !== false; },
+  set voiceOn(v) { this.data.voiceOn = v; this.save(); },
+  reset() { this.data = {}; this.save(); }
+};
+
+/* ---------- Tale (dansk) ---------- */
+let daVoice = null;
+function pickVoice() {
+  const vs = speechSynthesis.getVoices();
+  daVoice = vs.find(v => v.lang && v.lang.toLowerCase().startsWith("da")) || null;
+}
+if ("speechSynthesis" in window) {
+  pickVoice();
+  speechSynthesis.onvoiceschanged = pickVoice;
+}
+function speak(text) {
+  if (!store.voiceOn || !("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "da-DK";
+  if (daVoice) u.voice = daVoice;
+  u.rate = 0.85;  /* roligt tempo til små børn */
+  u.pitch = 1.1;
+  speechSynthesis.speak(u);
+}
+
+/* ---------- Effektlyde (Web Audio, ingen filer) ---------- */
+let audioCtx = null;
+function tone(freq, t0, dur, type = "sine", gain = 0.18) {
+  const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+  o.type = type; o.frequency.value = freq;
+  g.gain.setValueAtTime(gain, audioCtx.currentTime + t0);
+  g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + t0 + dur);
+  o.connect(g).connect(audioCtx.destination);
+  o.start(audioCtx.currentTime + t0); o.stop(audioCtx.currentTime + t0 + dur);
+}
+function ensureAudio() {
+  if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+  if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+}
+function sfxRight() { if (!audioCtx) return; [523, 659, 784].forEach((f, i) => tone(f, i * 0.09, 0.25)); }
+function sfxWrong() { if (!audioCtx) return; tone(180, 0, 0.3, "triangle", 0.12); }
+function sfxStar()  { if (!audioCtx) return; [523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, i * 0.1, 0.35)); }
+function sfxFlip()  { if (!audioCtx) return; tone(700, 0, 0.08, "square", 0.05); }
+
+/* ---------- Hjælpere ---------- */
+const $ = id => document.getElementById(id);
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pick = a => a[Math.random() * a.length | 0];
+const pickN = (a, n) => shuffle(a.slice()).slice(0, n);
+const ros = ["Flot!", "Sikke godt!", "Super!", "Hurra for dig!", "Nemlig!", "Godt klaret!"];
+
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  $(id).classList.add("active");
+}
+
+/* Puls-hint på svarmuligheder efter 6 sek. inaktivitet */
+let hintTimer = null;
+function armHint() {
+  clearTimeout(hintTimer);
+  hintTimer = setTimeout(() => {
+    document.querySelectorAll("#stage .choice").forEach(c => c.classList.add("idle-hint"));
+  }, 6000);
+}
+function clearHint() {
+  clearTimeout(hintTimer);
+  document.querySelectorAll("#stage .choice").forEach(c => c.classList.remove("idle-hint"));
+}
+
+/* ---------- Indholdsdata (dansk) ---------- */
+const LETTERS = "ABCDEFGHIJKLMNOPRSTUVYÆØÅ".split("");
+const ANIMALS = [
+  { e: "🐄", navn: "koen",      ubest: "en ko",      flertal: "køer",   lyd: "muh" },
+  { e: "🐑", navn: "fåret",     ubest: "et får",     flertal: "får",    lyd: "mæh" },
+  { e: "🐷", navn: "grisen",    ubest: "en gris",    flertal: "grise",  lyd: "øf øf" },
+  { e: "🐴", navn: "hesten",    ubest: "en hest",    flertal: "heste",  lyd: "vrinsk" },
+  { e: "🐔", navn: "hønen",     ubest: "en høne",    flertal: "høns",   lyd: "gok gok" },
+  { e: "🦆", navn: "anden",     ubest: "en and",     flertal: "ænder",  lyd: "rap rap" },
+  { e: "🐶", navn: "hunden",    ubest: "en hund",    flertal: "hunde",  lyd: "vov vov" },
+  { e: "🐱", navn: "katten",    ubest: "en kat",     flertal: "katte",  lyd: "miav" },
+  { e: "🐸", navn: "frøen",     ubest: "en frø",     flertal: "frøer",  lyd: "kvæk" },
+  { e: "🐝", navn: "bien",      ubest: "en bi",      flertal: "bier",   lyd: "summ" }
+];
+const COLORS = [
+  { navn: "røde",   css: "#e74c3c" },
+  { navn: "blå",    css: "#2980d9" },
+  { navn: "gule",   css: "#f1c40f" },
+  { navn: "grønne", css: "#2ecc71" },
+  { navn: "lilla",  css: "#9b59b6" },
+  { navn: "orange", css: "#e67e22" }
+];
+const SHAPES = [
+  { navn: "cirkel",  tegn: c => `<circle cx="50" cy="50" r="40" fill="${c}"/>` },
+  { navn: "firkant", tegn: c => `<rect x="12" y="12" width="76" height="76" rx="8" fill="${c}"/>` },
+  { navn: "trekant", tegn: c => `<polygon points="50,10 92,88 8,88" fill="${c}"/>` },
+  { navn: "stjerne", tegn: c => `<polygon points="50,6 61,38 95,38 67,58 77,92 50,71 23,92 33,58 5,38 39,38" fill="${c}"/>` },
+  { navn: "hjerte",  tegn: c => `<path d="M50 88 C10 58 10 24 32 20 C44 18 50 30 50 30 C50 30 56 18 68 20 C90 24 90 58 50 88Z" fill="${c}"/>` }
+];
+const THINGS = ["🍎","🌳","🚗","☂️","🦋","🐘","🚲","🌻","🐠","✈️","🧸","🥕","🍄","⛵","🦀"];
+
+/* Kuraterede danske rim-par (ord der findes som emoji) */
+const RIM = [
+  { ord: "kat",  e: "🐱", rimOrd: "hat",   rimE: "🎩" },
+  { ord: "mus",  e: "🐭", rimOrd: "hus",   rimE: "🏠" },
+  { ord: "ko",   e: "🐄", rimOrd: "sko",   rimE: "👟" },
+  { ord: "gris", e: "🐷", rimOrd: "is",    rimE: "🍦" },
+  { ord: "sol",  e: "☀️", rimOrd: "stol",  rimE: "🪑" },
+  { ord: "hund", e: "🐶", rimOrd: "mund",  rimE: "👄" },
+  { ord: "and",  e: "🦆", rimOrd: "spand", rimE: "🪣" },
+  { ord: "bi",   e: "🐝", rimOrd: "ski",   rimE: "🎿" },
+  { ord: "frø",  e: "🐸", rimOrd: "ø",     rimE: "🏝️" },
+  { ord: "bold", e: "⚽", rimOrd: "trold", rimE: "🧌" }
+];
+
+/* Sporingsbaner (viewBox 0 0 100 100). Flere delstreger er ok –
+   barnet må gerne løfte fingeren og fortsætte. */
+const GLYPHS = {
+  "1": "M40,25 L55,12 L55,88",
+  "2": "M32,32 Q32,12 50,12 Q68,12 68,32 Q68,45 40,70 L32,88 L70,88",
+  "3": "M32,22 Q50,8 62,22 Q72,35 52,47 Q74,58 64,76 Q52,92 32,78",
+  "4": "M58,12 L28,58 L74,58 M58,12 L58,88",
+  "5": "M68,12 L36,12 L33,45 Q52,38 62,50 Q72,65 58,80 Q45,90 32,78",
+  "7": "M30,14 L70,14 L46,88",
+  "I": "M50,12 L50,88",
+  "L": "M36,12 L36,88 L70,88",
+  "T": "M26,14 L74,14 M50,14 L50,88",
+  "V": "M28,12 L50,88 L72,12",
+  "O": "M50,12 Q22,12 22,50 Q22,88 50,88 Q78,88 78,50 Q78,12 50,12",
+  "A": "M26,88 L50,12 L74,88 M36,62 L64,62",
+  "S": "M66,22 Q50,8 38,20 Q28,34 48,46 Q70,56 62,74 Q50,90 32,76",
+  "M": "M26,88 L26,14 L50,55 L74,14 L74,88"
+};
+const GLYPH_LEVELS = [
+  ["1", "7", "2", "3"],                       /* tal først */
+  ["4", "5", "I", "L", "T", "V", "O"],        /* + flere tal og lette bogstaver */
+  ["A", "S", "M"]                             /* + svære bogstaver */
+];
+
+/* ---------- Spilmotor: 5 opgaver pr. runde → stjerne ---------- */
+const ROUND_LEN = 5;
+let current = null;   /* aktivt spil-objekt */
+let solved = 0;
+let locked = false;   /* debounce mens feedback afspilles */
+
+function renderProgress() {
+  $("progress").innerHTML = Array.from({ length: ROUND_LEN },
+    (_, i) => `<div class="dot ${i < solved ? "done" : ""}"></div>`).join("");
+}
+
+function startGame(game) {
+  current = game;
+  solved = 0;
+  locked = false;
+  showScreen("game");
+  nextTask();
+}
+
+function nextTask() {
+  locked = false;
+  renderProgress();
+  $("stage").innerHTML = "";
+  current.task();          /* spillet bygger scenen og sætter current.say */
+  $("prompt").textContent = current.promptText;
+  speak(current.say);
+  armHint();
+}
+
+function answer(el, isRight) {
+  if (locked) return;
+  clearHint();
+  if (isRight) {
+    locked = true;
+    sfxRight();
+    const r = pick(ros);
+    speak(r);
+    el && (el.style.background = "#e2f7d9");
+    solved++;
+    renderProgress();
+    setTimeout(() => solved >= ROUND_LEN ? finishRound() : nextTask(), 1100);
+  } else {
+    sfxWrong();
+    speak("Prøv igen!");
+    if (el) { el.classList.remove("wrong"); void el.offsetWidth; el.classList.add("wrong"); }
+    armHint();
+  }
+}
+
+function finishRound() {
+  store.addStar(current.id);
+  sfxStar();
+  speak("Hurra! Du har vundet en stjerne!");
+  $("partyMsg").textContent = pick(ros) + " Du fik en stjerne! ⭐";
+  showScreen("game");
+  $("party").classList.add("active");
+  confetti();
+}
+
+function confetti() {
+  const bits = ["🎉","⭐","🎈","✨","🟡","🔵"];
+  for (let i = 0; i < 24; i++) {
+    const s = document.createElement("div");
+    s.className = "confetti";
+    s.textContent = pick(bits);
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.animationDuration = 1.6 + Math.random() * 1.6 + "s";
+    s.style.animationDelay = Math.random() * 0.5 + "s";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 4000);
+  }
+}
+
+/* Sværhedsgrad: flere valgmuligheder jo flere stjerner (3 niveauer) */
+function level(id) { const s = store.stars(id); return s < 3 ? 0 : s < 6 ? 1 : 2; }
+
+function addChoice(html, isRight, cls = "") {
+  const b = document.createElement("button");
+  b.className = "choice " + cls;
+  b.innerHTML = html;
+  b.addEventListener("pointerdown", () => answer(b, isRight));
+  $("stage").appendChild(b);
+  return b;
+}
+
+/* =====================================================================
+   MINISPIL
+   ===================================================================== */
+const GAMES = [
+
+  /* 1 ─ Bogstav-jagt */
+  {
+    id: "bogstav", navn: "Bogstav-jagt", ikon: "🔤",
+    task() {
+      const n = [3, 4, 6][level(this.id)];
+      const opts = pickN(LETTERS, n);
+      const target = pick(opts);
+      this.promptText = `Find bogstavet ${target}`;
+      this.say = `Find bogstavet ${target}`;
+      shuffle(opts).forEach(L => addChoice(L, L === target, "letter"));
+    }
+  },
+
+  /* 2 ─ Tæl med */
+  {
+    id: "tal", navn: "Tæl med", ikon: "🔢",
+    task() {
+      const max = [3, 5, 10][level(this.id)];
+      const n = 1 + (Math.random() * max | 0);
+      const dyr = pick(ANIMALS);
+      const herd = document.createElement("div");
+      herd.id = "herd";
+      herd.textContent = Array(n).fill(dyr.e).join(" ");
+      $("stage").appendChild(herd);
+      const opts = new Set([n]);
+      while (opts.size < 3) opts.add(Math.max(1, Math.min(max, n + (Math.random() < 0.5 ? -1 : 1) * (1 + (Math.random() * 2 | 0)))));
+      shuffle([...opts]).forEach(v => addChoice(String(v), v === n, "number"));
+      this.promptText = `Hvor mange ${dyr.flertal} er der?`;
+      this.say = `Hvor mange ${dyr.flertal} er der? Tæl dem, og tryk på tallet.`;
+    }
+  },
+
+  /* 3 ─ Farver & former */
+  {
+    id: "form", navn: "Farver & former", ikon: "🔺",
+    task() {
+      const lv = level(this.id);
+      const n = [4, 5, 6][lv];
+      const combos = [];
+      SHAPES.forEach(s => COLORS.forEach(c => combos.push({ s, c })));
+      const opts = pickN(combos, n);
+      const t = pick(opts);
+      /* Signal er aldrig kun farve: der spørges altid efter farve OG form */
+      this.promptText = `Tryk på den ${t.c.navn} ${t.s.navn}`;
+      this.say = this.promptText;
+      shuffle(opts).forEach(o => addChoice(
+        `<svg viewBox="0 0 100 100" width="80%" height="80%">${o.s.tegn(o.c.css)}</svg>`,
+        o === t));
+    }
+  },
+
+  /* 4 ─ Vendespil (runden er ét helt spil: alle par fundet = stjerne) */
+  {
+    id: "memory", navn: "Vendespil", ikon: "🃏",
+    task() {
+      const pairs = [3, 4, 6][level(this.id)];
+      solved = 0;  /* progression = fundne par */
+      const deck = shuffle(pickN(ANIMALS, pairs).flatMap(a => [a, a]).map((a, i) => ({ a, key: i })));
+      let openCard = null, busy = false, found = 0;
+      this.promptText = "Find to ens!";
+      this.say = "Vendespil! Vend kortene, og find to ens.";
+      deck.forEach(card => {
+        const b = document.createElement("button");
+        b.className = "choice mem-card";
+        b.innerHTML = `<div class="face back-face">?</div><div class="face front-face">${card.a.e}</div>`;
+        b.addEventListener("pointerdown", () => {
+          if (busy || b.classList.contains("open")) return;
+          sfxFlip();
+          b.classList.add("open");
+          speak(card.a.ubest);
+          if (!openCard) { openCard = b; openCard._animal = card.a; return; }
+          busy = true;
+          if (openCard._animal === card.a) {
+            openCard.classList.add("matched"); b.classList.add("matched");
+            sfxRight();
+            found++;
+            solved = Math.min(ROUND_LEN, Math.round(found / pairs * ROUND_LEN));
+            renderProgress();
+            openCard = null; busy = false;
+            if (found === pairs) { setTimeout(finishRound, 900); }
+          } else {
+            const prev = openCard; openCard = null;
+            setTimeout(() => { prev.classList.remove("open"); b.classList.remove("open"); busy = false; }, 900);
+          }
+        });
+        $("stage").appendChild(b);
+      });
+    }
+  },
+
+  /* 5 ─ Skygge-leg */
+  {
+    id: "skygge", navn: "Skygge-leg", ikon: "👤",
+    task() {
+      const n = [3, 4, 5][level(this.id)];
+      const opts = pickN(THINGS, n);
+      const target = pick(opts);
+      const wrap = document.createElement("div");
+      wrap.style.cssText = "width:100%;text-align:center";
+      wrap.innerHTML = `<span class="shadow-target">${target}</span>`;
+      $("stage").appendChild(wrap);
+      shuffle(opts).forEach(t => addChoice(t, t === target));
+      this.promptText = "Hvem gemmer sig i skyggen?";
+      this.say = "Se på skyggen. Hvilken ting gemmer sig? Tryk på den rigtige.";
+    }
+  },
+
+  /* 6 ─ Dyrelyde */
+  {
+    id: "dyr", navn: "Dyrelyde", ikon: "🐄",
+    task() {
+      const n = [3, 4, 6][level(this.id)];
+      const opts = pickN(ANIMALS, n);
+      const t = pick(opts);
+      this.promptText = `Hvilket dyr siger ${t.lyd}?`;
+      this.say = `Hvilket dyr siger ${t.lyd}? ... ${t.lyd}!`;
+      shuffle(opts).forEach(a => addChoice(a.e, a === t));
+    }
+  },
+
+  /* 7 ─ Rim-tid */
+  {
+    id: "rim", navn: "Rim-tid", ikon: "🎵",
+    task() {
+      const nDistract = [2, 3, 4][level(this.id)];
+      const t = pick(RIM);
+      const distractors = pickN(RIM.filter(r => r !== t), nDistract)
+        .map(r => (Math.random() < 0.5 ? { ord: r.ord, e: r.e } : { ord: r.rimOrd, e: r.rimE }));
+      const opts = shuffle([{ ord: t.rimOrd, e: t.rimE, rigtig: true }, ...distractors]);
+      const target = document.createElement("div");
+      target.className = "rim-target";
+      target.innerHTML = `<div class="emo">${t.e}</div><div class="word">${t.ord}</div>`;
+      $("stage").appendChild(target);
+      opts.forEach(o => addChoice(`${o.e}<div class="rim-word">${o.ord}</div>`, !!o.rigtig, "rim"));
+      this.promptText = `Hvad rimer på ${t.ord}?`;
+      this.say = `Hvad rimer på ${t.ord}? ... ${t.ord}. Tryk på det, der rimer.`;
+    }
+  },
+
+  /* 8 ─ Spor tallet/bogstavet */
+  {
+    id: "spor", navn: "Spor & skriv", ikon: "✏️",
+    task() {
+      const pool = GLYPH_LEVELS.slice(0, level(this.id) + 1).flat();
+      const g = pick(pool);
+      const erTal = "1234567890".includes(g);
+      this.promptText = erTal ? `Skriv tallet ${g}` : `Skriv bogstavet ${g}`;
+      this.say = this.promptText + ". Følg prikkerne med fingeren.";
+
+      const wrap = document.createElement("div");
+      wrap.id = "traceWrap";
+      wrap.innerHTML = `<svg viewBox="0 0 100 100">
+          <path class="trace-path" d="${GLYPHS[g]}"/>
+        </svg>`;
+      $("stage").appendChild(wrap);
+      const svg = wrap.querySelector("svg");
+      const path = svg.querySelector(".trace-path");
+
+      /* Prikker langs banen */
+      const len = path.getTotalLength();
+      const n = Math.max(8, Math.min(22, Math.round(len / 11)));
+      const pts = Array.from({ length: n }, (_, i) => {
+        const p = path.getPointAtLength(len * i / (n - 1));
+        return { x: p.x, y: p.y };
+      });
+      const dots = pts.map(p => {
+        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        c.setAttribute("cx", p.x); c.setAttribute("cy", p.y); c.setAttribute("r", 5);
+        c.setAttribute("class", "wp");
+        svg.appendChild(c);
+        return c;
+      });
+      let next = 0;
+      dots[0].classList.add("next");
+
+      const toSvg = e => {
+        const p = svg.createSVGPoint();
+        p.x = e.clientX; p.y = e.clientY;
+        return p.matrixTransform(svg.getScreenCTM().inverse());
+      };
+      let down = false;
+      const HIT = 11;  /* generøs radius til små fingre */
+      const tryHit = e => {
+        if (!down || locked || next >= pts.length) return;
+        const p = toSvg(e);
+        while (next < pts.length &&
+               Math.hypot(p.x - pts[next].x, p.y - pts[next].y) < HIT) {
+          dots[next].classList.remove("next");
+          dots[next].classList.add("hit");
+          sfxFlip();
+          next++;
+          if (next < pts.length) dots[next].classList.add("next");
+        }
+        if (next >= pts.length) { down = false; answer(null, true); }
+      };
+      svg.addEventListener("pointerdown", e => { down = true; tryHit(e); });
+      svg.addEventListener("pointermove", tryHit);
+      ["pointerup", "pointercancel"].forEach(ev => svg.addEventListener(ev, () => { down = false; }));
+    }
+  }
+];
+
+/* =====================================================================
+   Forside, navigation, forældre-gate
+   ===================================================================== */
+function renderMenu() {
+  $("menu").innerHTML = "";
+  GAMES.forEach(g => {
+    const b = document.createElement("button");
+    b.className = "game-card";
+    const s = store.stars(g.id);
+    b.innerHTML = `<div class="icon">${g.ikon}</div><div class="name">${g.navn}</div>
+                   <div class="stars">${s ? "⭐".repeat(Math.min(s, 8)) + (s > 8 ? " +" + (s - 8) : "") : ""}</div>`;
+    b.addEventListener("pointerdown", () => { ensureAudio(); startGame(g); });
+    $("menu").appendChild(b);
+  });
+}
+
+function goHome() {
+  if ("speechSynthesis" in window) speechSynthesis.cancel();
+  clearHint();
+  $("party").classList.remove("active");
+  renderMenu();
+  showScreen("home");
+}
+
+$("homeBtn").addEventListener("pointerdown", goHome);
+$("partyHomeBtn").addEventListener("pointerdown", goHome);
+$("againBtn").addEventListener("pointerdown", () => { $("party").classList.remove("active"); startGame(current); });
+$("repeatBtn").addEventListener("pointerdown", () => { ensureAudio(); speak(current ? current.say : ""); });
+
+/* Forældre-gate: hold knappen i 3 sekunder */
+let holdT0 = null, holdRAF = null;
+$("gearBtn").addEventListener("pointerdown", () => { $("gate").classList.add("active"); });
+$("gateClose").addEventListener("pointerdown", () => $("gate").classList.remove("active"));
+function holdStep() {
+  const p = Math.min(1, (performance.now() - holdT0) / 3000);
+  $("holdFill").style.width = p * 100 + "%";
+  if (p >= 1) {
+    $("gate").classList.remove("active");
+    $("holdFill").style.width = "0";
+    $("voiceToggle").textContent = store.voiceOn ? "Til" : "Fra";
+    $("settings").classList.add("active");
+  } else holdRAF = requestAnimationFrame(holdStep);
+}
+$("holdBtn").addEventListener("pointerdown", e => { e.preventDefault(); holdT0 = performance.now(); holdRAF = requestAnimationFrame(holdStep); });
+["pointerup", "pointerleave", "pointercancel"].forEach(ev =>
+  $("holdBtn").addEventListener(ev, () => { cancelAnimationFrame(holdRAF); $("holdFill").style.width = "0"; }));
+
+$("settingsClose").addEventListener("pointerdown", () => { $("settings").classList.remove("active"); goHome(); });
+$("voiceToggle").addEventListener("pointerdown", () => {
+  store.voiceOn = !store.voiceOn;
+  $("voiceToggle").textContent = store.voiceOn ? "Til" : "Fra";
+});
+$("resetBtn").addEventListener("pointerdown", () => { store.reset(); renderMenu(); });
+
+renderMenu();
+</script>
+</body>
+</html>

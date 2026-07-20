@@ -1,0 +1,270 @@
+/* ====== Grundlag ====== */
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html, body { height:100%; overflow:hidden; }
+body {
+  font-family:"Comic Sans MS","Chalkboard SE","Segoe UI",system-ui,sans-serif;
+  background:linear-gradient(180deg,#aee7ff 0%,#e8fbff 60%,#d8f7d0 100%);
+  color:#2b3a55; user-select:none; -webkit-user-select:none; touch-action:manipulation;
+  -webkit-touch-callout:none; /* T4: intet langt-tryk-kontekstmenu på iOS/Android */
+}
+button { font-family:inherit; border:none; cursor:pointer; background:none; }
+
+.screen { position:absolute; inset:0; display:none; flex-direction:column; padding:2vmin; }
+.screen.active { display:flex; }
+
+/* ====== Forside ====== */
+#home h1 { text-align:center; font-size:6vmin; color:#1d6fb8; text-shadow:0 2px 0 #fff; margin:1vmin 0; }
+#home .subtitle { text-align:center; font-size:3vmin; color:#4a6a8a; margin-bottom:2vmin; }
+#menu {
+  flex:1; display:grid; gap:2.5vmin; align-content:center;
+  grid-template-columns:repeat(3,1fr); max-width:170vmin; margin:0 auto; width:100%;
+}
+@media (orientation:portrait) { #menu { grid-template-columns:repeat(2,1fr); } }
+.game-card {
+  background:#fff; border-radius:4vmin; box-shadow:0 6px 0 rgba(0,0,0,.12);
+  padding:2.5vmin; text-align:center; min-height:24vmin;
+  display:flex; flex-direction:column; justify-content:center; gap:1vmin;
+  transition:transform .1s;
+}
+.game-card:active { transform:scale(.95); }
+.game-card .icon { font-size:9vmin; line-height:1; height:11vmin; display:flex; align-items:center; justify-content:center; }
+.game-card .icon .ico { width:11vmin; height:11vmin; }
+.game-card .name { font-size:3.2vmin; font-weight:bold; }
+.game-card .stars { font-size:2.6vmin; min-height:3vmin; color:#f5a300; }
+
+#gearBtn {
+  position:absolute; top:2vmin; right:2vmin; font-size:5vmin; opacity:.55;
+  padding:1.5vmin; border-radius:50%;
+}
+
+/* ====== Spilskærm ====== */
+#game { gap:1.5vmin; }
+#gameTop { display:flex; align-items:center; gap:2vmin; }
+.round-btn {
+  font-size:5vmin; background:#fff; border-radius:50%; width:10vmin; height:10vmin;
+  box-shadow:0 4px 0 rgba(0,0,0,.12); flex:none; display:flex; align-items:center; justify-content:center;
+}
+.round-btn:active { transform:scale(.92); }
+#progress { flex:1; display:flex; gap:1.2vmin; justify-content:center; }
+#progress .dot {
+  width:4vmin; height:4vmin; border-radius:50%; background:#fff;
+  box-shadow:inset 0 0 0 .5vmin #cfe3f0;
+}
+#progress .dot.done { background:#ffd23e; box-shadow:inset 0 0 0 .5vmin #f5a300; }
+
+#prompt {
+  text-align:center; font-size:4vmin; font-weight:bold; color:#1d6fb8;
+  min-height:5vmin; padding:0 2vmin;
+}
+#stage {
+  flex:1; min-height:0; display:flex; flex-wrap:wrap; align-content:center; justify-content:center;
+  gap:3vmin; padding:1vmin;
+}
+
+/* ====== Egne SVG-ikoner (icon()-laget) ====== */
+.ico { width:100%; height:100%; display:block; }
+.choice .ico { width:78%; height:78%; margin:auto; }
+#home h1 .ico { width:8vmin; height:8vmin; display:inline-block; vertical-align:middle; }
+#herd .ico { width:12vmin; height:12vmin; display:inline-block; vertical-align:middle; margin:.5vmin; }
+.mem-card .front-face .ico { width:74%; height:74%; }
+.rim-target .emo .ico { width:20vmin; height:20vmin; margin:0 auto; }
+.choice.rim .ico { width:13vmin; height:13vmin; }
+.shadow-target .ico { width:100%; height:100%; }
+#party .big-star .ico { width:22vmin; height:22vmin; }
+.round-btn .ico { width:60%; height:60%; }
+#gearBtn .ico { width:5vmin; height:5vmin; }
+.big-btn .ico.ib { width:4vmin; height:4vmin; display:inline-block; vertical-align:middle; }
+
+/* Svar-kort: store trykflader til små fingre.
+   FAST width/height (ikke min-*) så et inline-SVG ikke kan sprænge kortet til
+   sin default-størrelse (~300px). #stage tilpasser sig i portræt længere nede. */
+.choice {
+  background:#fff; border-radius:3.5vmin; box-shadow:0 6px 0 rgba(0,0,0,.12);
+  width:22vmin; height:22vmin; min-width:0; min-height:0; flex:0 0 auto;
+  font-size:11vmin; line-height:1;
+  display:flex; align-items:center; justify-content:center; padding:2vmin;
+  transition:transform .1s;
+}
+.choice:active { transform:scale(.93); }
+.choice.letter, .choice.number { font-weight:bold; color:#2b3a55; }
+.choice.wrong { animation:wobble .5s; }
+@keyframes wobble {
+  0%,100% { transform:translateX(0); }
+  25% { transform:translateX(-2vmin) rotate(-3deg); }
+  75% { transform:translateX(2vmin) rotate(3deg); }
+}
+.idle-hint { animation:pulseHint 1.2s ease-in-out infinite; }
+@keyframes pulseHint {
+  0%,100% { box-shadow:0 6px 0 rgba(0,0,0,.12); }
+  50% { box-shadow:0 6px 0 rgba(0,0,0,.12), 0 0 0 1.5vmin rgba(255,210,62,.65); }
+}
+
+/* Tæl med: dyreflok i fast gitter (O7) – faste pladser gør mængden let at afkode */
+#herd { display:inline-grid; grid-template-columns:repeat(5,1fr); gap:1vmin 2vmin;
+  justify-items:center; align-items:center; margin:0 auto; }
+
+/* Skygge-leg */
+.shadow-target { display:inline-block; width:32vmin; height:32vmin; filter:brightness(0); opacity:.85; }
+
+/* Rim-tid */
+.rim-target { width:100%; text-align:center; }
+.rim-target .emo { font-size:14vmin; line-height:1; }
+.rim-target .word { font-size:4vmin; font-weight:bold; color:#1d6fb8; }
+.choice .rim-word { font-size:2.8vmin; font-weight:bold; margin-top:.5vmin; }
+.choice.rim { flex-direction:column; font-size:9vmin; height:auto; min-height:22vmin; }
+
+/* Spor tallet/bogstavet */
+#traceWrap { width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+#traceWrap svg { height:100%; max-height:60vmin; max-width:90%; touch-action:none;
+  background:#fff; border-radius:4vmin; box-shadow:0 6px 0 rgba(0,0,0,.12); }
+.trace-path { fill:none; stroke:#dcebf5; stroke-width:11; stroke-linecap:round; stroke-linejoin:round; }
+.wp { fill:#fff; stroke:#9fc3dd; stroke-width:1.2; }
+.wp.hit { fill:#3aa14f; stroke:#2b7a3b; }
+.wp.next { fill:#ffd23e; stroke:#f5a300; animation:wpPulse 1s ease-in-out infinite; }
+@keyframes wpPulse { 0%,100% { r:5; } 50% { r:7; } }
+
+/* Vendespil */
+.mem-card { position:relative; }
+.mem-card .face { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  border-radius:3.5vmin; backface-visibility:hidden; transition:transform .35s; font-size:10vmin; }
+.mem-card .back-face { background:#1d6fb8; color:#fff; font-size:7vmin; transform:rotateY(0); }
+.mem-card .front-face { background:#fff; transform:rotateY(180deg); }
+.mem-card.open .back-face { transform:rotateY(180deg); }
+.mem-card.open .front-face { transform:rotateY(0); }
+.mem-card.matched { pointer-events:none; }
+.mem-card.matched .front-face { background:#e2f7d9; }
+
+/* ====== Fest-overlay ====== */
+#party {
+  position:absolute; inset:0; display:none; flex-direction:column; align-items:center;
+  justify-content:center; gap:3vmin; background:rgba(255,255,255,.75); z-index:20; text-align:center;
+}
+#party.active { display:flex; }
+#party .big-star { font-size:22vmin; animation:pop .6s; }
+@keyframes pop { 0% { transform:scale(0); } 70% { transform:scale(1.25); } 100% { transform:scale(1); } }
+#party .msg { font-size:5vmin; font-weight:bold; color:#1d6fb8; }
+#party .actions { display:flex; gap:4vmin; }
+.big-btn {
+  font-size:4vmin; font-weight:bold; color:#fff; background:#3aa14f;
+  border-radius:3vmin; padding:2.5vmin 5vmin; box-shadow:0 5px 0 #2b7a3b;
+}
+.big-btn.blue { background:#1d6fb8; box-shadow:0 5px 0 #155288; }
+.big-btn:active { transform:translateY(3px); box-shadow:none; }
+
+.confetti { position:absolute; top:-4vmin; font-size:4vmin; animation:fall linear forwards; z-index:21; pointer-events:none; }
+@keyframes fall { to { transform:translateY(115vh) rotate(720deg); } }
+
+/* ====== Forældre-gate + indstillinger + om + rolle + qc-log ====== */
+#gate, #settings, #about, #role, #qclog {
+  position:absolute; inset:0; display:none; flex-direction:column; align-items:center;
+  justify-content:center; gap:3vmin; background:rgba(43,58,85,.92); color:#fff; z-index:30;
+  text-align:center; padding:4vmin; overflow:auto;
+}
+#gate.active, #settings.active, #about.active, #role.active, #qclog.active { display:flex; }
+#role.active { z-index:40; } /* over alt ved første start */
+
+/* Rolle-vælger */
+#role h2 { font-size:5vmin; }
+.role-grid { display:flex; gap:3vmin; flex-wrap:wrap; justify-content:center; }
+.role-btn {
+  background:#fff; color:#2b3a55; border-radius:3vmin; padding:3vmin 2vmin; width:38vmin; max-width:220px;
+  display:flex; flex-direction:column; align-items:center; gap:1vmin; box-shadow:0 6px 0 rgba(0,0,0,.2);
+}
+.role-btn:active { transform:translateY(3px); box-shadow:none; }
+.role-btn .rIco { font-size:9vmin; line-height:1; }
+.role-btn .rName { font-size:3.6vmin; font-weight:bold; }
+.role-btn small { font-size:2.3vmin; color:#4a6a8a; }
+@media (orientation:portrait) {
+  .role-grid { flex-direction:column; }
+  .role-btn { width:70vw; flex-direction:row; justify-content:flex-start; gap:4vw; }
+  .role-btn .rIco { font-size:11vw; }
+  .role-btn .rName { font-size:5vw; }
+  .role-btn small { font-size:3.4vw; display:block; }
+}
+
+/* QC play-log */
+#qcBtn {
+  display:none; position:absolute; left:2vmin; bottom:2vmin; z-index:25;
+  background:#2b3a55; color:#fff; border-radius:2vmin; padding:1.4vmin 2.4vmin;
+  font-size:2.6vmin; font-weight:bold; box-shadow:0 4px 0 rgba(0,0,0,.3); opacity:.9;
+}
+body.qc #qcBtn { display:block; }
+/* Når DEV_INSTRUMENTATION=false: skjul al play-log-/QC-UI (klar til udgivelse) */
+body.nodev .dev-only, body.nodev #qcBtn { display:none !important; }
+#qclog h2 { font-size:3.6vmin; }
+#qclog h2 small { font-size:2.2vmin; opacity:.75; font-weight:normal; }
+#qclogText {
+  width:min(96vw,900px); height:60vh; overflow:auto; text-align:left;
+  background:#fff; color:#1b2536; border-radius:2vmin; padding:2vmin;
+  font-family:ui-monospace,Menlo,Consolas,monospace; font-size:2vmin; line-height:1.5; white-space:pre-wrap;
+}
+#gate p, #settings p { font-size:3vmin; max-width:80vmin; }
+.settings-actions { display:flex; gap:3vmin; flex-wrap:wrap; justify-content:center; }
+#about .about-body { max-width:90vmin; display:flex; flex-direction:column; gap:1.8vmin; }
+#about p { font-size:2.7vmin; line-height:1.4; }
+#about .about-fine { font-size:2.2vmin; opacity:.8; }
+#about h2 { font-size:4.5vmin; }
+#holdBtn { font-size:3.5vmin; font-weight:bold; background:#ffd23e; color:#2b3a55;
+  border-radius:3vmin; padding:3vmin 6vmin; position:relative; overflow:hidden; }
+#holdFill { position:absolute; left:0; top:0; bottom:0; width:0; background:rgba(58,161,79,.55); }
+#holdBtn span { position:relative; }
+#settings h2 { font-size:4.5vmin; }
+.settings-row { display:flex; gap:3vmin; align-items:center; font-size:3.2vmin; }
+
+/* ====== T2: kontrast ====== */
+.game-card .stars { color:#c77f00; } /* mørkere guld på hvid → WCAG AA */
+#progress .dot.done { box-shadow:inset 0 0 0 .5vmin #c77f00; } /* kraftigere kant om gul */
+
+/* ====== Rolig tilstand (lavarousal): dæmpet fejring, samme farver ====== */
+body.calm #party { background:rgba(255,255,255,.85); }
+body.calm #party .big-star { animation:calmFade .5s ease-out; }
+@keyframes calmFade { from { opacity:0; transform:scale(.92); } to { opacity:1; transform:scale(1); } }
+body.calm .choice.wrong { animation:calmWrong .55s ease; }
+@keyframes calmWrong {
+  0%,100% { box-shadow:0 6px 0 rgba(0,0,0,.12); }
+  45% { box-shadow:0 6px 0 rgba(0,0,0,.12), 0 0 0 1.3vmin rgba(224,90,90,.5); }
+}
+body.calm .idle-hint { animation-duration:1.9s; } /* langsommere, blødere puls */
+
+/* ====== T1: respektér "reducér bevægelse" ====== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .idle-hint { animation:none !important; box-shadow:0 6px 0 rgba(0,0,0,.12), 0 0 0 1.2vmin rgba(255,210,62,.65); }
+  .confetti { display:none; }
+}
+
+/* ====== Mobil / portræt: sørg for at ALLE spil fylder inden for skærmen ======
+   Uden dette bliver svar-kortene for store og flyder ud over en høj, smal skærm.
+   Sizes er clamp(min, vw-baseret, max) så 3 kort får plads pr. række. */
+@media (orientation:portrait) {
+  #prompt { font-size:5.4vw; min-height:7vw; }
+  #gameTop { gap:3vw; }
+  .round-btn { width:14vw; height:14vw; font-size:7vw; }
+  #stage { gap:3vw; padding:2vw; align-content:center; }
+
+  .choice { width:clamp(84px,27vw,150px); height:clamp(84px,27vw,150px);
+    font-size:clamp(30px,13vw,66px); border-radius:5vw; padding:2.5vw; }
+  .choice.rim { height:auto; min-height:clamp(104px,33vw,180px); }
+  .choice.rim .ico { width:clamp(52px,16vw,96px); height:clamp(52px,16vw,96px); }
+  .choice .rim-word { font-size:3.6vw; }
+
+  .shadow-target { width:clamp(96px,30vw,168px); height:clamp(96px,30vw,168px); }
+  #herd { grid-template-columns:repeat(5,1fr); gap:2vw; }
+  #herd .ico { width:clamp(34px,9.5vw,60px); height:clamp(34px,9.5vw,60px); }
+  .rim-target .emo .ico { width:clamp(88px,26vw,150px); height:clamp(88px,26vw,150px); }
+  .rim-target .word { font-size:5.5vw; }
+
+  #traceWrap svg { max-height:44vh; max-width:94vw; }
+}
+
+/* Landscape på lav skærm (telefon på siden): hold kortene kompakte i én række */
+@media (orientation:landscape) and (max-height:520px) {
+  .choice { width:clamp(72px,20vh,120px); height:clamp(72px,20vh,120px); font-size:clamp(28px,10vh,56px); }
+  .choice.rim { height:auto; min-height:clamp(84px,22vh,140px); }
+  .shadow-target { width:clamp(80px,22vh,130px); height:clamp(80px,22vh,130px); }
+  #traceWrap svg { max-height:64vh; }
+}
