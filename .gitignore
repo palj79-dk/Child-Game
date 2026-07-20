@@ -1,0 +1,7 @@
+node_modules/
+*.log
+.DS_Store
+# Piper models are downloaded on demand by tools/render_audio.py
+tools/.piper-voices/
+# scratch
+*.tmp

@@ -1,0 +1,27 @@
+// @ts-check
+import { ANIMALS } from "../data.js";
+import { pick, pickN, shuffle } from "../util.js";
+import { level, addChoice } from "../engine.js";
+
+const LEVEL_N = [3, 4, 6];
+
+/** @param {number} lvl */
+export function gen(lvl) {
+  const n = LEVEL_N[lvl] ?? LEVEL_N[0];
+  const opts = pickN(ANIMALS, n);
+  const target = pick(opts);
+  return { n, target, opts };
+}
+
+export const dyr = {
+  id: "dyr",
+  navn: "Dyrelyde",
+  ikon: "🐄",
+  gen,
+  task() {
+    const { target, opts } = gen(level(this.id));
+    this.promptText = `Hvilket dyr siger ${target.lyd}?`;
+    this.say = `Hvilket dyr siger ${target.lyd}? ... ${target.lyd}!`;
+    shuffle(opts.slice()).forEach((a) => addChoice(a.e, a === target));
+  },
+};

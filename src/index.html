@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Leg &amp; Lær – dansk læringsspil for 3-6 årige</title>
+<!--STYLE--><link rel="stylesheet" href="styles.css"><!--/STYLE-->
+</head>
+<body>
+
+<!-- ============ FORSIDE ============ -->
+<div id="home" class="screen active">
+  <button id="gearBtn" aria-label="Forældre">⚙️</button>
+  <h1>🐦 Leg &amp; Lær</h1>
+  <div class="subtitle">Tryk på et spil og leg med!</div>
+  <div id="menu"></div>
+</div>
+
+<!-- ============ SPIL ============ -->
+<div id="game" class="screen">
+  <div id="gameTop">
+    <button class="round-btn" id="homeBtn" aria-label="Hjem">🏠</button>
+    <div id="progress"></div>
+    <button class="round-btn" id="repeatBtn" aria-label="Hør igen">🔊</button>
+  </div>
+  <div id="prompt"></div>
+  <div id="stage"></div>
+</div>
+
+<!-- ============ FEST ============ -->
+<div id="party">
+  <div class="big-star">⭐</div>
+  <div class="msg" id="partyMsg">Flot klaret!</div>
+  <div class="actions">
+    <button class="big-btn" id="againBtn">Igen 🔁</button>
+    <button class="big-btn blue" id="partyHomeBtn">Hjem 🏠</button>
+  </div>
+</div>
+
+<!-- ============ FORÆLDRE-GATE ============ -->
+<div id="gate">
+  <p>Til de voksne: hold knappen inde, til den er fyldt op.</p>
+  <button id="holdBtn"><div id="holdFill"></div><span>Hold inde…</span></button>
+  <button class="big-btn blue" id="gateClose">Tilbage til spillet</button>
+</div>
+
+<!-- ============ INDSTILLINGER ============ -->
+<div id="settings">
+  <h2>Forældre og indstillinger</h2>
+  <p>Leg &amp; Lær er et dansk læringsspil for 3-6-årige.
+     Appen virker offline, viser ingen reklamer og indsamler ingen data.
+     Stjerner gemmes kun på denne enhed.</p>
+  <div class="settings-row">
+    <span>Oplæsning:</span>
+    <button class="big-btn" id="voiceToggle">Til</button>
+  </div>
+  <div class="settings-row">
+    <span>Nulstil alle stjerner:</span>
+    <button class="big-btn" id="resetBtn" style="background:#c0392b;box-shadow:0 5px 0 #8e2a1f;">Nulstil</button>
+  </div>
+  <button class="big-btn blue" id="settingsClose">Tilbage til spillet</button>
+</div>
+
+<!--SCRIPT--><script type="module" src="main.js"></script><!--/SCRIPT-->
+</body>
+</html>

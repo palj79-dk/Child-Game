@@ -1,0 +1,20 @@
+{
+  "name": "leg-og-laer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Leg & Lær – dansk læringsspil for 3-6-årige. Offline, reklamefri, uden dataindsamling.",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node --test test/logic.test.mjs",
+    "typecheck": "tsc --noEmit -p jsconfig.json",
+    "smoke": "node test/smoke.mjs",
+    "check-audio": "node tools/check_audio.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "esbuild": "^0.23.0",
+    "playwright-core": "^1.46.0",
+    "typescript": "^5.5.0"
+  }
+}
