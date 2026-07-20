@@ -5,6 +5,15 @@
 
 export const LETTERS = "ABCDEFGHIJKLMNOPRSTUVYÆØÅ".split("");
 
+/** Konkret dansk eksempelord pr. bogstav – "S som i slange" hjælper indlæringen.
+ * Vælg børnevenlige, konkrete ord. Rettes ét sted her. */
+export const LETTER_EKSEMPEL = {
+  A: "abe", B: "bil", C: "citron", D: "due", E: "elefant", F: "fisk",
+  G: "gris", H: "hund", I: "is", J: "jordbær", K: "kat", L: "løve",
+  M: "mus", N: "næse", O: "ost", P: "pige", R: "ræv", S: "slange",
+  T: "tog", U: "ugle", V: "vand", Y: "yoghurt", Æ: "æble", Ø: "ørn", Å: "ål",
+};
+
 /** @typedef {{ e:string, sym:string, navn:string, ubest:string, flertal:string, lyd:string }} Animal */
 /** @type {Animal[]} */
 export const ANIMALS = [

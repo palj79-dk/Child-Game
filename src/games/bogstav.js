@@ -1,8 +1,8 @@
 // @ts-check
-import { LETTERS } from "../data.js";
+import { LETTERS, LETTER_EKSEMPEL } from "../data.js";
 import { pick, pickN, shuffle } from "../util.js";
 import { level, addChoice } from "../engine.js";
-import { SPIL, bogstavNavn } from "../audio-ids.js";
+import { SPIL, bogstavEksempel } from "../audio-ids.js";
 import { fresh } from "../anti_repeat.js";
 
 const LEVEL_N = [3, 4, 6];
@@ -23,8 +23,10 @@ export const bogstav = {
   gen,
   task() {
     const { target, opts } = fresh(this.id, () => gen(level(this.id)), (r) => r.target);
-    this.promptText = `Find bogstavet ${target}`;
-    this.say = [SPIL.bogstavFind, bogstavNavn(target)];
+    const ord = LETTER_EKSEMPEL[target];
+    // Vis og sig eksemplet: "Find bogstavet S · S som slange"
+    this.promptText = ord ? `Find bogstavet ${target} · ${target} som ${ord}` : `Find bogstavet ${target}`;
+    this.say = [SPIL.bogstavFind, bogstavEksempel(target)];
     shuffle(opts.slice()).forEach((L) => addChoice(L, L === target, "letter"));
   },
 };

@@ -83,6 +83,11 @@
       "tekst": "a siger a",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_a": {
+      "fil": "bogstav_eksempel_a.mp3",
+      "tekst": "A som i abe",
+      "kategori": "bogstav"
+    },
     "bogstav_b_navn": {
       "fil": "bogstav_b_navn.mp3",
       "tekst": "bæ",
@@ -91,6 +96,11 @@
     "bogstav_b_lyd": {
       "fil": "bogstav_b_lyd.mp3",
       "tekst": "bæ siger bø",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_b": {
+      "fil": "bogstav_eksempel_b.mp3",
+      "tekst": "B som i bil",
       "kategori": "bogstav"
     },
     "bogstav_c_navn": {
@@ -103,6 +113,11 @@
       "tekst": "sæ siger s",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_c": {
+      "fil": "bogstav_eksempel_c.mp3",
+      "tekst": "C som i citron",
+      "kategori": "bogstav"
+    },
     "bogstav_d_navn": {
       "fil": "bogstav_d_navn.mp3",
       "tekst": "dæ",
@@ -111,6 +126,11 @@
     "bogstav_d_lyd": {
       "fil": "bogstav_d_lyd.mp3",
       "tekst": "dæ siger dø",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_d": {
+      "fil": "bogstav_eksempel_d.mp3",
+      "tekst": "D som i due",
       "kategori": "bogstav"
     },
     "bogstav_e_navn": {
@@ -123,6 +143,11 @@
       "tekst": "e siger e",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_e": {
+      "fil": "bogstav_eksempel_e.mp3",
+      "tekst": "E som i elefant",
+      "kategori": "bogstav"
+    },
     "bogstav_f_navn": {
       "fil": "bogstav_f_navn.mp3",
       "tekst": "æf",
@@ -131,6 +156,11 @@
     "bogstav_f_lyd": {
       "fil": "bogstav_f_lyd.mp3",
       "tekst": "æf siger føh",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_f": {
+      "fil": "bogstav_eksempel_f.mp3",
+      "tekst": "F som i fisk",
       "kategori": "bogstav"
     },
     "bogstav_g_navn": {
@@ -143,6 +173,11 @@
       "tekst": "gæ siger gø",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_g": {
+      "fil": "bogstav_eksempel_g.mp3",
+      "tekst": "G som i gris",
+      "kategori": "bogstav"
+    },
     "bogstav_h_navn": {
       "fil": "bogstav_h_navn.mp3",
       "tekst": "hå",
@@ -151,6 +186,11 @@
     "bogstav_h_lyd": {
       "fil": "bogstav_h_lyd.mp3",
       "tekst": "hå siger hø",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_h": {
+      "fil": "bogstav_eksempel_h.mp3",
+      "tekst": "H som i hund",
       "kategori": "bogstav"
     },
     "bogstav_i_navn": {
@@ -163,6 +203,11 @@
       "tekst": "i siger i",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_i": {
+      "fil": "bogstav_eksempel_i.mp3",
+      "tekst": "I som i is",
+      "kategori": "bogstav"
+    },
     "bogstav_j_navn": {
       "fil": "bogstav_j_navn.mp3",
       "tekst": "jåd",
@@ -171,6 +216,11 @@
     "bogstav_j_lyd": {
       "fil": "bogstav_j_lyd.mp3",
       "tekst": "jåd siger jø",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_j": {
+      "fil": "bogstav_eksempel_j.mp3",
+      "tekst": "J som i jordbær",
       "kategori": "bogstav"
     },
     "bogstav_k_navn": {
@@ -183,6 +233,11 @@
       "tekst": "kå siger kø",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_k": {
+      "fil": "bogstav_eksempel_k.mp3",
+      "tekst": "K som i kat",
+      "kategori": "bogstav"
+    },
     "bogstav_l_navn": {
       "fil": "bogstav_l_navn.mp3",
       "tekst": "æl",
@@ -191,6 +246,11 @@
     "bogstav_l_lyd": {
       "fil": "bogstav_l_lyd.mp3",
       "tekst": "æl siger lø",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_l": {
+      "fil": "bogstav_eksempel_l.mp3",
+      "tekst": "L som i løve",
       "kategori": "bogstav"
     },
     "bogstav_m_navn": {
@@ -203,6 +263,11 @@
       "tekst": "æm siger mø",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_m": {
+      "fil": "bogstav_eksempel_m.mp3",
+      "tekst": "M som i mus",
+      "kategori": "bogstav"
+    },
     "bogstav_n_navn": {
       "fil": "bogstav_n_navn.mp3",
       "tekst": "æn",
@@ -211,6 +276,11 @@
     "bogstav_n_lyd": {
       "fil": "bogstav_n_lyd.mp3",
       "tekst": "æn siger nø",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_n": {
+      "fil": "bogstav_eksempel_n.mp3",
+      "tekst": "N som i næse",
       "kategori": "bogstav"
     },
     "bogstav_o_navn": {
@@ -223,6 +293,11 @@
       "tekst": "o siger o",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_o": {
+      "fil": "bogstav_eksempel_o.mp3",
+      "tekst": "O som i ost",
+      "kategori": "bogstav"
+    },
     "bogstav_p_navn": {
       "fil": "bogstav_p_navn.mp3",
       "tekst": "pæ",
@@ -231,6 +306,11 @@
     "bogstav_p_lyd": {
       "fil": "bogstav_p_lyd.mp3",
       "tekst": "pæ siger pø",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_p": {
+      "fil": "bogstav_eksempel_p.mp3",
+      "tekst": "P som i pige",
       "kategori": "bogstav"
     },
     "bogstav_r_navn": {
@@ -243,6 +323,11 @@
       "tekst": "ær siger rø",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_r": {
+      "fil": "bogstav_eksempel_r.mp3",
+      "tekst": "R som i ræv",
+      "kategori": "bogstav"
+    },
     "bogstav_s_navn": {
       "fil": "bogstav_s_navn.mp3",
       "tekst": "æs",
@@ -251,6 +336,11 @@
     "bogstav_s_lyd": {
       "fil": "bogstav_s_lyd.mp3",
       "tekst": "æs siger søh",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_s": {
+      "fil": "bogstav_eksempel_s.mp3",
+      "tekst": "S som i slange",
       "kategori": "bogstav"
     },
     "bogstav_t_navn": {
@@ -263,6 +353,11 @@
       "tekst": "tæ siger tø",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_t": {
+      "fil": "bogstav_eksempel_t.mp3",
+      "tekst": "T som i tog",
+      "kategori": "bogstav"
+    },
     "bogstav_u_navn": {
       "fil": "bogstav_u_navn.mp3",
       "tekst": "u",
@@ -271,6 +366,11 @@
     "bogstav_u_lyd": {
       "fil": "bogstav_u_lyd.mp3",
       "tekst": "u siger u",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_u": {
+      "fil": "bogstav_eksempel_u.mp3",
+      "tekst": "U som i ugle",
       "kategori": "bogstav"
     },
     "bogstav_v_navn": {
@@ -283,6 +383,11 @@
       "tekst": "væ siger vø",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_v": {
+      "fil": "bogstav_eksempel_v.mp3",
+      "tekst": "V som i vand",
+      "kategori": "bogstav"
+    },
     "bogstav_y_navn": {
       "fil": "bogstav_y_navn.mp3",
       "tekst": "y",
@@ -291,6 +396,11 @@
     "bogstav_y_lyd": {
       "fil": "bogstav_y_lyd.mp3",
       "tekst": "y siger y",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_y": {
+      "fil": "bogstav_eksempel_y.mp3",
+      "tekst": "Y som i yoghurt",
       "kategori": "bogstav"
     },
     "bogstav_ae_navn": {
@@ -303,6 +413,11 @@
       "tekst": "æ siger æ",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_ae": {
+      "fil": "bogstav_eksempel_ae.mp3",
+      "tekst": "Æ som i æble",
+      "kategori": "bogstav"
+    },
     "bogstav_oe_navn": {
       "fil": "bogstav_oe_navn.mp3",
       "tekst": "ø",
@@ -313,6 +428,11 @@
       "tekst": "ø siger ø",
       "kategori": "bogstav"
     },
+    "bogstav_eksempel_oe": {
+      "fil": "bogstav_eksempel_oe.mp3",
+      "tekst": "Ø som i ørn",
+      "kategori": "bogstav"
+    },
     "bogstav_aa_navn": {
       "fil": "bogstav_aa_navn.mp3",
       "tekst": "å",
@@ -321,6 +441,11 @@
     "bogstav_aa_lyd": {
       "fil": "bogstav_aa_lyd.mp3",
       "tekst": "å siger å",
+      "kategori": "bogstav"
+    },
+    "bogstav_eksempel_aa": {
+      "fil": "bogstav_eksempel_aa.mp3",
+      "tekst": "Å som i ål",
       "kategori": "bogstav"
     },
     "tal_1": {
@@ -975,42 +1100,42 @@
     },
     "spor_i": {
       "fil": "spor_i.mp3",
-      "tekst": "Skriv bogstavet I. Følg prikkerne med fingeren.",
+      "tekst": "Skriv bogstavet I. I som i is. Følg prikkerne med fingeren.",
       "kategori": "spor"
     },
     "spor_l": {
       "fil": "spor_l.mp3",
-      "tekst": "Skriv bogstavet L. Følg prikkerne med fingeren.",
+      "tekst": "Skriv bogstavet L. L som i løve. Følg prikkerne med fingeren.",
       "kategori": "spor"
     },
     "spor_t": {
       "fil": "spor_t.mp3",
-      "tekst": "Skriv bogstavet T. Følg prikkerne med fingeren.",
+      "tekst": "Skriv bogstavet T. T som i tog. Følg prikkerne med fingeren.",
       "kategori": "spor"
     },
     "spor_v": {
       "fil": "spor_v.mp3",
-      "tekst": "Skriv bogstavet V. Følg prikkerne med fingeren.",
+      "tekst": "Skriv bogstavet V. V som i vand. Følg prikkerne med fingeren.",
       "kategori": "spor"
     },
     "spor_o": {
       "fil": "spor_o.mp3",
-      "tekst": "Skriv bogstavet O. Følg prikkerne med fingeren.",
+      "tekst": "Skriv bogstavet O. O som i ost. Følg prikkerne med fingeren.",
       "kategori": "spor"
     },
     "spor_a": {
       "fil": "spor_a.mp3",
-      "tekst": "Skriv bogstavet A. Følg prikkerne med fingeren.",
+      "tekst": "Skriv bogstavet A. A som i abe. Følg prikkerne med fingeren.",
       "kategori": "spor"
     },
     "spor_s": {
       "fil": "spor_s.mp3",
-      "tekst": "Skriv bogstavet S. Følg prikkerne med fingeren.",
+      "tekst": "Skriv bogstavet S. S som i slange. Følg prikkerne med fingeren.",
       "kategori": "spor"
     },
     "spor_m": {
       "fil": "spor_m.mp3",
-      "tekst": "Skriv bogstavet M. Følg prikkerne med fingeren.",
+      "tekst": "Skriv bogstavet M. M som i mus. Følg prikkerne med fingeren.",
       "kategori": "spor"
     }
   }

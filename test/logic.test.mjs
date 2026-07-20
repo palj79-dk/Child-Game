@@ -188,7 +188,7 @@ test("spor: glyf i niveau-pool, pool vokser med niveau", () => {
 test("lyd: hvert id spillene beder om findes i manifestet", () => {
   const need = [];
   need.push(...ids.ROS_IDS, ...ids.PROEV_IDS, ...Object.values(ids.SYS), ...Object.values(ids.SPIL));
-  for (const L of LETTERS) need.push(ids.bogstavNavn(L), ids.bogstavLyd(L));
+  for (const L of LETTERS) need.push(ids.bogstavNavn(L), ids.bogstavLyd(L), ids.bogstavEksempel(L));
   for (let n = 1; n <= 10; n++) need.push(ids.talOrd(n));
   for (const a of ANIMALS)
     need.push(ids.talHvormange(a.sym), ids.dyrUbest(a.sym), ids.dyrFlertal(a.sym), ids.dyrLyd(a.sym), ids.dyrelydSpm(a.sym));

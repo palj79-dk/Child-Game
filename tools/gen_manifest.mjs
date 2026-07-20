@@ -9,10 +9,10 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
-import { LETTERS, ANIMALS, COLORS, SHAPES, RIM, GLYPHS } from "../src/data.js";
+import { LETTERS, LETTER_EKSEMPEL, ANIMALS, COLORS, SHAPES, RIM, GLYPHS } from "../src/data.js";
 import {
   SYS, ROS_IDS, PROEV_IDS, SPIL,
-  bogstavNavn, bogstavLyd, talOrd, talHvormange, formSaetning,
+  bogstavNavn, bogstavLyd, bogstavEksempel, talOrd, talHvormange, formSaetning,
   dyrUbest, dyrFlertal, dyrLyd, dyrelydSpm, rimSpm, rimOrd, sporGlyf,
 } from "../src/audio-ids.js";
 
@@ -57,6 +57,8 @@ const LYD = {
 for (const L of LETTERS) {
   add(bogstavNavn(L), NAVN[L] || L.toLowerCase(), "bogstav");
   add(bogstavLyd(L), `${NAVN[L] || L} siger ${LYD[L] || L.toLowerCase()}`, "bogstav");
+  // "S som i slange" – konkret eksempelord der styrker indlæringen
+  add(bogstavEksempel(L), `${L} som i ${LETTER_EKSEMPEL[L] || ""}`.trim(), "bogstav");
 }
 
 /* --- Tal 1-10 --- */
@@ -96,11 +98,16 @@ for (const r of RIM) {
   add(rimOrd(r.rimOrd), r.rimOrd, "rim");
 }
 
-/* --- Spor & skriv: helsætning pr. glyf --- */
+/* --- Spor & skriv: helsætning pr. glyf (bogstaver får eksempelord) --- */
 for (const g of Object.keys(GLYPHS)) {
   const erTal = "1234567890".includes(g);
-  const hvad = erTal ? `tallet ${g}` : `bogstavet ${g}`;
-  add(sporGlyf(g), `Skriv ${hvad}. Følg prikkerne med fingeren.`, "spor");
+  if (erTal) {
+    add(sporGlyf(g), `Skriv tallet ${g}. Følg prikkerne med fingeren.`, "spor");
+  } else {
+    const ord = LETTER_EKSEMPEL[g];
+    const eks = ord ? ` ${g} som i ${ord}.` : "";
+    add(sporGlyf(g), `Skriv bogstavet ${g}.${eks} Følg prikkerne med fingeren.`, "spor");
+  }
 }
 
 /* --- Skriv output --- */

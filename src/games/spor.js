@@ -1,5 +1,5 @@
 // @ts-check
-import { GLYPHS, GLYPH_LEVELS } from "../data.js";
+import { GLYPHS, GLYPH_LEVELS, LETTER_EKSEMPEL } from "../data.js";
 import { $, pick } from "../util.js";
 import { state, level, answer } from "../engine.js";
 import { sfxFlip } from "../sfx.js";
@@ -21,7 +21,12 @@ export const spor = {
   ikon: "✏️",
   task() {
     const { g, erTal } = fresh(this.id, () => gen(level(this.id)), (r) => r.g);
-    this.promptText = erTal ? `Skriv tallet ${g}` : `Skriv bogstavet ${g}`;
+    const ord = LETTER_EKSEMPEL[g];
+    this.promptText = erTal
+      ? `Skriv tallet ${g}`
+      : ord
+        ? `Skriv bogstavet ${g} · ${g} som ${ord}`
+        : `Skriv bogstavet ${g}`;
     this.say = sporGlyf(g);
 
     const wrap = document.createElement("div");
