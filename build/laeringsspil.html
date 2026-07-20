@@ -69,7 +69,7 @@ button { font-family:inherit; border:none; cursor:pointer; background:none; }
   min-height:5vmin; padding:0 2vmin;
 }
 #stage {
-  flex:1; display:flex; flex-wrap:wrap; align-content:center; justify-content:center;
+  flex:1; min-height:0; display:flex; flex-wrap:wrap; align-content:center; justify-content:center;
   gap:3vmin; padding:1vmin;
 }
 
@@ -87,10 +87,13 @@ button { font-family:inherit; border:none; cursor:pointer; background:none; }
 #gearBtn .ico { width:5vmin; height:5vmin; }
 .big-btn .ico.ib { width:4vmin; height:4vmin; display:inline-block; vertical-align:middle; }
 
-/* Svar-kort: store trykflader til små fingre */
+/* Svar-kort: store trykflader til små fingre.
+   FAST width/height (ikke min-*) så et inline-SVG ikke kan sprænge kortet til
+   sin default-størrelse (~300px). #stage tilpasser sig i portræt længere nede. */
 .choice {
   background:#fff; border-radius:3.5vmin; box-shadow:0 6px 0 rgba(0,0,0,.12);
-  min-width:22vmin; min-height:22vmin; font-size:11vmin; line-height:1;
+  width:22vmin; height:22vmin; min-width:0; min-height:0; flex:0 0 auto;
+  font-size:11vmin; line-height:1;
   display:flex; align-items:center; justify-content:center; padding:2vmin;
   transition:transform .1s;
 }
@@ -120,7 +123,7 @@ button { font-family:inherit; border:none; cursor:pointer; background:none; }
 .rim-target .emo { font-size:14vmin; line-height:1; }
 .rim-target .word { font-size:4vmin; font-weight:bold; color:#1d6fb8; }
 .choice .rim-word { font-size:2.8vmin; font-weight:bold; margin-top:.5vmin; }
-.choice.rim { flex-direction:column; font-size:9vmin; }
+.choice.rim { flex-direction:column; font-size:9vmin; height:auto; min-height:22vmin; }
 
 /* Spor tallet/bogstavet */
 #traceWrap { width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
@@ -207,6 +210,38 @@ body.calm .idle-hint { animation-duration:1.9s; } /* langsommere, blødere puls 
   }
   .idle-hint { animation:none !important; box-shadow:0 6px 0 rgba(0,0,0,.12), 0 0 0 1.2vmin rgba(255,210,62,.65); }
   .confetti { display:none; }
+}
+
+/* ====== Mobil / portræt: sørg for at ALLE spil fylder inden for skærmen ======
+   Uden dette bliver svar-kortene for store og flyder ud over en høj, smal skærm.
+   Sizes er clamp(min, vw-baseret, max) så 3 kort får plads pr. række. */
+@media (orientation:portrait) {
+  #prompt { font-size:5.4vw; min-height:7vw; }
+  #gameTop { gap:3vw; }
+  .round-btn { width:14vw; height:14vw; font-size:7vw; }
+  #stage { gap:3vw; padding:2vw; align-content:center; }
+
+  .choice { width:clamp(84px,27vw,150px); height:clamp(84px,27vw,150px);
+    font-size:clamp(30px,13vw,66px); border-radius:5vw; padding:2.5vw; }
+  .choice.rim { height:auto; min-height:clamp(104px,33vw,180px); }
+  .choice.rim .ico { width:clamp(52px,16vw,96px); height:clamp(52px,16vw,96px); }
+  .choice .rim-word { font-size:3.6vw; }
+
+  .shadow-target { width:clamp(96px,30vw,168px); height:clamp(96px,30vw,168px); }
+  #herd { grid-template-columns:repeat(5,1fr); gap:2vw; }
+  #herd .ico { width:clamp(34px,9.5vw,60px); height:clamp(34px,9.5vw,60px); }
+  .rim-target .emo .ico { width:clamp(88px,26vw,150px); height:clamp(88px,26vw,150px); }
+  .rim-target .word { font-size:5.5vw; }
+
+  #traceWrap svg { max-height:44vh; max-width:94vw; }
+}
+
+/* Landscape på lav skærm (telefon på siden): hold kortene kompakte i én række */
+@media (orientation:landscape) and (max-height:520px) {
+  .choice { width:clamp(72px,20vh,120px); height:clamp(72px,20vh,120px); font-size:clamp(28px,10vh,56px); }
+  .choice.rim { height:auto; min-height:clamp(84px,22vh,140px); }
+  .shadow-target { width:clamp(80px,22vh,130px); height:clamp(80px,22vh,130px); }
+  #traceWrap svg { max-height:64vh; }
 }
 
 /* Skolefont: ABeeZee (SIL OFL 1.1) – enkelt-etages 'a' som i dansk skoleskrift.
